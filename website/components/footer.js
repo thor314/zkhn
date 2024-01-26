@@ -3,7 +3,7 @@ import Link from "next/link";
 import Router from "next/router";
 
 export default function Footer({}) {
-    const [searchInputValue, setSearchInputValue] = useState("");
+  const [searchInputValue, setSearchInputValue] = useState("");
 
     const updateSearchInputValue = (event) => {
         setSearchInputValue(event.target.value);
@@ -46,12 +46,11 @@ export default function Footer({}) {
                     onKeyDown={listenForEnterKeyPress}
                 />
             </div>
-
-            <div className="footer-search">
-                <span style={{ fontSize: "11px" }}>
-                    made by <Link href="https://github.com/krehwell">me</Link> with ❤️
-                </span>
-            </div>
+            {/* optional footer  */}
+            {/* <div className="footer-search"> */}
+            {/* <span style={{ fontSize: "11px" }}>
+                </span> */}
+            {/* </div> */}
         </div>
     );
 }

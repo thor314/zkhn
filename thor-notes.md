@@ -1,7 +1,8 @@
 # Thor's notes
 ## deployment
 Make sure .env files in rest_api include my updated username, password, and cluster name. 
-Go to [atlas mongodb](https://www.mongodb.com/atlas/database) and login. Connect to the cluster for monitoring.
+Go to [atlas mongodb](https://www.mongodb.com/atlas/database) and login. Connect to the cluster for monitoring. May have
+to add current ip address to trusted addresses.
 
 Shell 1:
 ```sh
