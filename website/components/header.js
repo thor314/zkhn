@@ -24,7 +24,7 @@ export default function Header({ userSignedIn, username, karma, goto, pageName, 
                     <td className="header-links">
                         <span className="header-links-items">
                             <b className="header-links-name">
-                                <Link href="/news">HeckarNews</Link>
+                                <Link href="/news">zkNews</Link>
                             </b>
                             <Link href="/newest">new</Link>
                             <span> | </span>
@@ -32,17 +32,18 @@ export default function Header({ userSignedIn, username, karma, goto, pageName, 
                                 <>
                                     <Link
                                         className={pageName === "threads" ? "white-text" : null}
-                                        href={`/threads?id=${username}`}>
+                                        href={`/threads?id=${username}`}
+                                    >
                                         threads
                                     </Link>
                                     <span> | </span>
                                 </>
                             ) : null}
                             <Link href="/past">past</Link>
-                            <span> | </span>
+                            {/* <span> | </span>
                             <Link className={pageName === "newcomments" ? "white-text" : null} href="/newcomments">
                                 comments
-                            </Link>
+                            </Link> */}
                             <span> | </span>
                             <Link className={pageName === "ask" ? "white-text" : null} href="/ask">
                                 ask

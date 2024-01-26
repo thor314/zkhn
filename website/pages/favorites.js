@@ -25,7 +25,7 @@ export default function Favorites({
 }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title={!notFoundError ? `${userId}'s favorites | HeckarNews` : "HeckarNews"} />
+            <HeadMetadata title={!notFoundError ? `${userId}'s favorites | zkNews` : "zkNews"} />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}
@@ -73,12 +73,11 @@ export default function Favorites({
                             </>
                         ) : null}
 
-
                         {showComments ? (
                             <>
                                 {showComments ? (
                                     <>
-                                        {/* FAVORITES COMMENTS */ }
+                                        {/* FAVORITES COMMENTS */}
                                         {comments.length ? (
                                             <CommentsList
                                                 comments={comments}

@@ -146,7 +146,7 @@ export default function Submit({}) {
 
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Submit | HeckarNews" />
+            <HeadMetadata title="Submit | zkNews" />
             <AlternateHeader displayMessage="Submit" />
             <div className="submit-content-container">
                 {error.titleRequiredError ? (

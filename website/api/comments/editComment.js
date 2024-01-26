@@ -12,7 +12,7 @@ export default function editComment(id, newCommentText, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

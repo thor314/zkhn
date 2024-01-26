@@ -1,5 +1,5 @@
 .alternate-header {
-    background-color: #ff6600;
+    background-color: var(--c-accent);
     height: 27.5px;
     line-height: 27.5px;
     font-size: 13px;
@@ -7,7 +7,7 @@
 }
 
 .alternate-header img {
-    border: 1px black solid;
+    border: 1px var(--c-white) solid;
     vertical-align: middle;
     margin-right: 3px;
     width: 18px;

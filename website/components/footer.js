@@ -32,7 +32,7 @@ export default function Footer({}) {
                     <span>|</span>
                 </div>
                 <div className="footer-link-list-item">
-                    <Link href="https://github.com/krehwell">Contact</Link>
+                    <Link href="https://x.com/cryptograthor">Contact</Link>
                 </div>
             </div>
 
@@ -46,12 +46,11 @@ export default function Footer({}) {
                     onKeyDown={listenForEnterKeyPress}
                 />
             </div>
-
-            <div className="footer-search">
-                <span style={{ fontSize: "11px" }}>
-                    made by <Link href="https://github.com/krehwell">me</Link> with ❤️
-                </span>
-            </div>
+            {/* optional footer  */}
+            {/* <div className="footer-search"> */}
+            {/* <span style={{ fontSize: "11px" }}>
+                </span> */}
+            {/* </div> */}
         </div>
     );
 }

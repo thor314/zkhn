@@ -53,7 +53,7 @@ export default function SearchPageHeader({
                         <span>
                             <b>
                                 Search <br />
-                                HeckarNews
+                                zkNews
                             </b>
                         </span>
                     </div>

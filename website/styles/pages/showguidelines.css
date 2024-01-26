@@ -19,7 +19,7 @@
 }
 
 .show-guidelines-text-container {
-    background-color: #fafaf0;
+    background-color: var(--c-guidelines-background);
     font-size: 11px;
     padding: 10px 10px 50px 10px;
 }
@@ -33,13 +33,13 @@
 
 .show-guidelines-text-container p a,
 .show-guidelines-text-container p a:visited {
-    color: rgb(0, 0, 0);
+    color: var(--c-white);
     font-family: Verdana;
     text-decoration: underline;
 }
 
 .show-guidelines-text-title {
-    color: #333333;
+    color: var(var(--c-text-)light);
     font-weight: 700;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -51,7 +51,7 @@
 
 .show-guidelines-bottom-divider {
     width: 100%;
-    background-color: rgb(255, 102, 0);
+    background-color: var(--c-accent);
     height: 3px;
     margin-top: 25px;
 }
@@ -70,7 +70,7 @@
     }
 
     .show-guidelines-text-container {
-        background-color: #fafaf0;
+        background-color: var(--c-guidelines-background);
         font-size: 13.5px;
         padding-right: 15px;
     }

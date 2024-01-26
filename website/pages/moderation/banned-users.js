@@ -6,7 +6,7 @@ import getBannedUsersByPage from "../../api/moderation/getBannedUsersByPage.js";
 export default function BannedUsers({ users, page, isMore, getDataError, notAllowedError }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Banned Users | HeckarNews" />
+            <HeadMetadata title="Banned Users | zkNews" />
             <AlternateHeader displayMessage="Banned Users" />
             <div className="moderation-banned-users-content-container">
                 {!getDataError && !notAllowedError ? (

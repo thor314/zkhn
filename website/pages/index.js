@@ -8,7 +8,7 @@ import getRankedItemsByPage from "../api/items/getRankedItemsByPage.js";
 export default function Index({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="HeckarNews" description="News and Bullshit people having." />
+            <HeadMetadata title="zkNews" description="News and Bullshit people having." />
             <Header
                 userSignedIn={authUserData.userSignedIn}
                 username={authUserData.username}

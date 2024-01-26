@@ -12,8 +12,41 @@
     box-sizing: border-box;
 }
 
+/* site color CSS vars */
+:root {
+    --c-background: #23241f; /* site backgrounds color */
+    --c-accent-lighter: #6e6ea4;
+    --c-accent: #4e4e94; /* navbar etc */
+    --c-accent-darker: #313178;
+    --c-dark: #232342;
+    --c-darkest: #181828;
+    --c-black: #101010; 
+    --c-grey: #aaaaaa;
+    --c-text-light: #becfe8;
+    --c-text-lightest: #efefef; /* header footer etc */
+    --c-white: #cfdff9;
+    --c-red: #ff4040; 
+    /* tf are not changed, just copied over for consistency */
+    /* TODO(TK 2024-01-26): unify these colors */
+    --c-border: var(--c-accent);
+    --c-item: var(--c-accent);
+    --c-page-numbers-border: var(--c-accent);
+    --c-page-numbers: var(--c-accent-darker);
+    --c-forgot-border: var(--c-accent);
+    --c-footer-border: var(--c-accent-darker);
+    --c-comment-dark: var(--c-darkest);
+    --c-footer-border: var(--c-darkest);
+    --c-items-list: var(--c-accent-darker);
+    --c-guidelines-background: var(--c-text-light);
+    --c-comment: var(--c-text-lightest);
+    --c-date-border: var(--c-accent-darker);
+    --c-about: var(--c-accent-darker);
+}
+
 body {
     zoom: 1.35;
+    background-color: var(--c-background);
+    /* color: var(--c-text-light);  */
 }
 
 table {
@@ -41,7 +74,7 @@ input[type="reset"]::-moz-focus-inner {
     margin: auto;
     margin-top: 8px;
     margin-bottom: 8px;
-    background-color: #f6f6ef;
+    background-color: var(--c-background);
     overflow: hidden;
 }
 
@@ -49,7 +82,9 @@ input[type="reset"]::-moz-focus-inner {
     body {
         zoom: 1;
         -moz-transform: scale(1);
+        transform: scale(1);
         -moz-transform-origin: 0 0;
+        transform-origin: 0 0;
     }
 
     .layout-wrapper {

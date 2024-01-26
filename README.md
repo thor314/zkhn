@@ -1,7 +1,5 @@
-# HeckarNews
-Hacker News Clone. Demo: https://forum.krehwell.com/
-
-![image of frontpage heckarnews](https://i.imgur.com/MuXTuTa.png)
+# zkNews
+![](https://img.shields.io/badge/made_by_cryptograthor-black?style=flat&logo=undertale&logoColor=hotpink)
 
 ## Dependecies
 - [Next.Js](https://nextjs.org/): React framework for building UI
@@ -23,7 +21,7 @@ Website served at :3000 and Server served at :5000
 
 ## Project Structure
 ```bash
-HeckarNews
+zkNews
   |- website 
     |- ... # front-end code
   |- rest-api 

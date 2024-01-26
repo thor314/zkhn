@@ -8,7 +8,7 @@ import getNewestShowItemsByPage from "../api/items/getNewestShowItemsByPage.js";
 export default function ShowNew({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="New Show | HeckarNews" />
+            <HeadMetadata title="New Show | zkNews" />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}

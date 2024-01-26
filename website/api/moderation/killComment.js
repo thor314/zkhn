@@ -11,7 +11,7 @@ export default function killComment(commentId, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

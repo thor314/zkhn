@@ -14,48 +14,48 @@ const mongoose = require("mongoose");
  * @property dead: boolean value that indicates whether or not the comment has been killed
  */
 const CommentSchema = new mongoose.Schema({
-    id: {
-        type: String,
-        unique: true,
-        required: true,
-    },
-    by: {
-        type: String,
-        required: true,
-    },
+  id: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  by: {
+    type: String,
+    required: true,
+  },
 
-    parentItemId: {
-        type: String,
-        required: true,
+  parentItemId: {
+    type: String,
+    required: true,
+  },
+  parentItemTitle: {
+    type: String,
+    required: true,
+  },
+  isParent: {
+    type: Boolean,
+    required: true,
+  },
+  parentCommentId: String,
+  children: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "Comment",
     },
-    parentItemTitle: {
-        type: String,
-        required: true,
-    },
-    isParent: {
-        type: Boolean,
-        required: true,
-    },
-    parentCommentId: String,
-    children: [
-        {
-            type: mongoose.Schema.ObjectId,
-            ref: "Comment",
-        },
-    ],
+  ],
 
-    text: String,
-    points: {
-        type: Number,
-        default: 1,
-        min: -4,
-    },
-    created: Number,
+  text: String,
+  points: {
+    type: Number,
+    default: 1,
+    min: -4,
+  },
+  created: Number,
 
-    dead: {
-        type: Boolean,
-        default: false,
-    },
+  dead: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 /**
@@ -63,45 +63,45 @@ const CommentSchema = new mongoose.Schema({
  * {...data, children: [object]} where `children` is the data of each child comment
  */
 function autoPopulateChildrenComments(next) {
-    if (this.options.getChildrenComment) {
-        let filterObj = {};
+  if (this.options.getChildrenComment) {
+    let filterObj = {};
 
-        if (!this.options.showDeadComments) filterObj.dead = false;
+    if (!this.options.showDeadComments) filterObj.dead = false;
 
-        /**
-         * Since inside `children` property saved is the Mongo _id/ObjectId
-         * the data populate will search through the docs and replace it with
-         * comment docs.
-         * before: children: [objectId("8976fdsafskda"), objectId("kljsfd89fdsdfa")]
-         * after: children: [{comment doc}, {comment doc}]
-         *
-         * Reference: Mongoose Populate: https://stackoverflow.com/a/53002303/13825733
-         */
-        this.populate({
-            path: "children",
-            match: filterObj,
-            options: {
-                getChildrenComment: true,
-                showDeadComments: this.options.showDeadComments,
-            },
-        });
+    /**
+     * Since inside `children` property saved is the Mongo _id/ObjectId
+     * the data populate will search through the docs and replace it with
+     * comment docs.
+     * before: children: [objectId("8976fdsafskda"), objectId("kljsfd89fdsdfa")]
+     * after: children: [{comment doc}, {comment doc}]
+     *
+     * Reference: Mongoose Populate: https://stackoverflow.com/a/53002303/13825733
+     */
+    this.populate({
+      path: "children",
+      match: filterObj,
+      options: {
+        getChildrenComment: true,
+        showDeadComments: this.options.showDeadComments,
+      },
+    });
 
-        next();
-    } else {
-        next();
-    }
+    next();
+  } else {
+    next();
+  }
 }
 
 CommentSchema.pre("find", autoPopulateChildrenComments);
 CommentSchema.pre("findOne", autoPopulateChildrenComments);
 
 CommentSchema.index({
-    id: 1,
-    by: 1,
-    parentItemId: 1,
-    isParent: 1,
-    parentCommentId: 1,
-    points: 1,
+  id: 1,
+  by: 1,
+  parentItemId: 1,
+  isParent: 1,
+  parentCommentId: 1,
+  points: 1,
 });
 
 module.exports = mongoose.model("Comment", CommentSchema);

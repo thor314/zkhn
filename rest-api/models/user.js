@@ -17,83 +17,83 @@ const bcrypt = require("bcrypt");
  * @property banned: restrict login attempts for banned users
  */
 const UserSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        unique: true,
-        required: true,
-    },
+  username: {
+    type: String,
+    unique: true,
+    required: true,
+  },
 
-    password: {
-        type: String,
-        required: true,
-    },
+  password: {
+    type: String,
+    required: true,
+  },
 
-    authToken: String,
-    authTokenExpiration: Number,
-    resetPasswordToken: String,
-    resetPasswordTokenExpiration: Number,
+  authToken: String,
+  authTokenExpiration: Number,
+  resetPasswordToken: String,
+  resetPasswordTokenExpiration: Number,
 
-    email: {
-        type: String,
-        lowercase: true,
-        default: "",
-    },
+  email: {
+    type: String,
+    lowercase: true,
+    default: "",
+  },
 
-    created: Number,
+  created: Number,
 
-    karma: {
-        type: Number,
-        default: 0,
-        min: 0,
-    },
+  karma: {
+    type: Number,
+    default: 0,
+    min: 0,
+  },
 
-    about: {
-        type: String,
-        default: "",
-    },
+  about: {
+    type: String,
+    default: "",
+  },
 
-    showDead: {
-        type: Boolean,
-        default: false,
-    },
+  showDead: {
+    type: Boolean,
+    default: false,
+  },
 
-    isModerator: {
-        type: Boolean,
-        default: false,
-    },
+  isModerator: {
+    type: Boolean,
+    default: false,
+  },
 
-    shadowBanned: {
-        type: Boolean,
-        default: false,
-    },
+  shadowBanned: {
+    type: Boolean,
+    default: false,
+  },
 
-    banned: {
-        type: Boolean,
-        default: false
-    }
+  banned: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 UserSchema.pre("save", function (next) {
-    const user = this;
+  const user = this;
 
-    if (this.isModified("password") || this.isNew) {
-        bcrypt.genSalt(10, function (err, salt) {
-            if (err) {
-                return next(err);
-            }
+  if (this.isModified("password") || this.isNew) {
+    bcrypt.genSalt(10, function (err, salt) {
+      if (err) {
+        return next(err);
+      }
 
-            bcrypt.hash(user.password, salt, function (err, hash) {
-                if (err) {
-                    return next(err);
-                }
+      bcrypt.hash(user.password, salt, function (err, hash) {
+        if (err) {
+          return next(err);
+        }
 
-                user.password = hash;
-                next();
-            });
-        });
-    } else {
-        return next();
-    }
+        user.password = hash;
+        next();
+      });
+    });
+  } else {
+    return next();
+  }
 });
 
 /**
@@ -101,13 +101,13 @@ UserSchema.pre("save", function (next) {
  * @returns true on bcrypt.compareSync(req.password, user.password) is true;
  */
 UserSchema.methods.comparePassword = async function (pw) {
-    const passwordIsMatch = bcrypt.compareSync(pw, this.password);
+  const passwordIsMatch = bcrypt.compareSync(pw, this.password);
 
-    if (passwordIsMatch) {
-        return true;
-    } else {
-        return false;
-    }
+  if (passwordIsMatch) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 UserSchema.index({ username: 1 }, { unique: true });

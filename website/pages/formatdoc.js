@@ -4,7 +4,7 @@ import HeadMetadata from "../components/headMetadata.js";
 export default function FormatDoc() {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Formatting Options | HeckarNews" />
+            <HeadMetadata title="Formatting Options | zkNews" />
             <AlternateHeader displayMessage="Formatting Options" />
             <div className="formatdoc-content-container">
                 <div className="formatdoc-content-text">

@@ -10,7 +10,7 @@
 }
 
 .listed-item-rank {
-    color: #828282;
+    color: var(--c-text-lightest);
     font-size: 13.5px;
     width: 32.5px;
     text-align: right;
@@ -39,7 +39,7 @@
 }
 
 .listed-item-star {
-    color: rgb(255, 102, 0);
+    color: var(--c-accent);
     text-align: center;
     font-size: 13.5px;
     width: 15px;
@@ -52,12 +52,12 @@
 .listed-item-domain {
     font-size: 10.5px;
     margin-left: 4px;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .listed-item-domain a {
     text-decoration: none;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .listed-item-domain a:hover {
@@ -66,22 +66,22 @@
 
 .listed-item-title a {
     text-decoration: none;
-    color: #000000;
+    color: var(--c-text-lightest);
 }
 
 .listed-item-title a:visited {
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .listed-item-bottom-section {
     padding-left: 35px;
     font-size: 9.5px;
-    color: #828282;
+    color: var(--c-text-light);
     cursor: default;
 }
 
 .listed-item-kill {
-    color: #b82727;
+    color: var(--c-comment-darkish);
 }
 
 .listed-item-unvote:hover,
@@ -95,7 +95,7 @@
 
 .listed-item-bottom-section a {
     text-decoration: none;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .listed-item-bottom-section a:hover {
@@ -113,19 +113,19 @@
 }
 
 .listed-item-more a {
-    color: #000000;
+    color: var(--c-text-lightest);
     text-decoration: none;
 }
 
 .listed-item-more a:visited {
-    color: #828282;
+    color: var(--c-text-light);
     text-decoration: none;
 }
 
 .items-list-error-msg {
     margin: 8px;
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 @media only screen and (max-width: 750px) and (min-width: 0px) {

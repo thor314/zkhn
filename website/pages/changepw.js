@@ -79,7 +79,7 @@ export default function ChangePw({ userContainsEmail, username }) {
 
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Change Password | HeckarNews" />
+            <HeadMetadata title="Change Password | zkNews" />
             <AlternateHeader displayMessage={`Change Password for ${username}`} />
             <div className="changepw-content-container">
                 {!userContainsEmail && (

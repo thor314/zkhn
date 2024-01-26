@@ -85,7 +85,7 @@ export default function Past({ items, authUserData, day, page, isMore, getDataEr
 
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title={!invalidDateError ? `${day} Top Items | HeckarNews` : "HeckarNews"} />
+            <HeadMetadata title={!invalidDateError ? `${day} Top Items | zkNews` : "zkNews"} />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}

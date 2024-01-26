@@ -10,7 +10,7 @@ import getRankedShowItemsByPage from "../api/items/getRankedShowItemsByPage.js";
 export default function Show({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Show | HeckarNews" />
+            <HeadMetadata title="Show | zkNews" />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}

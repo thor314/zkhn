@@ -2,18 +2,18 @@
   padding: 15px 0px 15px 0px;
   font-family: Verdana, Geneva, sans-serif;
   font-size: 13.5px;
-  color: #828282;
+  color: var(--c-text-light);
 }
 
 .delete-comment-top-section {
-  color: #828282;
+  color: var(--c-text-light);
   font-size: 10.75px;
 }
 
 .delete-comment-top-section a,
 .delete-comment-top-section a:visited {
   text-decoration: none;
-  color: #828282;
+  color: var(--c-text-light);
 }
 
 .delete-comment-top-section a:hover {
@@ -31,7 +31,7 @@
   top: -2px;
   vertical-align: top;
   text-align: center;
-  color: rgb(255, 102, 0);
+  color: var(--c-accent);
   font-size: 13.5px;
   width: 20px;
 }
@@ -44,14 +44,14 @@
   padding-top: 5px;
   padding-bottom: 10px;
   padding-right: 15px;
-  color: #000000;
+  color: var(--c-text-lightest);
   font-size: 12px;
   overflow: hidden;
   white-space: pre-wrap;
 }
 
 .delete-comment-content-text a {
-  color: #000000;
+  color: var(--c-text-lightest);
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -65,7 +65,7 @@
 }
 
 .delete-comment-content-text a:visited {
-  color: #828282;
+  color: var(--c-text-light);
 }
 
 .delete-comment-confirm-msg {
@@ -115,7 +115,7 @@
 }
 
 .delete-comment-submit-error-msg {
-  color: #828282;
+  color: var(--c-text-light);
   font-size: 13.5px;
   margin-top: 15px;
   margin-left: 20px;
@@ -124,7 +124,7 @@
 .delete-comment-error-msg {
   margin: 8px;
   font-size: 13.5px;
-  color: #828282;
+  color: var(--c-text-light);
 }
 
 @media only screen and (max-width: 750px) and (min-width: 0px) {

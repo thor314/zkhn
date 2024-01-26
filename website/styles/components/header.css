@@ -1,5 +1,5 @@
 .header-wrapper {
-    background-color: #ff6600;
+    background-color: var(--c-accent);
     width: 100%;
     font-size: 13px;
     padding: 5px 7.5px 5px 3px;
@@ -12,7 +12,7 @@
 }
 
 .header-logo img {
-    border: 2px black solid;
+    border: 2px var(--c-white) solid;
     vertical-align: middle;
     margin-right: 3px;
     width: 18px;
@@ -20,7 +20,7 @@
 }
 
 .header-links-items {
-    color: #222222;
+    color: var(--c-text-lightest);
 }
 
 .header-links-name {
@@ -29,22 +29,23 @@
 
 .header-links a {
     text-decoration: none;
-    color: #000000;
+    color: var(--c-text-lightest);
 }
 
 .header-links a.white-text,
 .white-text {
-    color: #ffffff;
+    color: var(--c-text-lightest);
 }
 
 .header-right-nav-links {
     text-align: right;
     padding-left: 10px;
+    color: var(--c-text-light)
 }
 
 .header-right-nav-links a {
     text-decoration: none;
-    color: #000000;
+    color: var(--c-text-lightest);
 }
 
 .header-logout {

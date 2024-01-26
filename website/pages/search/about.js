@@ -7,12 +7,12 @@ import SearchPageFooter from "../../components/search/footer.js";
 export default function About() {
     return (
         <div className="search-about-wrapper">
-            <HeadMetadata title="Search About | HeckarNews" />
+            <HeadMetadata title="Search About | zkNews" />
             <SearchPageHeader showBackButton={true} />
             <div className="search-about-content">
                 <h3>About</h3>
                 <p>
-                    HeckarNews search provides real-time full-text search for the HeckarNews community website. The
+                    zkNews search provides real-time full-text search for the zkNews community website. The
                     search backend is implemented using{" "}
                     <Link href="http://www.algolia.com">
                         <a>Algolia</a>

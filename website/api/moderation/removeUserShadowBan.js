@@ -11,7 +11,7 @@ export default function removeUserShadowBan(username, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

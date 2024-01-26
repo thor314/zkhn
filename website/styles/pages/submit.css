@@ -3,7 +3,7 @@
 }
 
 .submit-content-error-msg {
-    color: #828282;
+    color: var(--c-text-light);
     font-size: 13.5px;
     margin-bottom: 20px;
 }
@@ -11,7 +11,7 @@
 .submit-content-input-item-label {
     display: inline-block;
     width: 35px;
-    color: #828282;
+    color: var(--c-text-light);
     font-family: Verdana, Geneva, sans-serif;
     font-size: 13.5px;
 }
@@ -25,7 +25,7 @@
     height: 20px;
     -webkit-writing-mode: horizontal-tb;
     text-rendering: auto;
-    color: initial;
+    color: var(--c-text-light);
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -34,12 +34,12 @@
     display: inline-block;
     text-align: start;
     -webkit-appearance: textfield;
-    background-color: white;
+    background-color: var(--c-background);
     -webkit-rtl-ordering: logical;
     cursor: text;
     margin: 0em;
     padding: 1px;
-    border: 1px solid #a6a4a4;
+    border: 1px solid var(--c-page-numbers-border);
 }
 
 .submit-content-input-item-input input[type="text"] {
@@ -50,7 +50,7 @@
 .submit-content-title-length-msg {
     margin-left: 10px;
     font-family: Verdana, Geneva, sans-serif;
-    color: #828282;
+    color: var(--c-text-light);
     font-size: 13.5px;
 }
 
@@ -64,7 +64,7 @@
     line-height: 25px;
     font-size: 13.5px;
     font-family: Verdana, Geneva, sans-serif;
-    color: #828282;
+    color: var(--c-text-light);
     font-weight: bold;
     margin-left: 35px;
 }
@@ -76,7 +76,7 @@
 .submit-content-text-input-item-label {
     display: inline-block;
     width: 35px;
-    color: #828282;
+    color: var(--c-text-light);
     font-family: Verdana, Geneva, sans-serif;
     font-size: 13.5px;
     vertical-align: middle;
@@ -93,7 +93,7 @@
     vertical-align: middle;
     -webkit-writing-mode: horizontal-tb !important;
     text-rendering: auto;
-    color: initial;
+    color: var(--c-text-light);
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -102,7 +102,7 @@
     display: inline-block;
     text-align: start;
     -webkit-appearance: textarea;
-    background-color: white;
+    background-color: var(--c-background);
     -webkit-rtl-ordering: logical;
     flex-direction: column;
     resize: auto;
@@ -113,7 +113,7 @@
     margin: 0em;
     border-width: 1px;
     border-style: solid;
-    border-color: rgb(169, 169, 169);
+    border-color: var(--c-page-numbers-border);
     border-image: initial;
     padding: 2px 0px 0px 2px;
 }
@@ -156,7 +156,7 @@
 }
 
 .submit-content-bottom-instructions {
-    color: #828282;
+    color: var(--c-text-light);
     font-size: 13.5px;
     margin-top: 25px;
     margin-left: 30px;

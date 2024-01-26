@@ -6,5 +6,5 @@
 .item-get-data-error-msg {
     margin: 8px;
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
 }

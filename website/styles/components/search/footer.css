@@ -17,6 +17,6 @@
 }
 
 .search-footer ul a {
-    color: #000;
+    color: var(--c-text-lightest);
     text-decoration: none;
 }

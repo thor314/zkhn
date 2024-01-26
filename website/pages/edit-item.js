@@ -112,7 +112,7 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
 
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Edit Item | HeckarNews" />
+            <HeadMetadata title="Edit Item | zkNews" />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}
@@ -172,7 +172,8 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
                                 <span
                                     dangerouslySetInnerHTML={{
                                         __html: item.text,
-                                    }}></span>
+                                    }}
+                                ></span>
                             </div>
                         ) : null}
 

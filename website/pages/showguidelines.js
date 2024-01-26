@@ -5,18 +5,18 @@ import HeadMetadata from "../components/headMetadata.js";
 export default function ShowGuidelines() {
     return (
         <div className="show-guidelines-wrapper">
-            <HeadMetadata title="Show Guidelines | HeckarNews" />
+            <HeadMetadata title="Show Guidelines | zkNews" />
             <div className="show-guidelines-top-image">
                 <Link href="/">
                     <a>
                         <img src="/favicon.png" />
                     </a>
                 </Link>
-                <h1>HeckarNews</h1>
+                <h1>zkNews</h1>
             </div>
             <div className="show-guidelines-text-container">
                 <p className="show-guidelines-text-title top">Show CN</p>
-                <p>Show CN is a way to share something that you’ve made on HeckarNews.</p>
+                <p>Show CN is a way to share something that you’ve made on zkNews.</p>
                 <p>
                     Show CNs can be found via{" "}
                     <Link href="/show">

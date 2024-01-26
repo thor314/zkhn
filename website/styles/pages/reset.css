@@ -2,12 +2,12 @@
     padding: 25px 5px 25px 5px;
     font-family: Verdana, Geneva, sans-serif;
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .reset-password-error-msg {
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
     margin-bottom: 15px;
 }
 
@@ -33,13 +33,13 @@
     display: inline-block;
     text-align: start;
     -webkit-appearance: textfield;
-    background-color: white;
+    background-color: var(--c-background);
     -webkit-rtl-ordering: logical;
     cursor: text;
     margin: 0em;
     font: 400 13.3333px Arial;
     padding: 1px;
-    border: 1px solid #a6a4a4;
+    border: 1px solid var(--c-page-numbers-border);
 }
 
 .reset-password-input-item-input input[type="text"] {

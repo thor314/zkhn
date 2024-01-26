@@ -8,8 +8,8 @@
 
 .user-add-email-address-msg {
     display: inline-block;
-    background-color: rgb(255, 255, 170);
-    color: #828282;
+    background-color: var(--c-accent-darker);
+    color: var(--c-text-light);
     font-size: 13.5px;
     margin-bottom: 10px;
     padding: 8px;
@@ -25,7 +25,7 @@
 .user-item-label {
     display: inline-block;
     width: 80px;
-    color: rgb(130, 130, 130);
+    color: var(--c-grey);
 }
 
 .user-item-label.public {
@@ -43,24 +43,24 @@
 }
 
 .user-item-content.about.public a {
-    color: #000000;
+    color: var(--c-text-lightest);
     text-decoration: underline;
 }
 
 .user-item-content.about.public a:visited {
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .user-item-content.username {
-    color: rgb(130, 130, 130);
+    color: var(--c-grey);
 }
 
 .user-item-content.created {
-    color: #000000;
+    color: var(--c-text-lightest);
 }
 
 .user-item-content.karma {
-    color: rgb(130, 130, 130);
+    color: var(--c-grey);
 }
 
 .user-item-label.about {
@@ -74,8 +74,9 @@
     height: auto;
     vertical-align: middle;
     -webkit-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
     text-rendering: auto;
-    color: initial;
+    color: var(--c-text-light);
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -84,7 +85,8 @@
     display: inline-block;
     text-align: start;
     -webkit-appearance: textarea;
-    background-color: white;
+    appearance: textarea;
+    background-color: var(--c-background);
     -webkit-rtl-ordering: logical;
     flex-direction: column;
     resize: auto;
@@ -95,7 +97,7 @@
     margin: 0em;
     border-width: 1px;
     border-style: solid;
-    border-color: rgb(169, 169, 169);
+    border-color: var(--c-page-numbers-border);
     border-image: initial;
     padding: 2px 0px 0px 2px;
 }
@@ -113,14 +115,15 @@
 .user-item-about-help a {
     text-decoration: none;
     font-size: 10px;
-    color: rgb(175, 175, 175);
+    color: var(--c-grey);
 }
 
 .user-item-content input {
     height: 20px;
     -webkit-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
     text-rendering: auto;
-    color: initial;
+    color: var(--c-text-light);
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -129,19 +132,20 @@
     display: inline-block;
     text-align: start;
     -webkit-appearance: textfield;
-    background-color: white;
+    appearance: textfield;
+    background-color: var(--c-background);
     -webkit-rtl-ordering: logical;
     cursor: text;
     margin: 0em;
     padding: 1px;
-    border: 1px solid #a6a4a4;
+    border: 1px solid var(--c-page-numbers-border);
 }
 
 .user-item-content select {
     background-color: buttonface;
     border-width: 1px;
     border-style: solid;
-    border-color: rgb(169, 169, 169);
+    border-color: var(--c-grey);
 }
 
 .user-item-content input[type="text"] {
@@ -151,16 +155,17 @@
 
 .user-item-content.email input {
     width: 475px;
+    color: var(--c-text-light)
 }
 
 .user-item-content {
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .user-item-content a,
 .user-item-content a:visited,
 .user-item-content a:link {
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .user-submit-btn {
@@ -170,6 +175,7 @@
 
 .user-submit-btn input {
     -webkit-appearance: push-button;
+    appearance: push-button;
     user-select: none;
     white-space: pre;
     align-items: flex-start;
@@ -195,7 +201,7 @@
 }
 
 .user-submit-error-msg {
-    color: #828282;
+    color: var(--c-text-light);
     font-size: 13.5px;
     margin: 12.5px 0px 5px 0px;
 }
@@ -205,7 +211,7 @@
 }
 
 .user-item-ban-btn {
-    color: #b82727;
+    color: var(--c-comment-darkish);
 }
 
 .user-item-ban-btn:hover {
@@ -216,7 +222,7 @@
 .user-get-data-error-msg {
     margin: 8px;
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 @media only screen and (max-width: 750px) and (min-width: 0px) {

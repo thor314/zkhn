@@ -10,7 +10,7 @@ export default function SearchFooter({}) {
                     </Link>
                 </li>
                 <li>•</li>
-                <li style={{cursor: "not-allowed", pointerEvents: "none"}}>
+                <li style={{ cursor: "not-allowed", pointerEvents: "none" }}>
                     <Link href="/search/settings">
                         <a>Settings</a>
                     </Link>
@@ -18,7 +18,7 @@ export default function SearchFooter({}) {
                 <li>•</li>
                 <li>
                     <Link href="/">
-                        <a>HeckarNews</a>
+                        <a>zkNews</a>
                     </Link>
                 </li>
             </ul>

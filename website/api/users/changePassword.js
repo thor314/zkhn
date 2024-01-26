@@ -12,7 +12,7 @@ export default function changePassword(currentPassword, newPassword, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

@@ -11,7 +11,7 @@ export default function unfavoriteComment(commentId, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

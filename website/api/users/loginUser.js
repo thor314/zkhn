@@ -12,7 +12,7 @@ export default function loginUser(username, password, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

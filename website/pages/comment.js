@@ -21,7 +21,7 @@ export default function Comment({
     return (
         <div className="layout-wrapper">
             <HeadMetadata
-                title={comment ? `${truncateCommentText(comment.pageMetadataTitle || "")} | HeckarNews` : "HeckarNews"}
+                title={comment ? `${truncateCommentText(comment.pageMetadataTitle || "")} | zkNews` : "zkNews"}
             />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}

@@ -1,7 +1,7 @@
 .search-header {
     display: flex;
     align-items: center;
-    background: #ff6600;
+    background: var(--c-accent);
     height: auto;
     padding: 4px;
     position: relative;
@@ -20,11 +20,11 @@
     width: 25px;
     margin-right: 4px;
     border-style: none;
-    border: 2px solid black;
+    border: 2px solid var(--c-white);
 }
 
 .search-header-logo-label {
-    color: #000;
+    color: var(--c-text-lightest);
     font-size: 13px;
     line-height: 1;
 }
@@ -40,7 +40,7 @@
     position: absolute;
     top: 3.5px;
     left: 12px;
-    color: #ff742b;
+    color: var(--c-page-numbers-border);
     pointer-events: none;
 }
 
@@ -61,7 +61,7 @@
     box-shadow: none;
     padding: 5px 144px 5px 40px;
     font-weight: 300;
-    color: rgba(0, 0, 0, 0.75);
+    color: rgba(var(--c-black), 0.75);
 }
 
 .search-header-bar input:focus {
@@ -73,7 +73,7 @@
     display: flex;
     align-items: center;
     position: absolute;
-    color: rgba(33, 36, 61, 0.5);
+    color: rgba(var(--c-darkest), 0.5);
     font-size: 12px;
     margin-left: 8px;
     white-space: nowrap;
@@ -101,7 +101,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #000;
+    color: var(--c-text-lightest);
 }
 
 .search-header-settings svg {
@@ -115,7 +115,7 @@
     display: flex;
     -ms-flex-align: center;
     align-items: center;
-    color: #000;
+    color: var(--c-text-lightest);
     text-decoration: none;
     margin-right: 5px;
 }

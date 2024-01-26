@@ -7,7 +7,7 @@ import getReplyPageData from "../api/comments/getReplyPageData.js";
 export default function Reply({ comment, authUserData, getDataError, notFoundError, goToString }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Add Comment Reply | HeckarNews" />
+            <HeadMetadata title="Add Comment Reply | zkNews" />
             <AlternateHeader displayMessage="Reply to Comment" />
             <div className="comment-content-container">
                 {!getDataError && !notFoundError ? (

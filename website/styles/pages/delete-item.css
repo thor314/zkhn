@@ -2,12 +2,12 @@
     padding: 15px 0px 15px 0px;
     font-family: Verdana, Geneva, sans-serif;
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .delete-item-star {
     display: inline-block;
-    color: rgb(255, 102, 0);
+    color: var(--c-accent);
     width: 20px;
     text-align: center;
     font-size: 13.5px;
@@ -19,22 +19,22 @@
 
 .delete-item-title a {
     text-decoration: none;
-    color: #000000;
+    color: var(--c-text-lightest);
 }
 
 .delete-item-title a:visited {
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .delete-item-domain {
     font-size: 10.5px;
     margin-left: 4px;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .delete-item-domain a {
     text-decoration: none;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .delete-item-domain a:hover {
@@ -43,7 +43,7 @@
 
 .delete-item-details-bottom {
     font-size: 9.5px;
-    color: #828282;
+    color: var(--c-text-light);
     cursor: default;
     margin-left: 20px;
     line-height: 20px;
@@ -51,7 +51,7 @@
 
 .delete-item-details-bottom a {
     text-decoration: none;
-    color: #828282;
+    color: var(--c-text-light);
     cursor: pointer;
 }
 
@@ -61,7 +61,7 @@
 
 .delete-item-text-content {
     margin-top: 12.5px;
-    color: #828282;
+    color: var(--c-text-light);
     font-size: 13px;
     margin-left: 20px;
     overflow: hidden;
@@ -71,12 +71,12 @@
 }
 
 .delete-item-text-content a {
-    color: #828282;
+    color: var(--c-text-light);
     text-decoration: underline;
 }
 
 .delete-item-text-content a:visited {
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .delete-item-confirm-msg {
@@ -126,7 +126,7 @@
 }
 
 .delete-item-submit-error-msg {
-    color: #828282;
+    color: var(--c-text-light);
     font-size: 13.5px;
     margin-top: 15px;
     margin-left: 20px;
@@ -135,7 +135,7 @@
 .delete-item-error-msg {
     margin: 8px;
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 @media only screen and (max-width: 750px) and (min-width: 0px) {

@@ -9,12 +9,12 @@
 
 .comment-section-comment-collapsed {
     margin-left: 25px;
-    color: #828282;
+    color: var(--c-text-light);
     font-size: 10.5px;
 }
 
 .comment-section-comment-collapsed a {
-    color: #828282;
+    color: var(--c-text-light);
     text-decoration: none;
 }
 
@@ -33,12 +33,12 @@
 }
 
 .comment-section-comment-details {
-    color: #828282;
+    color: var(--c-text-light);
     font-size: 10.5px;
 }
 
 .comment-section-comment-details a {
-    color: #828282;
+    color: var(--c-text-light);
     text-decoration: none;
 }
 
@@ -48,7 +48,7 @@
 
 .comment-section-comment-star {
     width: 25px;
-    color: rgb(255, 102, 0);
+    color: var(--c-accent);
     font-size: 13px;
     text-align: center;
     vertical-align: top;
@@ -95,7 +95,7 @@
 }
 
 .comment-section-kill {
-    color: #b82727;
+    color: var(--c-comment-darkish);
 }
 
 .comment-section-comment-collapse-btn {
@@ -105,7 +105,7 @@
 
 .comment-section-comment-text {
     margin-top: 5px;
-    color: #000000;
+    color: var(--c-text-lightest);
     font-size: 12px;
     overflow: hidden;
     white-space: pre-wrap;
@@ -113,7 +113,7 @@
 }
 
 .comment-section-comment-text a {
-    color: #000000;
+    color: var(--c-text-lightest);
     display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -127,31 +127,31 @@
 }
 
 .comment-section-comment-text a:visited {
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .comment-section-comment-text.faded-level-1,
 .comment-section-comment-text.faded-level-1 a,
 .comment-section-comment-text.faded-level-1 a:visited {
-    color: #424242;
+    color: var(--accent-darker);
 }
 
 .comment-section-comment-text.faded-level-2,
 .comment-section-comment-text.faded-level-2 a,
 .comment-section-comment-text.faded-level-2 a:visited {
-    color: #737373;
+    color: var(--accent);
 }
 
 .comment-section-comment-text.faded-level-3,
 .comment-section-comment-text.faded-level-3 a,
 .comment-section-comment-text.faded-level-3 a:visited {
-    color: #aeaeae;
+    color: var(--c-comment-darkish);
 }
 
 .comment-section-comment-text.faded-level-4,
 .comment-section-comment-text.faded-level-4 a,
 .comment-section-comment-text.faded-level-4 a:visited {
-    color: #dddddd;
+    color: var(--c-comment-dark);
 }
 
 .comment-section-comment-reply {
@@ -161,7 +161,7 @@
 }
 
 .comment-section-comment-reply a {
-    color: #000000;
+    color: var(--c-text-lightest);
     text-decoration: underline;
 }
 
@@ -172,12 +172,12 @@
 }
 
 .comment-section-more a {
-    color: #000000;
+    color: var(--c-text-lightest);
     text-decoration: none;
 }
 
 .comment-section-more a:visited {
-    color: #828282;
+    color: var(--c-text-light);
     text-decoration: none;
 }
 

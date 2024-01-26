@@ -60,7 +60,7 @@ export default function DeleteComment({
 
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Delete Comment | HeckarNews" />
+            <HeadMetadata title="Delete Comment | zkNews" />
             <AlternateHeader displayMessage="Delete Comment" />
             <div className="delete-comment-content-container">
                 {!getDataError && !error.notAllowedError && !notFoundError ? (
@@ -105,7 +105,8 @@ export default function DeleteComment({
                                                         comment.isParent
                                                             ? `/item?id=${comment.parentItemId}`
                                                             : `/comment?id=${comment.parentCommentId}`
-                                                    }>
+                                                    }
+                                                >
                                                     <a>parent</a>
                                                 </Link>
                                             </span>

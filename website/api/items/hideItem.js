@@ -11,7 +11,7 @@ export default function hideItem(itemId, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

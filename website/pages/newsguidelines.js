@@ -5,17 +5,17 @@ import HeadMetadata from "../components/headMetadata.js";
 export default function NewsGuidelines() {
     return (
         <div className="news-guidelines-wrapper">
-            <HeadMetadata title="HeckarNews Guidelines" />
+            <HeadMetadata title="zkNews Guidelines" />
             <div className="news-guidelines-top-image">
                 <Link href="/">
                     <a>
                         <img src="/favicon.png" />
                     </a>
                 </Link>
-                <h1>HeckarNews</h1>
+                <h1>zkNews</h1>
             </div>
             <div className="news-guidelines-text-container">
-                <p className="news-guidelines-text-title">HeckarNews Guidelines</p>
+                <p className="news-guidelines-text-title">zkNews Guidelines</p>
                 <p className="news-guidelines-text-title">What to Submit</p>
                 <p>
                     On-Topic: Anything that someone would find interesting. That includes more than just coding and
@@ -72,7 +72,7 @@ export default function NewsGuidelines() {
                     teaches us something.
                 </p>
                 <p>
-                    Please don’t use HeckarNews for political or ideological battle. That destroys intellectual
+                    Please don’t use zkNews for political or ideological battle. That destroys intellectual
                     curiosity, which is what the site exists for.
                 </p>
                 <p>
@@ -81,7 +81,7 @@ export default function NewsGuidelines() {
                 </p>
                 <p>
                     Throwaway accounts are ok for sensitive information, but please don’t create accounts routinely.
-                    HeckarNews is a community—users should have an identity that others can relate to.
+                    zkNews is a community—users should have an identity that others can relate to.
                 </p>
                 <p>
                     Please don’t use uppercase for emphasis. If you want to emphasize a word or phrase, put *asterisks*
@@ -96,7 +96,7 @@ export default function NewsGuidelines() {
                     reading.
                 </p>
                 <p>
-                    Please don’t submit comments saying that HeckarNews is turning into Reddit. It’s a semi-noob
+                    Please don’t submit comments saying that zkNews is turning into Reddit. It’s a semi-noob
                     illusion, as old as the hills.
                 </p>
                 <div className="news-guidelines-bottom-divider"></div>

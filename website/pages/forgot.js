@@ -66,7 +66,7 @@ export default function Forgot() {
 
     return (
         <div className="forgot-wrapper layout-wrapper">
-            <HeadMetadata title="Forgot Password | HeckarNews" />
+            <HeadMetadata title="Forgot Password | zkNews" />
             <AlternateHeader displayMessage="Reset Password" />
             {success ? (
                 <div className="forgot-success-msg">

@@ -9,7 +9,7 @@ import ItemsList from "../components/itemsList.js";
 export default function Newest({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Newest Items | HeckarNews" />
+            <HeadMetadata title="Newest Items | zkNews" />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}

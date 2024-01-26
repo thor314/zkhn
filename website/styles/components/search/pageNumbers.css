@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     padding: 12px 0;
-    background-color: #f6f6ef;
+    background-color: var(--c-background);
     list-style-type: none;
 }
 
@@ -16,8 +16,8 @@
     height: 24px;
     font-size: 12px;
     margin: 0 2px;
-    color: #9d9d9d;
-    border: 1px solid #9d9d9d;
+    color: var(--c-page-numbers)d;
+    border: 1px solid var(--c-page-numbers)d;
     text-align: center;
     border-radius: 2px;
     font-weight: 400;
@@ -30,8 +30,8 @@
 }
 
 .search-results-pagination li.current button {
-    color: #ff742b;
-    border: 1px solid #ff742b;
+    color: var(--c-page-numbers-border);
+    border: 1px solid var(--c-page-numbers-border);
 }
 
 .search-results-pagination li svg {

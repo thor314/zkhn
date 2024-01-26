@@ -1,5 +1,5 @@
 .footer-wrapper {
-    border-top: 2px solid #ff6600;
+    border-top: 2px solid var(--c-accent);
     padding: 15px 0px 15px 0px;
 }
 
@@ -12,16 +12,18 @@
     margin-left: 3px;
     margin-right: 3px;
     font-size: 11px;
+    color: var(--c-accent);
 }
 
 .footer-link-list-item a {
     text-decoration: none;
-    color: #000000;
+    color: var(--c-text-lightest);
 }
 
 .footer-search {
     text-align: center;
     margin-top: 10px;
+    color: var(--c-text-lightest);
 }
 
 .footer-search-label {
@@ -30,9 +32,9 @@
 }
 
 .footer-search input {
-    background-color: white;
-    border: 1px solid #a6a4a4;
-    color: #000000;
+    background-color: var(--c-background);
+    border: 2px solid var(--c-accent);
+    color: var(--c-text-lightest);
     height: 21px;
     font-size: 13.333px;
     padding: 1px;
@@ -52,7 +54,7 @@
     }
 
     .footer-search input {
-        border: 1px solid #d9d9d9;
+        border: 1px solid var(--c-footer-border);
         font-size: 16px;
         width: 50%;
         height: 25px;

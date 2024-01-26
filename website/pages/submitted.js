@@ -8,7 +8,7 @@ import getItemsSubmittedByUser from "../api/items/getItemsSubmittedByUser.js";
 export default function Submitted({ items, authUserData, page, userId, isMore, getDataError, goToString }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title={userId ? `${userId}'s Submissions | HeckarNews` : "HeckarNews"} />
+            <HeadMetadata title={userId ? `${userId}'s Submissions | zkNews` : "zkNews"} />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}

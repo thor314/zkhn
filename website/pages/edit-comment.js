@@ -98,7 +98,7 @@ export default function EditComment({
 
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Edit Comment | HeckarNews" />
+            <HeadMetadata title="Edit Comment | zkNews" />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}
@@ -150,7 +150,8 @@ export default function EditComment({
                                                         comment.isParent
                                                             ? `/item?id=${comment.parentItemId}`
                                                             : `/comment?id=${comment.parentCommentId}`
-                                                    }>
+                                                    }
+                                                >
                                                     <a>parent</a>
                                                 </Link>
                                             </span>

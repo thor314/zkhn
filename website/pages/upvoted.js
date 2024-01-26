@@ -23,7 +23,7 @@ export default function Upvoted({
 }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title={`Upvoted ${showItems ? "Items" : "Comments"} | HeckarNews`} />
+            <HeadMetadata title={`Upvoted ${showItems ? "Items" : "Comments"} | zkNews`} />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}

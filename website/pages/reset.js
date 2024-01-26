@@ -77,7 +77,7 @@ export default function Reset({ resetToken, username }) {
 
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Reset Password | HeckarNews" />
+            <HeadMetadata title="Reset Password | zkNews" />
             <AlternateHeader displayMessage="Reset Password" />
             <div className="reset-password-content-container">
                 {error.passwordLengthError ? (

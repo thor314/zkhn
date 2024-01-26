@@ -5,17 +5,17 @@ import HeadMetadata from "../components/headMetadata.js";
 export default function NewsFaq() {
     return (
         <div className="news-faq-wrapper">
-            <HeadMetadata title="HeckarNews FAQ" />
+            <HeadMetadata title="zkNews FAQ" />
             <div className="news-faq-top-image">
                 <Link href="/">
                     <a>
                         <img src="/favicon.png" />
                     </a>
                 </Link>
-                <h1>HeckarNews</h1>
+                <h1>zkNews</h1>
             </div>
             <div className="news-faq-text-container">
-                <p className="news-faq-text-title">HeckarNews FAQ</p>
+                <p className="news-faq-text-title">zkNews FAQ</p>
                 <p className="news-faq-text-title">Are there rules about submissions and comments?</p>
                 <p>
                     <Link href="/newsguidelines">

@@ -5,7 +5,7 @@ export default function _404() {
     return (
         <div className="error-wrapper layout-wrapper">
             <AlternateHeader displayMessage="Page Not Found" />
-            <HeadMetadata title="Unkown | HeckarNews" />
+            <HeadMetadata title="Unkown | zkNews" />
             <span>An error occurred. (ERROR: 400)</span>
         </div>
     );

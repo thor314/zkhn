@@ -8,7 +8,7 @@ import getUserHiddenItemsByPage from "../api/items/getUserHiddenItemsByPage.js";
 export default function Hidden({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Hidden | HeckarNews" />
+            <HeadMetadata title="Hidden | zkNews" />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}

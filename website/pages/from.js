@@ -8,7 +8,7 @@ import getItemsBySiteDomain from "../api/items/getItemsBySiteDomain.js";
 export default function From({ items, authUserData, site, page, isMore, getDataError, goToString }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title={`Submissions from ${site} | HeckarNews`} />
+            <HeadMetadata title={`Submissions from ${site} | zkNews`} />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}

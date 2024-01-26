@@ -2,13 +2,13 @@
     padding: 25px 5px 25px 5px;
     font-family: Verdana, Geneva, sans-serif;
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .changepw-error-msg,
 .changepw-error-msg a {
     margin-bottom: 25px;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .changepw-input-item {
@@ -38,11 +38,11 @@
     display: inline-block;
     text-align: start;
     -webkit-appearance: textfield;
-    background-color: white;
+    background-color: var(--c-background);
     -webkit-rtl-ordering: logical;
     cursor: text;
     padding: 1px;
-    border: 1px solid #a6a4a4;
+    border: 1px solid var(--c-page-numbers-border);
 }
 
 .changepw-input-item-input input[type="password"] {

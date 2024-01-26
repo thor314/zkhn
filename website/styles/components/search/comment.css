@@ -1,7 +1,7 @@
 .search-highlighted-text {
   font-weight: 700;
-  color: #000;
-  background: #ff0;
+  color: var(--c-text-lightest);
+  background: var(--c-comment);
   font-style: normal;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .search-results-comment-details a {
-  color: #696969;
+  color: var(--c-item);
   text-decoration: none;
 }
 
@@ -29,12 +29,12 @@
 
 .search-results-comment-details-separator {
   margin: 0 5px;
-  color: #696969;
+  color: var(--c-item);
 }
 
 .search-results-comment-text {
   padding: 8px 0;
-  color: #000;
+  color: var(--c-text-lightest);
   font-size: 12px;
   width: 100%;
   line-height: normal;
@@ -53,7 +53,7 @@
 }
 
 .search-results-comment-text a {
-  color: #000000;
+  color: var(--c-text-lightest);
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -63,7 +63,7 @@
 }
 
 .search-results-comment-text a:visited {
-  color: #828282;
+  color: var(--c-text-light);
 }
 
 .search-results-comment-text a:link {

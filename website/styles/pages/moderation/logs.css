@@ -2,7 +2,7 @@
     padding: 20px 15px 20px 15px;
     font-family: Verdana, Geneva, sans-serif;
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .moderation-filters {
@@ -17,7 +17,7 @@
     background-color: buttonface;
     border-width: 1px;
     border-style: solid;
-    border-color: rgb(169, 169, 169);
+    border-color: var(--c-grey);
 }
 
 .moderation-logs-table td {
@@ -27,7 +27,7 @@
 
 .moderation-logs-table td a {
     text-decoration: none;
-    color: #000000;
+    color: var(--c-text-lightest);
 }
 
 .moderation-logs-table td a:hover {
@@ -39,17 +39,17 @@
 }
 
 .moderation-logs-more a {
-    color: #000000;
+    color: var(--c-text-lightest);
     text-decoration: none;
 }
 
 .moderation-logs-more a:visited {
-    color: #828282;
+    color: var(--c-text-light);
     text-decoration: none;
 }
 
 .moderation-logs-error-msg {
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 @media only screen and (max-width: 750px) and (min-width: 0px) {

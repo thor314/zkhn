@@ -1,21 +1,24 @@
 .login-wrapper {
     padding: 8px;
     font-size: 15px;
+    color: var(--c-text-light);
 }
 
 .login-error-msg {
     margin-bottom: 15px;
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .login-header {
     font-weight: bold;
     margin-bottom: 25px;
+    color: var(--c-text-light);
 }
 
 .login-input-item {
     margin-top: 5px;
+    color: var(--c-text-light);
 }
 
 .login-input-item-label {
@@ -30,8 +33,8 @@
 .login-input-item-input input {
     height: 20px;
     -webkit-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
     text-rendering: auto;
-    color: initial;
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -40,17 +43,19 @@
     display: inline-block;
     text-align: start;
     -webkit-appearance: textfield;
-    background-color: white;
+    appearance: textfield;
+    background-color: var(--c-background);
     -webkit-rtl-ordering: logical;
     cursor: text;
     padding: 1px;
-    border: 1px solid #a6a4a4;
+    border: 1px solid var(--c-page-numbers-border);
+    color: var(--c-text-light);
 }
 
 .login-input-item-input input:-internal-autofill-selected {
-    background-color: rgb(232, 240, 254);
+    background-color: var(--c-darkest);
     background-image: none;
-    color: rgb(0, 0, 0);
+    /* color: var(--c-text-light); */
 }
 
 .login-submit-btn {
@@ -58,7 +63,8 @@
 }
 
 .login-submit-btn input {
-    -webkit-appearance: push-button;
+    /* -webkit-appearance: push-button; */
+    appearance: push-button;
     user-select: none;
     white-space: pre;
     align-items: flex-start;
@@ -91,12 +97,13 @@
 
 .login-input-item-forgot-text a,
 .login-input-item-forgot-text a:visited {
-    color: rgb(85, 26, 139);
+    /* color: var(--c-accent-lighter); */
+    color: var(--c-text-light);
     text-decoration: underline;
 }
 
 .login-input-item-forgot-text a:active {
-    color: rgb(255, 0, 0);
+    color: var(--c-red);
     text-decoration: underline;
 }
 

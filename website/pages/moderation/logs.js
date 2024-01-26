@@ -16,7 +16,7 @@ export default function Logs({ logs, category, page, isMore, getDataError, notAl
 
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Moderation Logs | HeckarNews" />
+            <HeadMetadata title="Moderation Logs | zkNews" />
             <AlternateHeader displayMessage="Moderation Logs" />
             <div className="moderation-logs-content-container">
                 {!getDataError && !notAllowedError ? (

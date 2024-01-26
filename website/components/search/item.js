@@ -66,9 +66,7 @@ export default function SearchItemComponent({ item, searchQuery }) {
                         </Link>
                     </span>
                 </div>
-                {item.text ? (
-                    <div className="search-results-item-text">{renderItemFormattedText(item)}</div>
-                ) : null}
+                {item.text ? <div className="search-results-item-text">{renderItemFormattedText(item)}</div> : null}
             </div>
         </div>
     );

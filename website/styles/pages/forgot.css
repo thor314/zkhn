@@ -1,12 +1,13 @@
 .forgot-wrapper {
     padding: 8px;
     font-size: 14px;
+    color: var(--c-text-light);
 }
 
 .forgot-error-msg {
     margin-bottom: 15px;
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .forgot-header {
@@ -22,6 +23,7 @@
     display: inline-block;
     font-size: 13.5px;
     margin-right: 10px;
+    color: var(--c-text-light);
 }
 
 .forgot-input-item-input {
@@ -32,8 +34,8 @@
     height: 22.5px;
     font-size: 14px;
     -webkit-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
     text-rendering: auto;
-    color: initial;
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -42,19 +44,21 @@
     display: inline-block;
     text-align: start;
     -webkit-appearance: textfield;
-    background-color: white;
+    appearance: textfield;
+    background-color: var(--c-background);
     -webkit-rtl-ordering: logical;
     cursor: text;
     margin: 0em;
     font: 400 13.3333px Arial;
     padding: 1px;
-    border: 1px solid #a6a4a4;
+    border: 1px solid var(--c-page-numbers-border);
+    color: var(--c-text-light);
 }
 
 .forgot-input-item-input input:-internal-autofill-selected {
-    background-color: rgb(232, 240, 254);
+    background-color: var(--c-darkest);
     background-image: none;
-    color: rgb(0, 0, 0);
+    color: var(--c-white);
 }
 
 .forgot-submit-btn {
@@ -63,6 +67,7 @@
 
 .forgot-submit-btn input {
     -webkit-appearance: push-button;
+    appearance: push-button;
     user-select: none;
     white-space: pre;
     align-items: flex-start;

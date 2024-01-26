@@ -63,7 +63,7 @@ export default function DeleteItem({ item, authUserData, getDataError, notAllowe
 
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Delete Item | HeckarNews" />
+            <HeadMetadata title="Delete Item | zkNews" />
             <AlternateHeader displayMessage="Delete Item" />
             <div className="delete-item-content-container">
                 {!getDataError && !notAllowedError && !notFoundError ? (
@@ -121,7 +121,8 @@ export default function DeleteItem({ item, authUserData, getDataError, notAllowe
                                     <span
                                         dangerouslySetInnerHTML={{
                                             __html: item.text,
-                                        }}></span>
+                                        }}
+                                    ></span>
                                 </div>
                             ) : null}
                         </div>

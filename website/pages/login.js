@@ -27,7 +27,7 @@ export default function Login({ goto }) {
         createAccountUsernameLengthError: false,
         createAccountPasswordLengthError: false,
         createAccountSubmitError: false,
-        bannedError: false
+        bannedError: false,
     });
 
     const [loading, setLoading] = useState(false);
@@ -174,7 +174,7 @@ export default function Login({ goto }) {
 
     return (
         <div className="login-wrapper layout-wrapper">
-            <HeadMetadata title="Login | HeckarNews" />
+            <HeadMetadata title="Login | zkNews" />
             <AlternateHeader displayMessage="Login | Signup" />
 
             {/*LOGIN SECTION*/}
@@ -234,7 +234,7 @@ export default function Login({ goto }) {
 
             <div
                 style={{
-                    borderTop: "2px solid #FF6600",
+                    borderTop: "2px solid var(--c-accent)",
                     paddingBottom: "20px",
                 }}
             />

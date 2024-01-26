@@ -24,7 +24,7 @@ export default function Search({
 }) {
     return (
         <div className="search-wrapper">
-            <HeadMetadata title="Search | HeckarNews" />
+            <HeadMetadata title="Search | zkNews" />
             <SearchPageHeader
                 searchQuery={searchQuery}
                 showSearchBar
@@ -56,12 +56,13 @@ export default function Search({
                                       key={index}
                                       style={{
                                           padding: "8px 0px",
-                                          borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
-                                      }}>
+                                          borderBottom: "1px solid rgba(var(--c-white), 0.1)",
+                                      }}
+                                  >
                                       {hit.type === "item" ? (
                                           <Item item={hit} key={hit.objectID} searchQuery={searchQuery} />
                                       ) : (
-                                          <Comment comment={hit} key={hit.objectID} searchQuery={searchQuery}/>
+                                          <Comment comment={hit} key={hit.objectID} searchQuery={searchQuery} />
                                       )}
                                   </div>
                               );
@@ -78,10 +79,11 @@ export default function Search({
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                color: "#828282",
+                                color: "var(--c-text-light)",
                                 opacity: 0.5,
                                 height: "30vh",
-                            }}>
+                            }}
+                        >
                             <b>
                                 No Results <i>:(</i>
                             </b>

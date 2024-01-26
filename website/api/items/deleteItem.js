@@ -11,7 +11,7 @@ export default function deleteItem(id, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

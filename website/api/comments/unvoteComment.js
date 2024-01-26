@@ -11,7 +11,7 @@ export default function unvoteItem(commentId, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

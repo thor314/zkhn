@@ -7,16 +7,16 @@ const mongoose = require("mongoose");
  * @property itemCreationDate: date of the hidden item is created
  */
 const UserHiddenSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: true,
-    },
-    id: {
-        type: String,
-        required: true,
-    },
-    date: Number,
-    itemCreationDate: Number,
+  username: {
+    type: String,
+    required: true,
+  },
+  id: {
+    type: String,
+    required: true,
+  },
+  date: Number,
+  itemCreationDate: Number,
 });
 
 UserHiddenSchema.index({ username: 1, id: 1 });

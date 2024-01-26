@@ -263,7 +263,8 @@ export default function CommentComponent({
                                         <>
                                             <div
                                                 className="comment-content-upvote"
-                                                onClick={() => requestUpvoteComment()}>
+                                                onClick={() => requestUpvoteComment()}
+                                            >
                                                 <span></span>
                                             </div>
                                         </>
@@ -283,7 +284,8 @@ export default function CommentComponent({
                                         <>
                                             <div
                                                 className="comment-content-downvote"
-                                                onClick={() => requestDownvoteComment()}>
+                                                onClick={() => requestDownvoteComment()}
+                                            >
                                                 <span></span>
                                             </div>
                                         </>
@@ -333,7 +335,8 @@ export default function CommentComponent({
                                             comment.isParent
                                                 ? `/item?id=${comment.parentItemId}`
                                                 : `/comment?id=${comment.parentCommentId}`
-                                        }>
+                                        }
+                                    >
                                         parent
                                     </Link>
                                 </span>
@@ -348,7 +351,8 @@ export default function CommentComponent({
                                                         <span> | </span>
                                                         <span
                                                             className="comment-content-favorite"
-                                                            onClick={() => requestUnfavoriteComment()}>
+                                                            onClick={() => requestUnfavoriteComment()}
+                                                        >
                                                             un-favorite
                                                         </span>
                                                     </>
@@ -357,7 +361,8 @@ export default function CommentComponent({
                                                         <span> | </span>
                                                         <span
                                                             className="comment-content-favorite"
-                                                            onClick={() => requestFavoriteComment()}>
+                                                            onClick={() => requestFavoriteComment()}
+                                                        >
                                                             favorite
                                                         </span>
                                                     </>
@@ -384,8 +389,9 @@ export default function CommentComponent({
                                         <span>
                                             <Link
                                                 href={`/delete-comment?id=${comment.id}&goto=${encodeURIComponent(
-                                                    goToString
-                                                )}`}>
+                                                    goToString,
+                                                )}`}
+                                            >
                                                 delete
                                             </Link>
                                         </span>

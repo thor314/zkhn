@@ -1,14 +1,15 @@
 {
     "name": "rest-api",
     "version": "1.0.0",
-    "description": "server for HeckarNews",
+    "description": "server for zkNews",
     "main": "index.js",
     "scripts": {
         "dev": "NODE_ENV=development nodemon index.js",
-        "start": "NODE_ENV=production node index.js"
+        "start": "NODE_ENV=production node index.js",
+        "test": "jest"
     },
     "keywords": [],
-    "author": "krehwell fahrimuham001@gmail.com",
+    "author": "thor kamphefner <thorck@pm.me>",
     "license": "ISC",
     "dependencies": {
         "algoliasearch": "^4.9.1",
@@ -31,6 +32,8 @@
         "xss": "^1.0.9"
     },
     "devDependencies": {
+        "jest": "^29.7.0",
+        "nock": "^13.5.1",
         "nodemon": "^2.0.7"
     },
     "engines": {

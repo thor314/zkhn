@@ -8,7 +8,7 @@ import getNewestCommentsByPage from "../api/comments/getNewestCommentsByPage.js"
 export default function NewComments({ comments, authUserData, page, isMore, getDataError, goToString }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="New Comments | HeckarNews" />
+            <HeadMetadata title="New Comments | zkNews" />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}

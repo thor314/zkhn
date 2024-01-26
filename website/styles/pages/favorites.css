@@ -1,7 +1,7 @@
 .favorites-top-links {
     font-family: Verdana, Geneva, sans-serif;
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
     margin-top: 10px;
     margin-bottom: 15px;
 }
@@ -16,18 +16,18 @@
 
 .favorites-top-links span.active a,
 .favorites-top-links span.active a:visited {
-    color: rgb(0, 0, 0);
+    color: var(--c-white);
 }
 
 .favorites-top-links a,
 .favorites-top-links a:visited {
     text-decoration: none;
-    color: #828282;
+    color: var(--c-text-light);
 }
 
 .favorites-none-found-msg {
     font-size: 13.5px;
-    color: #828282;
+    color: var(--c-text-light);
     margin-bottom: 10px;
 }
 
@@ -45,7 +45,7 @@
 
 .favorites-error-msg {
     margin: 8px;
-    color: #828282;
+    color: var(--c-text-light);
     font-size: 13.5px;
 }
 
