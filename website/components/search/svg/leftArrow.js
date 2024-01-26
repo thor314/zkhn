@@ -9,7 +9,8 @@ export default function LeftArrow({}) {
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
-            strokeLinejoin="round">
+            strokeLinejoin="round"
+        >
             <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
     );

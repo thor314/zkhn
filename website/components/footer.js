@@ -3,7 +3,7 @@ import Link from "next/link";
 import Router from "next/router";
 
 export default function Footer({}) {
-  const [searchInputValue, setSearchInputValue] = useState("");
+    const [searchInputValue, setSearchInputValue] = useState("");
 
     const updateSearchInputValue = (event) => {
         setSearchInputValue(event.target.value);

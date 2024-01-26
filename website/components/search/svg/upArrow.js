@@ -9,7 +9,8 @@ export default function UpArrow({}) {
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
-            strokeLinejoin="round">
+            strokeLinejoin="round"
+        >
             <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     );

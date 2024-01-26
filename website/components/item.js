@@ -370,7 +370,8 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                                     <span> | </span>
                                     <span className="item-delete">
                                         <Link
-                                            href={`/delete-item?id=${item.id}&goto=${encodeURIComponent(goToString)}`}>
+                                            href={`/delete-item?id=${item.id}&goto=${encodeURIComponent(goToString)}`}
+                                        >
                                             delete
                                         </Link>
                                     </span>

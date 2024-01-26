@@ -11,7 +11,7 @@ export default function addNewComment(commentData, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

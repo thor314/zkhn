@@ -12,23 +12,23 @@ const mongoose = require("mongoose");
  * @property created: UNIX timestamp that represents when the moderator action was taken.
  */
 const ModerationLogSchema = new mongoose.Schema({
-    moderatorUsername: {
-        type: String,
-        required: true,
-    },
+  moderatorUsername: {
+    type: String,
+    required: true,
+  },
 
-    actionType: {
-        type: String,
-        required: true,
-    },
+  actionType: {
+    type: String,
+    required: true,
+  },
 
-    username: String,
-    itemId: String,
-    itemTitle: String,
-    itemBy: String,
-    commentId: String,
-    commentBy: String,
-    created: Number,
+  username: String,
+  itemId: String,
+  itemTitle: String,
+  itemBy: String,
+  commentId: String,
+  commentBy: String,
+  created: Number,
 });
 
 ModerationLogSchema.index({ moderatorUsername: 1, actionType: 1 });

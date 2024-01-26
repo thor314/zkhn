@@ -13,7 +13,7 @@ export default function submitNewItem(title, url, text, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

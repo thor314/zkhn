@@ -57,11 +57,12 @@ export default function Search({
                                       style={{
                                           padding: "8px 0px",
                                           borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
-                                      }}>
+                                      }}
+                                  >
                                       {hit.type === "item" ? (
                                           <Item item={hit} key={hit.objectID} searchQuery={searchQuery} />
                                       ) : (
-                                          <Comment comment={hit} key={hit.objectID} searchQuery={searchQuery}/>
+                                          <Comment comment={hit} key={hit.objectID} searchQuery={searchQuery} />
                                       )}
                                   </div>
                               );
@@ -81,7 +82,8 @@ export default function Search({
                                 color: "#828282",
                                 opacity: 0.5,
                                 height: "30vh",
-                            }}>
+                            }}
+                        >
                             <b>
                                 No Results <i>:(</i>
                             </b>

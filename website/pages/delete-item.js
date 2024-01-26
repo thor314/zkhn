@@ -121,7 +121,8 @@ export default function DeleteItem({ item, authUserData, getDataError, notAllowe
                                     <span
                                         dangerouslySetInnerHTML={{
                                             __html: item.text,
-                                        }}></span>
+                                        }}
+                                    ></span>
                                 </div>
                             ) : null}
                         </div>

@@ -11,7 +11,7 @@ export default function unhideItem(itemId, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

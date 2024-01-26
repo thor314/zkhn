@@ -13,7 +13,7 @@ export default function editItem(id, newItemTitle, newItemText, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

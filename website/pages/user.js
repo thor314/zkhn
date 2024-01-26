@@ -360,7 +360,8 @@ export default function User({
                                             <span
                                                 dangerouslySetInnerHTML={{
                                                     __html: userData.about,
-                                                }}></span>
+                                                }}
+                                            ></span>
                                         </div>
                                     </div>
 
@@ -408,7 +409,8 @@ export default function User({
                                                     <div className="user-item-content">
                                                         <span
                                                             className="user-item-ban-btn"
-                                                            onClick={() => requestAddShadowBan()}>
+                                                            onClick={() => requestAddShadowBan()}
+                                                        >
                                                             Shadow-Ban
                                                         </span>
                                                         <span>
@@ -423,7 +425,8 @@ export default function User({
                                                         <span>Shadow-Banned (</span>
                                                         <span
                                                             className="user-item-ban-btn"
-                                                            onClick={() => requestRemoveShadowBan()}>
+                                                            onClick={() => requestRemoveShadowBan()}
+                                                        >
                                                             Remove
                                                         </span>
                                                         <span>)</span>
@@ -437,7 +440,8 @@ export default function User({
                                                     <div className="user-item-content">
                                                         <span
                                                             className="user-item-ban-btn"
-                                                            onClick={() => requestAddUserBan()}>
+                                                            onClick={() => requestAddUserBan()}
+                                                        >
                                                             Ban
                                                         </span>
                                                         <span> (User login and authentication will be revoked)</span>
@@ -449,7 +453,8 @@ export default function User({
                                                         <span>Banned (</span>
                                                         <span
                                                             className="user-item-ban-btn"
-                                                            onClick={() => requestRemoveUserBan()}>
+                                                            onClick={() => requestRemoveUserBan()}
+                                                        >
                                                             Remove
                                                         </span>
                                                         <span>)</span>

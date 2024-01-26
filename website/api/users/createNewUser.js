@@ -7,7 +7,7 @@ export default function createNewUser(username, password, callback) {
         .post(
             apiBaseUrl + "/users/create-new-user",
             { username: username, password: password },
-            { withCredentials: true }
+            { withCredentials: true },
         )
         .then((response) => {
             callback(response.data);

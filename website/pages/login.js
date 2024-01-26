@@ -27,7 +27,7 @@ export default function Login({ goto }) {
         createAccountUsernameLengthError: false,
         createAccountPasswordLengthError: false,
         createAccountSubmitError: false,
-        bannedError: false
+        bannedError: false,
     });
 
     const [loading, setLoading] = useState(false);

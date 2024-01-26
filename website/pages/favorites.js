@@ -73,12 +73,11 @@ export default function Favorites({
                             </>
                         ) : null}
 
-
                         {showComments ? (
                             <>
                                 {showComments ? (
                                     <>
-                                        {/* FAVORITES COMMENTS */ }
+                                        {/* FAVORITES COMMENTS */}
                                         {comments.length ? (
                                             <CommentsList
                                                 comments={comments}

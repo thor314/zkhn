@@ -64,7 +64,8 @@ function Comment({
         <>
             <div
                 key={comment.id}
-                className={type === "parent" ? "comment-section-comment parent" : "comment-section-comment child"}>
+                className={type === "parent" ? "comment-section-comment parent" : "comment-section-comment child"}
+            >
                 {!comment.isCollapsed ? (
                     <div className="comment-section-comment-details">
                         <table>
@@ -90,7 +91,8 @@ function Comment({
                                                     <>
                                                         <div
                                                             className="comment-section-comment-upvote"
-                                                            onClick={() => requestUpvoteComment(comment.id)}>
+                                                            onClick={() => requestUpvoteComment(comment.id)}
+                                                        >
                                                             <span></span>
                                                         </div>
                                                     </>
@@ -110,7 +112,8 @@ function Comment({
                                                     <>
                                                         <div
                                                             className="comment-section-comment-downvote"
-                                                            onClick={() => requestDownvoteComment(comment.id)}>
+                                                            onClick={() => requestDownvoteComment(comment.id)}
+                                                        >
                                                             <span></span>
                                                         </div>
                                                     </>
@@ -145,7 +148,8 @@ function Comment({
                                                 <span> | </span>
                                                 <span
                                                     className="comment-section-comment-unvote-btn"
-                                                    onClick={() => requestUnvoteComment(comment.id)}>
+                                                    onClick={() => requestUnvoteComment(comment.id)}
+                                                >
                                                     un-vote
                                                 </span>
                                             </>
@@ -173,7 +177,8 @@ function Comment({
                                                     <Link
                                                         href={`/delete-comment?id=${
                                                             comment.id
-                                                        }&goto=${encodeURIComponent(goToString)}`}>
+                                                        }&goto=${encodeURIComponent(goToString)}`}
+                                                    >
                                                         <a>delete</a>
                                                     </Link>
                                                 </span>
@@ -185,7 +190,8 @@ function Comment({
                                                 <span> | </span>
                                                 <span
                                                     className="comment-section-kill"
-                                                    onClick={() => requestKillComment(comment.id)}>
+                                                    onClick={() => requestKillComment(comment.id)}
+                                                >
                                                     kill
                                                 </span>
                                             </>
@@ -196,7 +202,8 @@ function Comment({
                                                 <span> | </span>
                                                 <span
                                                     className="comment-section-kill"
-                                                    onClick={() => requestUnkillComment(comment.id)}>
+                                                    onClick={() => requestUnkillComment(comment.id)}
+                                                >
                                                     un-kill
                                                 </span>
                                             </>
@@ -204,7 +211,8 @@ function Comment({
                                         {/* COLLAPSE/EXPAND COMMENT */}
                                         <span
                                             className="comment-section-comment-collapse-btn"
-                                            onClick={() => collapseComment(comment.id, parentCommentIndex)}>
+                                            onClick={() => collapseComment(comment.id, parentCommentIndex)}
+                                        >
                                             [‒]
                                         </span>
                                         {/* COMMENT CONTENT */}
@@ -259,7 +267,8 @@ function Comment({
                         <div className="comment-section-comment-collapsed-btn">
                             <span
                                 className="comment-section-comment-collapsed-btn-value"
-                                onClick={() => uncollapseComment(comment.id, parentCommentIndex)}>
+                                onClick={() => uncollapseComment(comment.id, parentCommentIndex)}
+                            >
                                 [+{comment.numOfHiddenChildren}]
                             </span>
                         </div>

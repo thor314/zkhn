@@ -207,7 +207,8 @@ export default function Filters({
                     <div className="search-results-filter-dropdown" ref={typeDropdown}>
                         <label
                             className="search-results-filter-dropdown-label"
-                            onClick={() => toggleShowTypeDropdown()}>
+                            onClick={() => toggleShowTypeDropdown()}
+                        >
                             {itemType === "item" ? "Items" : null}
                             {itemType === "comment" ? "Comments" : null}
                             {itemType !== "item" && itemType !== "comment" ? "All" : null}
@@ -218,7 +219,8 @@ export default function Filters({
                                 showTypeDropdown
                                     ? "search-results-filter-dropdown-list"
                                     : "search-results-filter-dropdown-list hide"
-                            }>
+                            }
+                        >
                             <li>
                                 <Link href={createLinkForItemTypeButton("all")}>
                                     <a>
@@ -249,7 +251,8 @@ export default function Filters({
                         <div className="search-results-filter-dropdown" ref={filterDropdown}>
                             <label
                                 className="search-results-filter-dropdown-label"
-                                onClick={() => toggleShowSortByDropdown()}>
+                                onClick={() => toggleShowSortByDropdown()}
+                            >
                                 {sortBy === "popularity" || !sortBy ? "Popularity" : null}
                                 {sortBy === "date" ? "Date" : null}
                                 {showSortByDropdown ? <UpArrow /> : <DownArrow />}
@@ -259,7 +262,8 @@ export default function Filters({
                                     showSortByDropdown
                                         ? "search-results-filter-dropdown-list"
                                         : "search-results-filter-dropdown-list hide"
-                                }>
+                                }
+                            >
                                 <li>
                                     <Link href={createLinkForSortByButton("popularity")}>
                                         <a>
@@ -284,7 +288,8 @@ export default function Filters({
                         <div className="search-results-filter-dropdown" ref={dateRangeDropdown}>
                             <label
                                 className="search-results-filter-dropdown-label"
-                                onClick={() => toggleShowDateRangeDropdown()}>
+                                onClick={() => toggleShowDateRangeDropdown()}
+                            >
                                 {renderDateRangeDropdownLabel()}
                                 {showDateRangeDropdown ? <UpArrow /> : <DownArrow />}
                             </label>
@@ -293,7 +298,8 @@ export default function Filters({
                                     showDateRangeDropdown
                                         ? "search-results-filter-dropdown-list"
                                         : "search-results-filter-dropdown-list hide"
-                                }>
+                                }
+                            >
                                 <li>
                                     <Link href={createLinkForDateRangeButton("allTime")}>
                                         <a>

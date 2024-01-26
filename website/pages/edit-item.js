@@ -172,7 +172,8 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
                                 <span
                                     dangerouslySetInnerHTML={{
                                         __html: item.text,
-                                    }}></span>
+                                    }}
+                                ></span>
                             </div>
                         ) : null}
 

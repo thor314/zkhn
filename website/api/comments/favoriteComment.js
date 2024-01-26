@@ -11,7 +11,7 @@ export default function favoriteComment(commentId, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

@@ -203,7 +203,8 @@ export default function ItemsList({
                                                       ) : (
                                                           <span
                                                               className="listed-item-upvote"
-                                                              onClick={() => requestUpvoteItem(item.id, index)}></span>
+                                                              onClick={() => requestUpvoteItem(item.id, index)}
+                                                          ></span>
                                                       )}
                                                   </>
                                               ) : null}
@@ -275,7 +276,8 @@ export default function ItemsList({
                                                       <span> | </span>
                                                       <span
                                                           className="listed-item-unvote"
-                                                          onClick={() => requestUnvoteItem(item.id, index)}>
+                                                          onClick={() => requestUnvoteItem(item.id, index)}
+                                                      >
                                                           un-vote
                                                       </span>
                                                   </>
@@ -287,7 +289,8 @@ export default function ItemsList({
                                                       <span> | </span>
                                                       <span
                                                           className="listed-item-unfavorite"
-                                                          onClick={() => requestUnfavoriteItem(item.id)}>
+                                                          onClick={() => requestUnfavoriteItem(item.id)}
+                                                      >
                                                           un-favorite
                                                       </span>
                                                   </>
@@ -299,7 +302,8 @@ export default function ItemsList({
                                                       <span> | </span>
                                                       <span
                                                           className="listed-item-hide"
-                                                          onClick={() => requestHideItem(item.id, index)}>
+                                                          onClick={() => requestHideItem(item.id, index)}
+                                                      >
                                                           hide
                                                       </span>
                                                   </>
@@ -311,7 +315,8 @@ export default function ItemsList({
                                                       <span> | </span>
                                                       <span
                                                           className="listed-item-unhide"
-                                                          onClick={() => requestUnhideItem(item.id, index)}>
+                                                          onClick={() => requestUnhideItem(item.id, index)}
+                                                      >
                                                           un-hide
                                                       </span>
                                                   </>
@@ -333,7 +338,8 @@ export default function ItemsList({
                                                       <span> | </span>
                                                       <span
                                                           className="listed-item-kill"
-                                                          onClick={() => requestKillItem(item.id, index)}>
+                                                          onClick={() => requestKillItem(item.id, index)}
+                                                      >
                                                           kill
                                                       </span>
                                                   </>
@@ -344,7 +350,8 @@ export default function ItemsList({
                                                       <span> | </span>
                                                       <span
                                                           className="listed-item-kill"
-                                                          onClick={() => requestUnkillItem(item.id, index)}>
+                                                          onClick={() => requestUnkillItem(item.id, index)}
+                                                      >
                                                           un-kill
                                                       </span>
                                                   </>
@@ -358,7 +365,8 @@ export default function ItemsList({
                                                           <Link
                                                               href={`/delete-item?id=${
                                                                   item.id
-                                                              }&goto=${encodeURIComponent(goToString)}`}>
+                                                              }&goto=${encodeURIComponent(goToString)}`}
+                                                          >
                                                               delete
                                                           </Link>
                                                       </span>

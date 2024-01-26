@@ -12,7 +12,7 @@ export default function upvoteComment(commentId, parentItemId, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

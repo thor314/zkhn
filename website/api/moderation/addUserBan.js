@@ -11,7 +11,7 @@ export default function addUserBan(username, callback) {
             },
             {
                 withCredentials: true,
-            }
+            },
         )
         .then(function (response) {
             callback(response.data);

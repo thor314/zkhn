@@ -13,7 +13,7 @@ import "../styles/components/item.css";
 import "../styles/components/itemsList.css";
 import "../styles/components/comment.css";
 import "../styles/components/commentSection.css";
-import "../styles/components/commentsList.css"
+import "../styles/components/commentsList.css";
 
 /// SEARCH COMPONENT
 import "../styles/components/search/header.css";
