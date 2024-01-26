@@ -1,5 +1,8 @@
 # Thor's notes
 ## deployment
+Make sure .env files in rest_api include my updated username, password, and cluster name. 
+Go to [atlas mongodb](https://www.mongodb.com/atlas/database) and login. Connect to the cluster for monitoring.
+
 Shell 1:
 ```sh
 cd rest-api 
@@ -16,5 +19,4 @@ npm i
 npm run dev
 ```
 
-Go to [atlas mongodb](https://www.mongodb.com/atlas/database) and login
-
+Navigate to https://localhost:3000

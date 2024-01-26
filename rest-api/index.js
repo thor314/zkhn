@@ -11,9 +11,10 @@ const PORT = process.env.PORT || 5000
 
 const app = express();
 
-
 /// DB CONNECTION
-const mongoString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@heckar-news.d3u83.mongodb.net/heckarnewsdb?retryWrites=true&w=majority`;
+//const mongoString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@heckar-news.d3u83.mongodb.net/heckarnewsdb?retryWrites=true&w=majority`;
+const mongoString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.MONGO_CLUSTER}`;
+// want: const uri = "mongodb+srv://thorck:<password>@thorclustor.au34m1b.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(mongoString, {
     useNewUrlParser: true,
