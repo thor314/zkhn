@@ -2,7 +2,7 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl.js";
 
-export default function submitNewItem(title, url, text, callback) {
+export default function submitNewItem(title, url, text, category, callback) {
     axios
         .post(
             apiBaseUrl + "/items/submit-new-item",
@@ -10,6 +10,7 @@ export default function submitNewItem(title, url, text, callback) {
                 title: title,
                 url: url,
                 text: text,
+                category: category
             },
             {
                 withCredentials: true,
@@ -19,6 +20,7 @@ export default function submitNewItem(title, url, text, callback) {
             callback(response.data);
         })
         .catch(function (error) {
+            console.error("An error occurred while submitting the new item:", error);
             callback({ submitError: true });
         });
 }

@@ -7,10 +7,14 @@ import AlternateHeader from "../components/alternateHeader.js";
 import authUser from "../api/users/authUser.js";
 import submitNewItem from "../api/items/submitNewItem.js";
 
+// categories of post submission; text = discussion, else links
+export const categories = ["discussion", "blog", "tweet", "paper", "tool", "book", "announcement", "other"];
+
 export default function Submit({}) {
     const [loading, setLoading] = useState(false);
     const [titleInputValue, setTitleInputValue] = useState("");
     const [urlInputValue, setUrlInputValue] = useState("");
+    const [categoryInputValue, setCategoryInputValue] = useState("");
     const [textInputValue, setTextInputValue] = useState("");
 
     const [error, setError] = useState({
@@ -19,6 +23,7 @@ export default function Submit({}) {
         invalidUrlError: false,
         urlAndTextError: false,
         textTooLongError: false,
+        // TODO(TK 2024-02-09): do we need category errors? 
         submitError: false,
     });
 
@@ -28,6 +33,10 @@ export default function Submit({}) {
 
     const updateUrlInputValue = (event) => {
         setUrlInputValue(event.target.value);
+    };
+
+    const updateCategoryInputValue = (event) => {
+        setCategoryInputValue(event.target.value);
     };
 
     const updateTextInputValue = (event) => {
@@ -76,7 +85,7 @@ export default function Submit({}) {
         } else {
             setLoading(true);
 
-            submitNewItem(titleInputValue, urlInputValue, textInputValue, (response) => {
+            submitNewItem(titleInputValue, urlInputValue, textInputValue, categoryInputValue, (response) => {
                 setLoading(false);
 
                 if (response.authError) {
@@ -200,6 +209,22 @@ export default function Submit({}) {
                     </div>
                     <div className="submit-content-input-item-input">
                         <input type="text" value={urlInputValue} onChange={updateUrlInputValue} />
+                    </div>
+                </div>
+
+                {/* CATEGORY FIELD */}
+                <div className="submit-content-input-item category">
+                    <div className="submit-content-input-item-label">
+                        <span>category</span>
+                    </div>
+                    <div className="submit-content-input-item-input">
+                        <select value={categoryInputValue} onChange={updateCategoryInputValue}>
+                            {categories.map((category, index) => (
+                                <option key={index} value={category}>
+                                    {category}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                 </div>
 
