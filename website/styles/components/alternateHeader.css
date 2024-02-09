@@ -17,4 +17,5 @@
 .alternate-header-label {
     font-weight: bold;
     vertical-align: middle;
+    color: var(--c-text-light)
 }
