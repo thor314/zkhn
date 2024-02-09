@@ -41,6 +41,8 @@
     --c-comment: var(--c-text-lightest);
     --c-date-border: var(--c-accent-darker);
     --c-about: var(--c-accent-darker);
+
+    --width-box-indent:  75px; /* width of box away from labels on e.g. submit */
 }
 
 body {

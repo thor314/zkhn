@@ -10,7 +10,7 @@
 
 .submit-content-input-item-label {
     display: inline-block;
-    width: 35px;
+    width: var(--width-box-indent);
     color: var(--c-text-light);
     font-family: Verdana, Geneva, sans-serif;
     font-size: 13.5px;
@@ -66,7 +66,7 @@
     font-family: Verdana, Geneva, sans-serif;
     color: var(--c-text-light);
     font-weight: bold;
-    margin-left: 35px;
+    margin-left: var(--width-box-indent);
 }
 
 .submit-content-text-input-item {
@@ -75,7 +75,7 @@
 
 .submit-content-text-input-item-label {
     display: inline-block;
-    width: 35px;
+    width: var(--width-box-indent);
     color: var(--c-text-light);
     font-family: Verdana, Geneva, sans-serif;
     font-size: 13.5px;
@@ -125,7 +125,7 @@
 
 .submit-content-input-btn {
     margin-top: 10px;
-    margin-left: 35px;
+    margin-left: var(--width-box-indent);
     font-size: 14px;
 }
 
