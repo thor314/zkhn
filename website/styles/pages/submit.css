@@ -1,10 +1,11 @@
+/* TODO(TK 2024-02-09): nice to have, could have this mirror the css-grid approach for edit-item */
 .submit-content-container {
-    padding: 15px 5px 15px 5px;
+    padding: 15px 5px 15px 5px; /* comfortable page padding */
 }
 
 .submit-content-error-msg {
     color: var(--c-text-light);
-    font-size: 13.5px;
+    font-size: var(--font-size-error);
     margin-bottom: 20px;
 }
 
@@ -56,6 +57,13 @@
 
 .submit-content-input-item.url {
     margin-top: 5px;
+}
+
+.submit-content-input-item.category   {
+    font-family: monospace;
+    font-size: 13.5px;
+    margin-top: 5px; 
+    color-scheme: light dark;
 }
 
 .submit-content-input-or-divider {
@@ -120,13 +128,15 @@
 
 .submit-content-text-input-item-input textarea[type="text"] {
     font-family: monospace;
-    font-size: 13.5px;
+    /* font-size: 13.5px; */
+    font-size: var(--font-size-sans);
+    /* 13.5px; */
 }
 
 .submit-content-input-btn {
     margin-top: 10px;
     margin-left: var(--width-box-indent);
-    font-size: 14px;
+    font-size: var(--font-size-submit);
 }
 
 .submit-content-input-btn input {
