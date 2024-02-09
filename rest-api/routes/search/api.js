@@ -3,7 +3,7 @@ const algoliasearch = require("algoliasearch");
 /// ALGOLIA CONFIGURATION
 const client = algoliasearch(
   process.env.ALGOLIA_APP_ID,
-  process.env.ALGOLIA_PRIVATE_API_KEY,
+  process.env.ALGOLIA_PRIVATE_API_KEY
 );
 
 const index = client.initIndex("submissions");
@@ -12,26 +12,40 @@ module.exports = {
   addNewItem: async (item) => {
     await index.saveObject({
       objectID: item.id,
+      // item, comment, ...
       type: "item",
+      // author
       by: item.by,
+      // post title
       title: item.title,
+      // news or ask
       itemType: item.type,
+      // (if news) raw url
       url: item.url,
+      // (if news) domain name
       domain: item.domain,
+      // (if ask) text
       text: item.text,
+      // unsure
       created: item.created,
       points: item.points,
       commentCount: item.commentCount,
+      // tags: item.tags,
+      // category: item.category,
     });
 
     return { success: true };
   },
 
   editItem: async (id, newItemTitle, newItemText) => {
+  // editItem: async (id, newItemTitle, newItemText, newCategory) => {
+  // editItem: async (id, newItemTitle, newItemText, newTags, newCategory) => {
     await index.partialUpdateObject({
       objectID: id,
       title: newItemTitle,
       text: newItemText,
+      // tags: newTags,
+      // category: newCategory,
     });
 
     return { success: true };

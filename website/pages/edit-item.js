@@ -14,8 +14,11 @@ import renderCreatedTime from "../utils/renderCreatedTime.js";
 export default function EditItem({ item, authUserData, notAllowedError, getDataError, notFoundError, goToString }) {
     const [titleInputValue, setTitleInputValue] = useState(item.title || "");
     const [textInputValue, setTextInputValue] = useState(item.text || "");
+    // const [tagsInputValue, setTagsInputValue] = useState(item.tags || "");
+    // const [categoryInputValue, setCategoryInputValue] = useState(item.category || "");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState({
+        // TODO(TK 2024-02-09): probably need to add errors for tags and category
         titleRequiredError: false,
         titleTooLongError: false,
         textTooLongError: false,
@@ -29,6 +32,15 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
     const updateTextInputValue = (event) => {
         setTextInputValue(event.target.value);
     };
+
+    // // TODO(TK 2024-02-09): use these
+    // const updateTagsInputValue = (event) => {
+    //     setTagsInputValue(event.target.value);
+    // };
+
+    // const updateCategoryInputValue = (event) => {
+    //     setCategoryInputValue(event.target.value);
+    // };
 
     const setInitialTextareaHeight = () => {
         if (item.text) {
@@ -47,30 +59,22 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
             setError({
                 ...error,
                 titleRequiredError: true,
-                titleTooLongError: false,
-                textTooLongError: false,
-                submitError: false,
             });
         } else if (titleInputValue.length > 80) {
             setError({
                 ...error,
-                titleRequiredError: false,
                 titleTooLongError: true,
-                textTooLongError: false,
-                submitError: false,
             });
         } else if (textInputValue.length > 5000) {
             setError({
                 ...error,
-                titleRequiredError: false,
-                titleTooLongError: false,
                 textTooLongError: true,
-                submitError: false,
             });
         } else {
             setLoading(true);
 
             editItem(item.id, titleInputValue, textInputValue, (response) => {
+            // editItem(item.id, titleInputValue, textInputValue, tags, categories, (response) => {
                 setLoading(false);
 
                 if (response.authError) {
@@ -81,25 +85,16 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
                 } else if (response.titleTooLongError) {
                     setError({
                         ...error,
-                        titleRequiredError: false,
                         titleTooLongError: true,
-                        textTooLongError: false,
-                        submitError: false,
                     });
                 } else if (response.textTooLongError) {
                     setError({
                         ...error,
-                        titleRequiredError: false,
-                        titleTooLongError: false,
                         textTooLongError: true,
-                        submitError: false,
                     });
                 } else if (response.submitError || !response.success) {
                     setError({
                         ...error,
-                        titleRequiredError: false,
-                        titleTooLongError: false,
-                        textTooLongError: false,
                         submitError: true,
                     });
                 } else {
@@ -172,8 +167,7 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
                                 <span
                                     dangerouslySetInnerHTML={{
                                         __html: item.text,
-                                    }}
-                                ></span>
+                                    }}></span>
                             </div>
                         ) : null}
 
