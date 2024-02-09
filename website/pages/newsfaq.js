@@ -53,7 +53,7 @@ export default function NewsFaq() {
                     <Link href="/forgot">
                         <a>here</a>
                     </Link>
-                    . If you haven’t, email me@krehwell.com for help.
+                    Otherwise, you're out of luck. Sorry.
                 </p>
                 <div className="news-faq-bottom-divider"></div>
             </div>

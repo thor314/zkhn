@@ -257,6 +257,12 @@ export default function User({
                                         </div>
                                     </div>
 
+                                    {/* CATEGORY SECTION */}
+                                    {/* TODO(TK 2024-02-09) */}
+
+                                    {/* TAGS SECTION */}
+                                    {/* TODO(TK 2024-02-09) */}
+
                                     {/* HIDDEN SECTION */}
                                     <div className="user-item">
                                         <div className="user-item-label">
