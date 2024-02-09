@@ -124,123 +124,102 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
                 {!getDataError && !notAllowedError && !notFoundError ? (
                     <>
                         {/* ITEM CONTENT */}
-                        <table className="edit-item-top-section">
-                            <tbody>
-                                <tr>
-                                    <td valign="top">
-                                        <div className="edit-item-star">
-                                            <span>*</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span className="edit-item-title">
-                                            <Link href={item.url ? item.url : `/item?id=${item.id}`}>{item.title}</Link>
-                                        </span>
-                                        {item.url ? (
-                                            <span className="edit-item-domain">
-                                                (<Link href={`/from?site=${item.domain}`}>{item.domain}</Link>)
-                                            </span>
-                                        ) : null}
-                                    </td>
-                                </tr>
-                                <tr className="edit-item-details-bottom">
-                                    <td colSpan="1"></td>
-                                    <td>
-                                        <span className="edit-item-score">
-                                            {item.points.toLocaleString()} {item.points === 1 ? "point" : "points"}
-                                        </span>
-                                        <span>
-                                            &nbsp; by <Link href={`/user?id=${item.by}`}>{item.by}</Link>&nbsp;
-                                        </span>
-                                        <span className="edit-item-time">
-                                            <Link href={`/item?id=${item.id}`}>{renderCreatedTime(item.created)}</Link>
-                                        </span>
-                                        {/* <span> | </span> */}
-                                        {/* <span className="edit-item-edit"> */}
-                                        {/*     <Link href="">edit</Link> */}
-                                        {/* </span> */}
-                                        <span> | </span>
-                                        <span>
-                                            <Link href={`/delete-item?id=${item.id}`}>delete</Link>
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        {!item.url && item.text ? (
-                            <div className="edit-item-text-content">
-                                <span
-                                    dangerouslySetInnerHTML={{
-                                        __html: item.text,
-                                    }}
-                                ></span>
+                        <div className="edit-item-top-section grid-container">
+                            <div className="edit-item-star grid-item">
+                                <span>*</span>
                             </div>
-                        ) : null}
-
+                            <div className="edit-item-title-and-domain grid-item">
+                                <span className="edit-item-title">
+                                    <Link href={item.url ? item.url : `/item?id=${item.id}`}>{item.title}</Link>
+                                </span>
+                                {item.url && (
+                                    <span className="edit-item-domain">
+                                        (<Link href={`/from?site=${item.domain}`}>{item.domain}</Link>)
+                                    </span>
+                                )}
+                            </div>
+                            <div className="edit-item-details-bottom grid-item">
+                                <span className="edit-item-score">{item.points.toLocaleString()} points</span>
+                                &nbsp; by <Link href={`/user?id=${item.by}`}>{item.by}</Link>&nbsp;
+                                <span className="edit-item-time">
+                                    <Link href={`/item?id=${item.id}`}>{renderCreatedTime(item.created)}</Link>
+                                </span>
+                                <span> | </span>
+                                <span>
+                                    <Link href={`/delete-item?id=${item.id}`}>delete</Link>
+                                </span>
+                            </div>
+                        </div>
+                        {!item.url && item.text && (
+                            <div className="edit-item-text-content">
+                                <span dangerouslySetInnerHTML={{ __html: item.text }}></span>
+                            </div>
+                        )}
                         {/* EDIT FORM */}
-                        <table className="edit-item-form-section">
-                            <tbody>
-                                {/* TITLE EDIT */}
-                                <tr>
-                                    <td className="edit-item-title-input-label">title:</td>
-                                    <td className="edit-item-title-input">
-                                        <input type="text" value={titleInputValue} onChange={updateTitleInputValue} />
-                                    </td>
-                                </tr>
-                                {/* URL EXIST? EDIT URL */}
-                                {item.url ? (
-                                    <tr>
-                                        <td className="edit-item-url-label">url:</td>
-                                        <td className="edit-item-url-value">{item.url}</td>
-                                    </tr>
-                                ) : null}
-                                {/* TEXT EXIST? EDIT TEXT */}
-                                {!item.url ? (
-                                    <tr>
-                                        <td className="edit-item-text-input-label">text:</td>
-                                        <td className="edit-item-text-input">
-                                            <textarea
-                                                type="text"
-                                                cols={60}
-                                                rows={setInitialTextareaHeight()}
-                                                value={textInputValue}
-                                                onChange={updateTextInputValue}
-                                            />
-                                        </td>
-                                    </tr>
-                                ) : null}
-                            </tbody>
-                        </table>
+                        <div className="edit-item-form-section grid-container">
+                            <div className="edit-item-title-input-label grid-item">title:</div>
+                            <div className="edit-item-title-input grid-item">
+                                <input type="text" value={titleInputValue} onChange={updateTitleInputValue} />
+                            </div>
+                            {item.url && (
+                                <>
+                                    <div className="edit-item-url-label grid-item">url:</div>
+                                    <div className="edit-item-url-value grid-item">{item.url}</div>
+                                </>
+                            )}
+                            {!item.url && (
+                                <>
+                                    <div className="edit-item-text-input-label grid-item">text:</div>
+                                    <div className="edit-item-text-input grid-item">
+                                        <textarea
+                                            type="text"
+                                            cols="60"
+                                            rows={setInitialTextareaHeight()}
+                                            value={textInputValue}
+                                            onChange={updateTextInputValue}
+                                        />
+                                    </div>
+                                </>
+                            )}
+                        </div>
                         <div className="edit-item-submit-btn">
                             <input type="submit" value="update" onClick={() => submitEditItem()} />
                             &nbsp;
                             {loading && <span> loading...</span>}
                         </div>
-                        {error.submitError ? (
+                        {/* Error Messages */}
+                        {error.submitError && (
+                            <div className="edit-item-submit-error-msg grid-item">
+                                <span>An error occurred.</span>
+                            </div>
+                        )}
+                        {error.titleRequiredError && (
+                            <div className="edit-item-submit-error-msg grid-item">
+                                <span>Title is required.</span>
+                            </div>
+                        )}
+                        {error.titleTooLongError && (
+                            <div className="edit-item-submit-error-msg grid-item">
+                                <span>Title exceeds limit of 80 characters.</span>
+                            </div>
+                        )}
+                        {error.textTooLongError && (
+                            <div className="edit-item-submit-error-msg grid-item">
+                                <span>Text exceeds limit of 5,000 characters.</span>
+                            </div>
+                        )}
+                        {error.notAllowedError && (
+                            <div className="edit-item-submit-error-msg grid-item">
+                                <span>You can’t edit that item.</span>
+                            </div>
+                        )}
+
+                        {/* Repeat this structure for each error message */}
+                        {error.submitError && (
                             <div className="edit-item-submit-error-msg">
                                 <span>An error occurred.</span>
                             </div>
-                        ) : null}
-                        {error.titleRequiredError ? (
-                            <div className="edit-item-submit-error-msg">
-                                <span>Title is required.</span>
-                            </div>
-                        ) : null}
-                        {error.titleTooLongError ? (
-                            <div className="edit-item-submit-error-msg">
-                                <span>Title exceeds limit of 80 characters.</span>
-                            </div>
-                        ) : null}
-                        {error.textTooLongError ? (
-                            <div className="edit-item-submit-error-msg">
-                                <span>Text exceeds limit of 5,000 characters.</span>
-                            </div>
-                        ) : null}
-                        {error.notAllowedError ? (
-                            <div className="edit-item-submit-error-msg">
-                                <span>You can’t edit that item.</span>
-                            </div>
-                        ) : null}
+                        )}
                     </>
                 ) : (
                     <div className="edit-item-error-msg">
