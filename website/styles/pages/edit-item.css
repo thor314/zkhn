@@ -114,8 +114,9 @@
 .edit-item-title-input input {
     width: 450px;
     -webkit-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
     text-rendering: auto;
-    color: initial;
+    color: var(--c-text-light);
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -124,6 +125,7 @@
     display: inline-block;
     text-align: start;
     -webkit-appearance: textfield;
+    appearance: textfield;
     background-color: var(--c-background);
     -webkit-rtl-ordering: logical;
     cursor: text;
@@ -167,8 +169,9 @@
     max-width: 92.5%;
     vertical-align: middle;
     -webkit-writing-mode: horizontal-tb;
+    writing-mode: horizontal-tb;
     text-rendering: auto;
-    color: initial;
+    color: var(--c-text-light);
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -177,6 +180,7 @@
     display: inline-block;
     text-align: start;
     -webkit-appearance: textarea;
+    appearance: textarea;
     background-color: var(--c-background);
     -webkit-rtl-ordering: logical;
     flex-direction: column;
@@ -205,6 +209,7 @@
 
 .edit-item-submit-btn input {
     -webkit-appearance: push-button;
+    appearance: push-button;
     user-select: none;
     white-space: pre;
     align-items: flex-start;
