@@ -33,7 +33,7 @@
 
 .footer-search input {
     background-color: var(--c-background);
-    border: 2px solid var(--c-accent);
+    /* border: 2px solid var(--c-accent); */
     color: var(--c-text-lightest);
     height: 21px;
     font-size: 13.333px;
@@ -41,6 +41,7 @@
 }
 
 .footer-search input[type="text"] {
+    border: 1px solid var(--c-accent);
     font-family: monospace;
 }
 

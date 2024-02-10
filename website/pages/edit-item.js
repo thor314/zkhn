@@ -11,9 +11,15 @@ import editItem from "../api/items/editItem.js";
 
 import renderCreatedTime from "../utils/renderCreatedTime.js";
 
+// hack
+// TODO(TK 2024-02-09): why can't I just import this
+// import categories from "./submit.js";
+export const categories = ["discussion", "blog", "tweet", "paper", "tool", "book", "announcement", "other"];
+
 export default function EditItem({ item, authUserData, notAllowedError, getDataError, notFoundError, goToString }) {
     const [titleInputValue, setTitleInputValue] = useState(item.title || "");
     const [textInputValue, setTextInputValue] = useState(item.text || "");
+    const [categoryInputValue, setCategoryInputValue] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState({
         titleRequiredError: false,
@@ -28,6 +34,10 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
 
     const updateTextInputValue = (event) => {
         setTextInputValue(event.target.value);
+    };
+
+    const updateCategoryInputValue = (event) => {
+        setCategoryInputValue(event.target.value);
     };
 
     const setInitialTextareaHeight = () => {
@@ -165,6 +175,12 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
                                 <>
                                     <div className="edit-item-url-label grid-item">url:</div>
                                     <div className="edit-item-url-value grid-item">{item.url}</div>
+                                    <div className="edit-item-category-input-label grid-item">category: </div>
+                                    <div className="edit-item-category-input grid-item">
+                                        <select value={categoryInputValue} onChange={updateCategoryInputValue}>
+                                            {categories.map((category,index) => (<option key={index} value={category}>{category}</option>))}
+                                        </select>
+                                    </div>
                                 </>
                             )}
                             {!item.url && (

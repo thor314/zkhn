@@ -1,6 +1,7 @@
 .grid-container {
     display: grid;
     grid-template-columns: auto 1fr; /* no breakline  */
+    align-items: start; /* Aligns items to be flush with the top of the cell */
 }
 
 .edit-item-details-bottom {
@@ -15,7 +16,6 @@
 .edit-item-submit-error-msg {
     grid-column: 1 / -1; /* Error message spans both columns */
     color: var(--c-red); 
-    margin-top: 10px; /* Space above the error message */
 }
 
 .edit-item-submit-error-msg {
@@ -25,7 +25,7 @@
     background-color: var(--c-background); /* Light background for error messages */
     margin-bottom: 20px; /* Space below the error message */
     color: var(--c-red); /* Text color for error messages */
-    font-size: 0.9em; /* Slightly smaller font size for error messages */
+    font-size: var(--font-size-error); /* Slightly smaller font size for error messages */
 }
 
 .grid-item {
@@ -169,7 +169,7 @@
 
 .edit-item-title-input input[type="text"] {
     font-family: monospace;
-    font-size: 13.5px;
+    font-size: var(--font-size-mono);
 }
 
 .edit-item-url-label {
@@ -186,6 +186,26 @@
     font-size: 13.5px;
     overflow: hidden;
     word-wrap: break-word;
+}
+
+.edit-item-category-input-label {
+    margin-bottom: 10px;
+    color: var(--c-text-light);
+    overflow: hidden;
+    word-wrap: break-word;
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-mono);
+}
+
+.edit-item-category-input {
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    overflow: hidden;
+    word-wrap: break-word;
+    font-family: monospace;
+    font-size: var(--font-family-mono);
+    /* TODO(TK 2024-02-09): convenient shortcut hack */
+    color-scheme: light dark; 
 }
 
 .edit-item-text-input-label {

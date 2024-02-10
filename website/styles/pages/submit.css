@@ -63,7 +63,8 @@
     font-family: monospace;
     font-size: 13.5px;
     margin-top: 5px; 
-    color-scheme: light dark;
+    /* TODO(TK 2024-02-09): convenient shortcut hack */
+    color-scheme: light dark; 
 }
 
 .submit-content-input-or-divider {
