@@ -489,7 +489,7 @@ module.exports = {
     return { success: true, item: item };
   },
 
-  editItem: async (itemId, newItemTitle, newItemText, authUser) => {
+  editItem: async (itemId, newItemTitle, newItemText, newItemCategory, authUser) => {
     const item = await ItemModel.findOne({ id: itemId }).exec();
 
     if (!item) {
@@ -530,7 +530,7 @@ module.exports = {
 
     await item.save();
 
-    await searchApi.editItem(itemId, newItemTitle, newItemText);
+    await searchApi.editItem(itemId, newItemTitle, newItemText, newItemCategory);
 
     return { success: true };
   },

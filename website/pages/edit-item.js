@@ -80,7 +80,7 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
         } else {
             setLoading(true);
 
-            editItem(item.id, titleInputValue, textInputValue, (response) => {
+            editItem(item.id, titleInputValue, textInputValue, categoryInputValue, (response) => {
                 setLoading(false);
 
                 if (response.authError) {

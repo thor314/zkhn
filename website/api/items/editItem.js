@@ -2,7 +2,7 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl.js";
 
-export default function editItem(id, newItemTitle, newItemText, callback) {
+export default function editItem(id, newItemTitle, newItemText, newItemCategory, callback) {
     axios
         .put(
             apiBaseUrl + "/items/edit-item",
@@ -10,6 +10,7 @@ export default function editItem(id, newItemTitle, newItemText, callback) {
                 id: id,
                 newItemTitle: newItemTitle,
                 newItemText: newItemText,
+                newItemCategory: newItemCategory,
             },
             {
                 withCredentials: true,

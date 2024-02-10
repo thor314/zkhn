@@ -225,6 +225,7 @@ app.put("/items/edit-item", authUser, async (req, res) => {
       req.body.id,
       req.body.newItemTitle,
       req.body.newItemText,
+      req.body.newItemCategory,
       res.locals,
     );
     res.json(response);

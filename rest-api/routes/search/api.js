@@ -21,17 +21,19 @@ module.exports = {
       text: item.text,
       created: item.created,
       points: item.points,
+      category: item.category,
       commentCount: item.commentCount,
     });
 
     return { success: true };
   },
 
-  editItem: async (id, newItemTitle, newItemText) => {
+  editItem: async (id, newItemTitle, newItemText, newItemCategory) => {
     await index.partialUpdateObject({
       objectID: id,
       title: newItemTitle,
       text: newItemText,
+      category: newItemCategory,
     });
 
     return { success: true };
