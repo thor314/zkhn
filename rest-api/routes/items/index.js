@@ -33,14 +33,17 @@ app.post("/items/submit-new-item", authUser, async (req, res) => {
       req.body.title,
       req.body.url,
       req.body.text,
+      req.body.category,
       res.locals,
     );
     res.json(response);
   } catch (error) {
-    console.log(error);
+    console.log("error: ", error);
     if (!(error instanceof Error)) {
+      console.log("other error Error: ", error);
       res.json(error);
     } else {
+      console.log("weird error: ", error);
       res.json({ submitError: true });
     }
   }
