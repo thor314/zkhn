@@ -1,16 +1,34 @@
 {
-    "name": "website",
-    "version": "1.0.0",
-    "description": "hacker news clone",
-    "main": "index.js",
-    "scripts": {
-        "dev": "next",
-        "build": "next build",
-        "start": "next start -p $PORT"
-    },
+  "name": "zkhn",
+  "version": "1.0.0",
+  "description": "hacker news clone",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start -p $PORT"
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "lib": [
+      "es2021"
+    ],
+    "module": "esnext",
+    "target": "esnext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "noUncheckedIndexedAccess": true
+  },
     "keywords": [],
-    "author": "krehwell fahrimuham001@gmail.com",
-    "license": "ISC",
+    "author": "thor kamphefner <thorck@pm.me>",
     "dependencies": {
         "@types/nprogress": "^0.2.3",
         "@types/prettier": "^3.0.0",
