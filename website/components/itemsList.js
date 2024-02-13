@@ -21,6 +21,7 @@ export default function ItemsList({
     showRank,
     isMoreLink,
     isMore,
+    // TODO(TK 2024-02-09): nice-feature: show what categories and tags user submits in 
     showPastLink = false,
     showWebLink = false,
     showUnfavoriteOption = false,

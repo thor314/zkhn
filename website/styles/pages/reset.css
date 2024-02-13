@@ -24,7 +24,7 @@
     height: 20px;
     -webkit-writing-mode: horizontal-tb;
     text-rendering: auto;
-    color: initial;
+    color: var(--c-text-light);
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;

@@ -8,7 +8,7 @@ import getRankedAskItemsByPage from "../api/items/getRankedAskItemsByPage.js";
 export default function Ask({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title="Ask | zkNews" description="News and discussion for software engineers." />
+            <HeadMetadata title="Ask | zkNews" description="News and discussion about zero knowledge" />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}

@@ -1,24 +1,40 @@
 {
-    "name": "website",
-    "version": "1.0.0",
-    "description": "hacker news clone",
-    "main": "index.js",
-    "scripts": {
-        "dev": "next",
-        "build": "next build",
-        "start": "next start -p $PORT"
-    },
+  "name": "zkhn",
+  "version": "1.0.0",
+  "description": "hacker news clone",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start -p $PORT"
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "lib": [
+      "es2021"
+    ],
+    "module": "esnext",
+    "target": "esnext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "noUncheckedIndexedAccess": true
+  },
     "keywords": [],
-    "author": "krehwell fahrimuham001@gmail.com",
-    "license": "ISC",
-    "ignore": {
+    "author": "thor kamphefner <thorck@pm.me>",
+    "dependencies": {
         "@types/nprogress": "^0.2.3",
         "@types/prettier": "^3.0.0",
         "@types/react": "^18.2.55",
         "@types/react-dom": "^18.2.19",
-        "@types/react-highlight-words": "^0.16.7"
-      },
-    "dependencies": {
+        "@types/react-highlight-words": "^0.16.7",
         "algoliasearch": "^4.9.1",
         "axios": "^0.21.1",
         "moment": "^2.29.1",

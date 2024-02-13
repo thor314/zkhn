@@ -41,6 +41,21 @@
     --c-comment: var(--c-text-lightest);
     --c-date-border: var(--c-accent-darker);
     --c-about: var(--c-accent-darker);
+
+    --width-box-indent:  75px; /* width of box away from labels on e.g. submit */
+
+    /* TODO(TK 2024-02-09): map thru css for consistency */
+    --font-size-error: .8em;
+    --font-size-mono: 1em;
+    --font-size-normal: 1em;
+    --font-size-sans: 1em;
+    --font-size-submit: 1.2em;
+    /* --font-size-error: 13.5px; */
+
+    /* TODO(TK 2024-02-09): map thru css for consistency */
+    --font-family-mono: monospace;
+    --font-family-sans: Verdana, Geneva, sans-serif;
+    /* --font-family-normal: Verdana, Geneva, sans-serif; */
 }
 
 body {

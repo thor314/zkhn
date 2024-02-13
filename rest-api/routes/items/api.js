@@ -36,7 +36,7 @@ module.exports = {
    * Step 4 - In the database, increment the author's karma count by a value of 1.
    * Step 5 - Send a success response back to the website.
    */
-  submitNewItem: async (title, url, text, authUser) => {
+  submitNewItem: async (title, url, text, category, authUser) => {
     const isValidUrl = utils.isValidUrl(url);
 
     if (url && !isValidUrl) {
@@ -70,6 +70,7 @@ module.exports = {
       url: url,
       domain: domain,
       text: text,
+      category: category,
       created: moment().unix(),
       dead: authUser.shadowBanned ? true : false,
     });
@@ -488,7 +489,7 @@ module.exports = {
     return { success: true, item: item };
   },
 
-  editItem: async (itemId, newItemTitle, newItemText, authUser) => {
+  editItem: async (itemId, newItemTitle, newItemText, newItemCategory, authUser) => {
     const item = await ItemModel.findOne({ id: itemId }).exec();
 
     if (!item) {
@@ -529,7 +530,7 @@ module.exports = {
 
     await item.save();
 
-    await searchApi.editItem(itemId, newItemTitle, newItemText);
+    await searchApi.editItem(itemId, newItemTitle, newItemText, newItemCategory);
 
     return { success: true };
   },

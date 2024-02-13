@@ -1,3 +1,38 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto 1fr; /* no breakline  */
+    align-items: start; /* Aligns items to be flush with the top of the cell */
+}
+
+.edit-item-details-bottom {
+    grid-column: 1 / -1; /* This will make the details row span both columns */
+}
+
+.edit-item-submit-btn {
+    grid-column: 1 / -1; /* Button spans both columns */
+}
+
+/* Error Message Styling */
+.edit-item-submit-error-msg {
+    grid-column: 1 / -1; /* Error message spans both columns */
+    color: var(--c-red); 
+}
+
+.edit-item-submit-error-msg {
+    grid-column: 1 / -1; /* Span across all columns */
+    padding: 10px;
+    border: 1px solid var(--c-red); /* Example error border color */
+    background-color: var(--c-background); /* Light background for error messages */
+    margin-bottom: 20px; /* Space below the error message */
+    color: var(--c-red); /* Text color for error messages */
+    font-size: var(--font-size-error); /* Slightly smaller font size for error messages */
+}
+
+.grid-item {
+    display: block; /* Ensure grid items are block level to allow for margin, padding, etc. */
+}
+
+/* PRIOR CSS: */
 .edit-item-content-container {
     width: 100%;
     padding: 15px 0px 15px 0px;
@@ -115,7 +150,7 @@
     width: 450px;
     -webkit-writing-mode: horizontal-tb;
     text-rendering: auto;
-    color: initial;
+    color: var(--c-text-light);
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -134,7 +169,7 @@
 
 .edit-item-title-input input[type="text"] {
     font-family: monospace;
-    font-size: 13.5px;
+    font-size: var(--font-size-mono);
 }
 
 .edit-item-url-label {
@@ -153,6 +188,26 @@
     word-wrap: break-word;
 }
 
+.edit-item-category-input-label {
+    margin-bottom: 10px;
+    color: var(--c-text-light);
+    overflow: hidden;
+    word-wrap: break-word;
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-mono);
+}
+
+.edit-item-category-input {
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    overflow: hidden;
+    word-wrap: break-word;
+    font-family: monospace;
+    font-size: var(--font-family-mono);
+    /* TODO(TK 2024-02-09): convenient shortcut hack */
+    color-scheme: light dark; 
+}
+
 .edit-item-text-input-label {
     display: inline-block;
     width: 40px;
@@ -168,7 +223,7 @@
     vertical-align: middle;
     -webkit-writing-mode: horizontal-tb;
     text-rendering: auto;
-    color: initial;
+    color: var(--c-text-light);
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -188,7 +243,7 @@
     margin: 0em;
     border-width: 1px;
     border-style: solid;
-    border-color: var(--c-grey);
+    border-color: var(--c-accent);
     border-image: initial;
     padding: 2px 0px 0px 2px;
 }
