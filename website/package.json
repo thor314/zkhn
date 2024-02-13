@@ -11,12 +11,14 @@
     "keywords": [],
     "author": "krehwell fahrimuham001@gmail.com",
     "license": "ISC",
-    "dependencies": {
+    "ignore": {
         "@types/nprogress": "^0.2.3",
         "@types/prettier": "^3.0.0",
         "@types/react": "^18.2.55",
         "@types/react-dom": "^18.2.19",
-        "@types/react-highlight-words": "^0.16.7",
+        "@types/react-highlight-words": "^0.16.7"
+      },
+    "dependencies": {
         "algoliasearch": "^4.9.1",
         "axios": "^0.21.1",
         "moment": "^2.29.1",
