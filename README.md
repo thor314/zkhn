@@ -14,8 +14,29 @@
 - etc.
 
 ## Run & Installation
-- `cd` to `website/` and `rest-api/` 
-- `npm run dev` on both dir to run on localhost  
+
+### API
+```
+cd rest-api/
+cp .env.template .env
+```
+Populate .env values
+```
+nvm use v16.3.0
+npm i
+npm run dev
+```
+
+### Website
+```
+cd website/
+cp .env.local.template .env.local
+```
+Populate .env.local values
+```
+npm i
+npm run dev
+```
 
 Website served at :3000 and Server served at :5000
 
