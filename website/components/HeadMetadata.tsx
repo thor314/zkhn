@@ -2,14 +2,14 @@ import Head from "next/head";
 
 type HeadMetadataProps = {
     title: string;
-    description: string;
+    description?: string;
 };
 
 export default function HeadMetadata({ description, title }: HeadMetadataProps) {
     return (
         <Head>
             <title>{title}</title>
-            <meta name="description" content={description} />
+            <meta name="description" content={description ?? ""} />
             <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
             {/* TODO(TK 2024-01-26): bug: icon in tab reverts when uncommented, leave commented for now */}
             {/* <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" /> */}
