@@ -72,8 +72,8 @@ export default function NewsGuidelines() {
                     teaches us something.
                 </p>
                 <p>
-                    Please don’t use zkNews for political or ideological battle. That destroys intellectual
-                    curiosity, which is what the site exists for.
+                    Please don’t use zkNews for political or ideological battle. That destroys intellectual curiosity,
+                    which is what the site exists for.
                 </p>
                 <p>
                     Please don’t comment on whether someone read an article. "Did you even read the article? It mentions
@@ -96,8 +96,8 @@ export default function NewsGuidelines() {
                     reading.
                 </p>
                 <p>
-                    Please don’t submit comments saying that zkNews is turning into Reddit. It’s a semi-noob
-                    illusion, as old as the hills.
+                    Please don’t submit comments saying that zkNews is turning into Reddit. It’s a semi-noob illusion,
+                    as old as the hills.
                 </p>
                 <div className="news-guidelines-bottom-divider"></div>
             </div>
