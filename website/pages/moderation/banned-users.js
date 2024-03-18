@@ -1,5 +1,5 @@
-import AlternateHeader from "../../components/alternateHeader.js";
-import HeadMetadata from "../../components/headMetadata.js";
+import AlternateHeader from "../components/AlternateHeader";
+import HeadMetadata from "../components/HeadMetadata";
 
 import getBannedUsersByPage from "../../api/moderation/getBannedUsersByPage.js";
 

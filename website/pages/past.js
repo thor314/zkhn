@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import Header from "../components/header.js";
 import Footer from "../components/footer.js";
-import HeadMetadata from "../components/headMetadata.js";
+import HeadMetadata from "../components/HeadMetadata";
 import ItemsList from "../components/itemsList.js";
 
 import getRankedItemsByDay from "../api/items/getRankedItemsByDay.js";

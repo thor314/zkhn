@@ -2,8 +2,8 @@ import { useState } from "react";
 import Router from "next/router";
 import Link from "next/link";
 
-import AlternateHeader from "../components/alternateHeader.js";
-import HeadMetadata from "../components/headMetadata.js";
+import AlternateHeader from "../components/AlternateHeader";
+import HeadMetadata from "../components/HeadMetadata";
 
 import renderPointsString from "../utils/renderPointsString.js";
 import renderCreatedTime from "../utils/renderCreatedTime.js";

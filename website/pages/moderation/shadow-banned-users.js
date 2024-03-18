@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import AlternateHeader from "../../components/alternateHeader.js";
-import HeadMetadata from "../../components/headMetadata.js";
+import HeadMetadata from "../components/HeadMetadata";
+import AlternateHeader from "../components/AlternateHeader";
 
 import getShadowBannedUsersByPage from "../../api/moderation/getShadowBannedUsersByPage.js";
 

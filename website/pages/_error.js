@@ -1,5 +1,5 @@
-import HeadMetadata from "../components/headMetadata.js";
-import AlternateHeader from "../components/alternateHeader.js";
+import HeadMetadata from "../components/HeadMetadata";
+import AlternateHeader from "../components/AlternateHeader";
 
 export default function _error() {
     return (

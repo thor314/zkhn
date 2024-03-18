@@ -5,7 +5,7 @@ import Router from "next/router";
 
 import Header from "../components/header.js";
 import Footer from "../components/footer.js";
-import HeadMetadata from "../components/headMetadata.js";
+import HeadMetadata from "../components/HeadMetadata";
 
 import getUserData from "../api/users/getUserData.js";
 import updateUserData from "../api/users/updateUserData.js";

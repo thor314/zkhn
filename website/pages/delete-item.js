@@ -2,8 +2,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
-import AlternateHeader from "../components/alternateHeader.js";
-import HeadMetadata from "../components/headMetadata.js";
+import AlternateHeader from "../components/AlternateHeader";
+import HeadMetadata from "../components/HeadMetadata";
 
 import getDeleteItemPageData from "../api/items/getDeleteItemPageData.js";
 import deleteItem from "../api/items/deleteItem.js";

@@ -1,11 +1,11 @@
-import HeadMetadata from "../components/headMetadata.js";
-import AlternateHeader from "../components/alternateHeader.js";
+import HeadMetadata from "../components/HeadMetadata";
+import AlternateHeader from "../components/AlternateHeader";
 
 export default function _404() {
     return (
         <div className="error-wrapper layout-wrapper">
+            <HeadMetadata title="Unknown | zkNews" />
             <AlternateHeader displayMessage="Page Not Found" />
-            <HeadMetadata title="Unkown | zkNews" />
             <span>An error occurred. (ERROR: 400)</span>
         </div>
     );

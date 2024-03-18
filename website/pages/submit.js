@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Router from "next/router";
 
-import HeadMetadata from "../components/headMetadata.js";
-import AlternateHeader from "../components/alternateHeader.js";
+import HeadMetadata from "../components/HeadMetadata";
+import AlternateHeader from "../components/AlternateHeader";
 
 import authUser from "../api/users/authUser.js";
 import submitNewItem from "../api/items/submitNewItem.js";

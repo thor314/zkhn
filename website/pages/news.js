@@ -1,4 +1,4 @@
-import HeadMetadata from "../components/headMetadata.js";
+import HeadMetadata from "../components/HeadMetadata";
 import Header from "../components/header.js";
 import Footer from "../components/footer.js";
 import ItemsList from "../components/itemsList.js";

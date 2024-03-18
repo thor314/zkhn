@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import HeadMetadata from "../components/headMetadata.js";
+import HeadMetadata from "../components/HeadMetadata";
 
 export default function NewsGuidelines() {
     return (

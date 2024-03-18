@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import HeadMetadata from "../components/headMetadata.js";
-import AlternateHeader from "../components/alternateHeader.js";
+import HeadMetadata from "../components/HeadMetadata";
+import AlternateHeader from "../components/AlternateHeader";
 
 import requestPasswordResetLink from "../api/users/requestPasswordResetLink.js";
 

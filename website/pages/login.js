@@ -2,8 +2,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
-import HeadMetadata from "../components/headMetadata.js";
-import AlternateHeader from "../components/alternateHeader.js";
+import HeadMetadata from "../components/HeadMetadata";
+import AlternateHeader from "../components/AlternateHeader";
 
 import createNewUser from "../api/users/createNewUser.js";
 import loginUser from "../api/users/loginUser.js";
