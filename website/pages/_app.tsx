@@ -1,5 +1,6 @@
 import NProgress from "nprogress";
 import Router, { useRouter } from "next/router";
+import type { AppProps } from "next/app";
 
 /// GLOBAL STYLES
 import "../styles/nprogress.css";
@@ -61,7 +62,7 @@ Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }: AppProps) {
     const router = useRouter();
     // SUPER IMPORTANT: to put `key={router.asPath}` to allow re-render on same path different query
     return <Component {...pageProps} key={router.asPath} />;
