@@ -1,4 +1,4 @@
-import HeadMetadata from "../components/HeadMetadata";
+import HeadMetadata from "../../components/HeadMetadata";
 import SearchPageHeader from "../../components/search/header.js";
 import SearchPageFooter from "../../components/search/footer.js";
 import Item from "../../components/search/item.js";

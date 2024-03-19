@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, type ChangeEventHandler, type MouseEventHandler } from "react";
 
 import HeadMetadata from "../components/HeadMetadata";
 import AlternateHeader from "../components/AlternateHeader";
 
-import requestPasswordResetLink from "../api/users/requestPasswordResetLink.js";
+import requestPasswordResetLink from "../api/users/requestPasswordResetLink";
 
 export default function Forgot() {
     const [usernameInputValue, setUsernameInputValue] = useState("");
@@ -15,11 +15,11 @@ export default function Forgot() {
         submitError: false,
     });
 
-    const updateUsernameInputValue = (event) => {
+    const updateUsernameInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setUsernameInputValue(event.target.value);
     };
 
-    const submitRequest = () => {
+    const submitRequest: MouseEventHandler<HTMLInputElement> = () => {
         if (loading) return;
 
         if (!usernameInputValue) {
@@ -102,7 +102,7 @@ export default function Forgot() {
                             <input type="text" value={usernameInputValue} onChange={updateUsernameInputValue} />
                         </div>
                         <div className="forgot-submit-btn">
-                            <input type="submit" value="Send reset email" onClick={() => submitRequest()} />
+                            <input type="submit" value="Send reset email" onClick={submitRequest} />
                             {loading && <span> loading...</span>}
                         </div>
                     </div>
