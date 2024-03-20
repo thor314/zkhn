@@ -2,12 +2,10 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function resetPassword(username, newPassword, resetToken, callback) {
+export default function requestPasswordResetLink(username: string, callback) {
     axios
-        .put(apiBaseUrl + "/users/reset-password", {
+        .put(apiBaseUrl + "/users/request-password-reset-link", {
             username: username,
-            newPassword: newPassword,
-            resetToken: resetToken,
         })
         .then(function (response) {
             callback(response.data);

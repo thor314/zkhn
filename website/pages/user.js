@@ -7,8 +7,8 @@ import Header from "../components/header.js";
 import Footer from "../components/footer.js";
 import HeadMetadata from "../components/HeadMetadata";
 
-import getUserData from "../api/users/getUserData.js";
-import updateUserData from "../api/users/updateUserData.js";
+import getUserData from "../api/users/getUserData";
+import updateUserData from "../api/users/updateUserData";
 import addUserShadowBan from "../api/moderation/addUserShadowBan.js";
 import removeUserShadowBan from "../api/moderation/removeUserShadowBan.js";
 import addUserBan from "../api/moderation/addUserBan.js";

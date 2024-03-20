@@ -2,17 +2,17 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function changePassword(currentPassword, newPassword, callback) {
+export default function loginUser(username: string, password: string, callback) {
     axios
         .put(
-            apiBaseUrl + "/users/change-password",
+            `${apiBaseUrl}/users/login`,
             {
-                currentPassword: currentPassword,
-                newPassword: newPassword,
+                username: username,
+                password: password,
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);

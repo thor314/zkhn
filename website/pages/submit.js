@@ -4,7 +4,7 @@ import Router from "next/router";
 import HeadMetadata from "../components/HeadMetadata";
 import AlternateHeader from "../components/AlternateHeader";
 
-import authUser from "../api/users/authUser.js";
+import authUser from "../api/users/authUser";
 import submitNewItem from "../api/items/submitNewItem.js";
 
 // categories of post submission; text = discussion, else links

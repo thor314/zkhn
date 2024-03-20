@@ -4,8 +4,8 @@ import Router from "next/router";
 import HeadMetadata from "../components/HeadMetadata";
 import AlternateHeader from "../components/AlternateHeader";
 
-import authUser from "../api/users/authUser.js";
-import changePassword from "../api/users/changePassword.js";
+import authUser from "../api/users/authUser";
+import changePassword from "../api/users/changePassword";
 
 export default function ChangePw({ userContainsEmail, username }) {
     const [currentInputValue, setCurrentInputValue] = useState("");

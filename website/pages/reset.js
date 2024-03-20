@@ -4,7 +4,7 @@ import Router from "next/router";
 import HeadMetadata from "../components/HeadMetadata";
 import AlternateHeader from "../components/AlternateHeader";
 
-import resetPassword from "../api/users/resetPassword.js";
+import resetPassword from "../api/users/resetPassword";
 
 export default function Reset({ resetToken, username }) {
     const [passwordInputValue, setPasswordInputValue] = useState("");

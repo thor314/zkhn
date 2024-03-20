@@ -11,7 +11,7 @@ export default function updateUserData(inputData, callback) {
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);

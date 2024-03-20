@@ -2,7 +2,7 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default async function getUserData(username, req) {
+export default async function getUserData(username: string, req) {
     try {
         const cookie = req.headers.cookie ? req.headers.cookie : "";
 

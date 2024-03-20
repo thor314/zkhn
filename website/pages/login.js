@@ -5,9 +5,9 @@ import Router from "next/router";
 import HeadMetadata from "../components/HeadMetadata";
 import AlternateHeader from "../components/AlternateHeader";
 
-import createNewUser from "../api/users/createNewUser.js";
-import loginUser from "../api/users/loginUser.js";
-import authUser from "../api/users/authUser.js";
+import createNewUser from "../api/users/createNewUser";
+import loginUser from "../api/users/loginUser";
+import authUser from "../api/users/authUser";
 
 export default function Login({ goto }) {
     const [loginState, setLoginState] = useState({
