@@ -4,7 +4,7 @@ import Highlighter from "react-highlight-words";
 import renderCreatedTime from "../../utils/renderCreatedTime";
 
 export default function SearchItemComponent({ item, searchQuery }) {
-    const highlightText = (text) => {
+    const highlightText = (text: string) => {
         return (
             <Highlighter
                 searchWords={searchQuery ? searchQuery.trim().split(" ") : [""]}

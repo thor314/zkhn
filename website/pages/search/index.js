@@ -1,10 +1,10 @@
 import HeadMetadata from "../../components/HeadMetadata";
-import SearchPageHeader from "../../components/search/header.js";
-import SearchPageFooter from "../../components/search/footer.js";
-import Item from "../../components/search/item.js";
-import Comment from "../../components/search/comment.js";
-import Filters from "../../components/search/filters.js";
-import PageNumbers from "../../components/search/pageNumbers.js";
+import SearchPageHeader from "../../components/search/SearchPageHeader";
+import SearchPageFooter from "../../components/search/SearchPageFooter";
+import SearchItem from "../../components/search/SearchItem";
+import SearchComment from "../../components/search/SearchComment";
+import Filters from "../../components/search/Filters";
+import PageNumbers from "../../components/search/PageNumbers";
 
 import getAlgoliaData from "../../api/search/getAlgoliaData";
 
@@ -60,9 +60,9 @@ export default function Search({
                                       }}
                                   >
                                       {hit.type === "item" ? (
-                                          <Item item={hit} key={hit.objectID} searchQuery={searchQuery} />
+                                          <SearchItem item={hit} key={hit.objectID} searchQuery={searchQuery} />
                                       ) : (
-                                          <Comment comment={hit} key={hit.objectID} searchQuery={searchQuery} />
+                                          <SearchComment comment={hit} key={hit.objectID} searchQuery={searchQuery} />
                                       )}
                                   </div>
                               );

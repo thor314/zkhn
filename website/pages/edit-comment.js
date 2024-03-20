@@ -2,8 +2,8 @@ import { useState } from "react";
 import Router from "next/router";
 import Link from "next/link";
 
-import Header from "../components/header.js";
-import Footer from "../components/footer.js";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import HeadMetadata from "../components/HeadMetadata";
 
 import renderPointsString from "../utils/renderPointsString";

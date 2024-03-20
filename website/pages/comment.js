@@ -1,7 +1,7 @@
-import Header from "../components/header.js";
-import Footer from "../components/footer.js";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import HeadMetadata from "../components/HeadMetadata";
-import CommentComponent from "../components/comment.js";
+import CommentComponent from "../components/Comment";
 import CommentSection from "../components/commentSection.js";
 
 import getCommentById from "../api/comments/getCommentById";

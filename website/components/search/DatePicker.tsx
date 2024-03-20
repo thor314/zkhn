@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEventHandler, type MouseEventHandler } from "react";
 import DayPicker, { DateUtils } from "react-day-picker";
 import moment from "moment";
 
@@ -34,15 +34,15 @@ export default function DatePicker({ startDate, endDate, elRef, show, hideDatePi
         }
     };
 
-    const updateFromInputValue = (event) => {
+    const updateFromInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setFrom(moment(event.target.value).toDate());
     };
 
-    const updateToInputValue = (event) => {
+    const updateToInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setTo(moment(event.target.value).toDate());
     };
 
-    const requestCancel = () => {
+    const requestCancel: MouseEventHandler<HTMLButtonElement> = () => {
         setFrom(getInitialFromDate(startDate));
         setTo(getInitialToDate(endDate));
         hideDatePicker();
@@ -79,7 +79,7 @@ export default function DatePicker({ startDate, endDate, elRef, show, hideDatePi
                             />
                         </div>
                         <div className="date-picker-action-buttons">
-                            <button onClick={() => requestCancel()}>
+                            <button onClick={requestCancel}>
                                 <CancelIcon />
                                 Cancel
                             </button>

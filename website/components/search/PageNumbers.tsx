@@ -3,7 +3,7 @@ import Link from "next/link";
 import DoubleLeftArrowsIcon from "./svg/DoubleLeftArrowsIcon";
 import DoubleRightArrowsIcon from "./svg/DoubleRightArrowsIcon";
 
-export default function PageNumber({
+export default function PageNumbers({
     currPageNumber,
     totalNumOfPages,
     searchQuery,
@@ -25,7 +25,7 @@ export default function PageNumber({
 
     if (totalNumOfPages === 1) return null;
 
-    const createLinkForPageButton = (pageNumber) => {
+    const createLinkForPageButton = (pageNumber: number) => {
         const query = `q=${searchQuery}`;
         const page = `page=${pageNumber}`;
         const _itemType = `itemType=${itemType}`;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEventHandler, type KeyboardEventHandler } from "react";
 import Router from "next/router";
 import Link from "next/link";
 
@@ -21,17 +21,17 @@ export default function SearchPageHeader({
 }) {
     const [searchInputValue, setSearchInputValue] = useState(searchQuery ? searchQuery : "");
 
-    const updateSearchInputValue = (event) => {
+    const updateSearchInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setSearchInputValue(event.target.value);
     };
 
-    const checkForEnterKeypress = (event) => {
-        if (event.keyCode === 13 || event.which === 13) {
-            submitSearchInputRequest(event.target.value);
+    const checkForEnterKeypress: KeyboardEventHandler<HTMLInputElement> = (event) => {
+        if (event.key = "Enter") {
+            submitSearchInputRequest(event.currentTarget.value);
         }
     };
 
-    const submitSearchInputRequest = (inputValue) => {
+    const submitSearchInputRequest = (inputValue: string) => {
         const query = `q=${inputValue}`;
 
         const page = `page=1`;

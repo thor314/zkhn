@@ -1,6 +1,6 @@
 import AlternateHeader from "../components/AlternateHeader";
 import HeadMetadata from "../components/HeadMetadata";
-import Comment from "../components/comment.js";
+import Comment from "../components/Comment";
 
 import getReplyPageData from "../api/comments/getReplyPageData";
 

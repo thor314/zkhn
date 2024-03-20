@@ -5,7 +5,7 @@ import renderCreatedTime from "../../utils/renderCreatedTime";
 import truncateItemTitle from "../../utils/truncateItemTitle";
 
 export default function SearchCommentComponent({ comment, searchQuery }) {
-    const highlightText = (text) => {
+    const highlightText = (text: string) => {
         return (
             <Highlighter
                 searchWords={searchQuery ? searchQuery.trim().split(" ") : [""]}

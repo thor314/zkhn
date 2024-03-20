@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function SearchFooter({}) {
+export default function SearchPageFooter() {
     return (
         <div className="search-footer">
             <ul>

@@ -1,13 +1,17 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type MouseEventHandler } from "react";
 import Router from "next/router";
 import Link from "next/link";
 import moment from "moment";
 
-import DatePicker from "../../components/search/datePicker.js";
+import DatePicker from "./DatePicker";
 
-import UpArrow from "../../components/search/svg/UpArrow";
-import DownArrow from "../../components/search/svg/DownArrow";
-import RightArrow from "../../components/search/svg/RightArrow";
+import UpArrow from "./svg/UpArrow";
+import DownArrow from "./svg/DownArrow";
+import RightArrow from "./svg/RightArrow";
+
+type ItemType = "all" | "item" | "comment";
+type SortBy = "popularity" | "date";
+type DateRange = "allTime" | "last24h" | "pastWeek" | "pastMonth" | "pastYear";
 
 export default function Filters({
     searchQuery,
@@ -36,7 +40,7 @@ export default function Filters({
         return () => window.removeEventListener("click", (event) => handleClickWatcher(event));
     }, []);
 
-    const handleClickWatcher = (e) => {
+    const handleClickWatcher = (e: MouseEvent) => {
         if (typeDropdown.current && filterDropdown.current && dateRangeDropdown.current) {
             const isClickOnAnyDropdownEl =
                 typeDropdown.current.contains(e.target) ||
@@ -54,7 +58,7 @@ export default function Filters({
     };
 
     /// TYPE DROPDOWN
-    const toggleShowTypeDropdown = () => {
+    const toggleShowTypeDropdown: MouseEventHandler<HTMLLabelElement> = () => {
         if (showTypeDropdown) {
             setShowTypeDropdown(false);
             setShowSortByDropdown(false);
@@ -68,7 +72,7 @@ export default function Filters({
         }
     };
 
-    const createLinkForItemTypeButton = (itemTypeButtonValue) => {
+    const createLinkForItemTypeButton = (itemTypeButtonValue: ItemType) => {
         const query = `q=${searchQuery}`;
         const page = "page=1";
         const _itemType = `itemType=${itemTypeButtonValue}`;
@@ -81,7 +85,7 @@ export default function Filters({
     };
 
     /// SORT BY DROPDOWN
-    const toggleShowSortByDropdown = () => {
+    const toggleShowSortByDropdown: MouseEventHandler<HTMLLabelElement> = () => {
         if (showSortByDropdown) {
             setShowTypeDropdown(false);
             setShowSortByDropdown(false);
@@ -95,7 +99,7 @@ export default function Filters({
         }
     };
 
-    const createLinkForSortByButton = (sortByButtonValue) => {
+    const createLinkForSortByButton = (sortByButtonValue: SortBy) => {
         const query = `q=${searchQuery}`;
         const page = `page=${currPageNumber + 1}`;
         const _itemType = `itemType=${itemType}`;
@@ -108,7 +112,7 @@ export default function Filters({
     };
 
     /// DATE RANGE DROPDOWN
-    const toggleShowDateRangeDropdown = () => {
+    const toggleShowDateRangeDropdown: MouseEventHandler<HTMLLabelElement> = () => {
         if (showDateRangeDropdown) {
             setShowTypeDropdown(false);
             setShowSortByDropdown(false);
@@ -122,7 +126,7 @@ export default function Filters({
         }
     };
 
-    const createLinkForDateRangeButton = (dateRangeButtonValue) => {
+    const createLinkForDateRangeButton = (dateRangeButtonValue: DateRange) => {
         const query = `q=${searchQuery}`;
         const page = "page=1";
         const _itemType = `itemType=${itemType}`;
@@ -135,7 +139,7 @@ export default function Filters({
     };
 
     /// DATE PICKER DROPDOWN
-    const showDatePicker = () => {
+    const showDatePicker: MouseEventHandler<HTMLButtonElement> = () => {
         setShowTypeDropdown(false);
         setShowSortByDropdown(false);
         setShowDatePickerDropdown(true);
@@ -207,8 +211,7 @@ export default function Filters({
                     <div className="search-results-filter-dropdown" ref={typeDropdown}>
                         <label
                             className="search-results-filter-dropdown-label"
-                            onClick={() => toggleShowTypeDropdown()}
-                        >
+                            onClick={toggleShowTypeDropdown}>
                             {itemType === "item" ? "Items" : null}
                             {itemType === "comment" ? "Comments" : null}
                             {itemType !== "item" && itemType !== "comment" ? "All" : null}
@@ -219,8 +222,7 @@ export default function Filters({
                                 showTypeDropdown
                                     ? "search-results-filter-dropdown-list"
                                     : "search-results-filter-dropdown-list hide"
-                            }
-                        >
+                            }>
                             <li>
                                 <Link href={createLinkForItemTypeButton("all")}>
                                     <a>
@@ -251,8 +253,7 @@ export default function Filters({
                         <div className="search-results-filter-dropdown" ref={filterDropdown}>
                             <label
                                 className="search-results-filter-dropdown-label"
-                                onClick={() => toggleShowSortByDropdown()}
-                            >
+                                onClick={toggleShowSortByDropdown}>
                                 {sortBy === "popularity" || !sortBy ? "Popularity" : null}
                                 {sortBy === "date" ? "Date" : null}
                                 {showSortByDropdown ? <UpArrow /> : <DownArrow />}
@@ -262,8 +263,7 @@ export default function Filters({
                                     showSortByDropdown
                                         ? "search-results-filter-dropdown-list"
                                         : "search-results-filter-dropdown-list hide"
-                                }
-                            >
+                                }>
                                 <li>
                                     <Link href={createLinkForSortByButton("popularity")}>
                                         <a>
@@ -288,8 +288,7 @@ export default function Filters({
                         <div className="search-results-filter-dropdown" ref={dateRangeDropdown}>
                             <label
                                 className="search-results-filter-dropdown-label"
-                                onClick={() => toggleShowDateRangeDropdown()}
-                            >
+                                onClick={toggleShowDateRangeDropdown}>
                                 {renderDateRangeDropdownLabel()}
                                 {showDateRangeDropdown ? <UpArrow /> : <DownArrow />}
                             </label>
@@ -298,8 +297,7 @@ export default function Filters({
                                     showDateRangeDropdown
                                         ? "search-results-filter-dropdown-list"
                                         : "search-results-filter-dropdown-list hide"
-                                }
-                            >
+                                }>
                                 <li>
                                     <Link href={createLinkForDateRangeButton("allTime")}>
                                         <a>
@@ -336,7 +334,7 @@ export default function Filters({
                                     </Link>
                                 </li>
                                 <li>
-                                    <button onClick={() => showDatePicker()}>Custom Range</button>
+                                    <button onClick={showDatePicker}>Custom Range</button>
                                 </li>
                             </ul>
                         </div>
