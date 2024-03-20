@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEventHandler } from "react";
 import Router from "next/router";
 
 import HeadMetadata from "../components/HeadMetadata";
@@ -27,19 +27,19 @@ export default function Submit({}) {
         submitError: false,
     });
 
-    const updateTitleInputValue = (event) => {
+    const updateTitleInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setTitleInputValue(event.target.value);
     };
 
-    const updateUrlInputValue = (event) => {
+    const updateUrlInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setUrlInputValue(event.target.value);
     };
 
-    const updateCategoryInputValue = (event) => {
+    const updateCategoryInputValue: ChangeEventHandler<HTMLSelectElement> = (event) => {
         setCategoryInputValue(event.target.value);
     };
 
-    const updateTextInputValue = (event) => {
+    const updateTextInputValue: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setTextInputValue(event.target.value);
     };
 
@@ -238,13 +238,13 @@ export default function Submit({}) {
                         <span>text</span>
                     </div>
                     <div className="submit-content-text-input-item-input">
-                        <textarea type="text" value={textInputValue} onChange={updateTextInputValue} />
+                        <textarea value={textInputValue} onChange={updateTextInputValue} />
                     </div>
                 </div>
 
                 {/* SUBMIT BTN */}
                 <div className="submit-content-input-btn">
-                    <input type="submit" value="submit" onClick={() => submitRequest()} />
+                    <input type="submit" value="submit" onClick={submitRequest} />
                     {loading && <span> loading...</span>}
                 </div>
                 <div className="submit-content-bottom-instructions">

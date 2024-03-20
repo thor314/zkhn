@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
@@ -28,15 +28,15 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
         submitError: false,
     });
 
-    const updateTitleInputValue = (event) => {
+    const updateTitleInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setTitleInputValue(event.target.value);
     };
 
-    const updateTextInputValue = (event) => {
+    const updateTextInputValue: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setTextInputValue(event.target.value);
     };
 
-    const updateCategoryInputValue = (event) => {
+    const updateCategoryInputValue: ChangeEventHandler<HTMLSelectElement> = (event) => {
         setCategoryInputValue(event.target.value);
     };
 
@@ -188,8 +188,7 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
                                     <div className="edit-item-text-input-label grid-item">text:</div>
                                     <div className="edit-item-text-input grid-item">
                                         <textarea
-                                            type="text"
-                                            cols="60"
+                                            cols={60}
                                             rows={setInitialTextareaHeight()}
                                             value={textInputValue}
                                             onChange={updateTextInputValue}
@@ -199,7 +198,7 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
                             )}
                         </div>
                         <div className="edit-item-submit-btn">
-                            <input type="submit" value="update" onClick={() => submitEditItem()} />
+                            <input type="submit" value="update" onClick={submitEditItem} />
                             &nbsp;
                             {loading && <span> loading...</span>}
                         </div>

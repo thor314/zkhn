@@ -91,7 +91,7 @@ export default function DeleteItem({ item, authUserData, getDataError, notAllowe
 
                                     {/*ITEM DETAILS*/}
                                     <tr className="delete-item-details-bottom">
-                                        <td colSpan="1"></td>
+                                        <td colSpan={1}></td>
                                         <td>
                                             <span className="delete-item-score">
                                                 {item.points.toLocaleString()} {item.points === 1 ? "point" : "points"}
@@ -121,8 +121,7 @@ export default function DeleteItem({ item, authUserData, getDataError, notAllowe
                                     <span
                                         dangerouslySetInnerHTML={{
                                             __html: item.text,
-                                        }}
-                                    ></span>
+                                        }}></span>
                                 </div>
                             ) : null}
                         </div>

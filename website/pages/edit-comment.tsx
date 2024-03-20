@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEventHandler } from "react";
 import Router from "next/router";
 import Link from "next/link";
 
@@ -39,7 +39,7 @@ export default function EditComment({
         }
     };
 
-    const updateCommentInputValue = (event) => {
+    const updateCommentInputValue: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setCommentInputValue(event.target.value);
     };
 
@@ -187,7 +187,6 @@ export default function EditComment({
                         <div className="edit-comment-input-box">
                             <div className="edit-comment-input-box-label">text:</div>
                             <textarea
-                                type="text"
                                 cols={60}
                                 rows={setInitialTextareaHeight()}
                                 value={commentInputValue}
@@ -202,7 +201,7 @@ export default function EditComment({
 
                         {/* UPDATE COMMENT SUBMIT BUTTON */}
                         <div className="edit-comment-input-submit-btn">
-                            <input type="submit" value="update" onClick={() => submitEditComment()} />
+                            <input type="submit" value="update" onClick={submitEditComment} />
                             {loading && <span> loading...</span>}
                         </div>
 

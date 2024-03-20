@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEventHandler } from "react";
 import Router from "next/router";
 
 import HeadMetadata from "../components/HeadMetadata";
@@ -17,11 +17,11 @@ export default function ChangePw({ userContainsEmail, username }) {
         submitError: false,
     });
 
-    const updateCurrentInputValue = (event) => {
+    const updateCurrentInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setCurrentInputValue(event.target.value);
     };
 
-    const updateNewInputValue = (event) => {
+    const updateNewInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setNewInputValue(event.target.value);
     };
 
@@ -130,7 +130,7 @@ export default function ChangePw({ userContainsEmail, username }) {
 
                 {/* SUBMIT BTN */}
                 <div className="changepw-submit-btn">
-                    <input type="submit" value="Change" onClick={() => submitRequest()} />
+                    <input type="submit" value="Change" onClick={submitRequest} />
                     {loading && <span> loading...</span>}
                 </div>
             </div>

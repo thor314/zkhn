@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, type ChangeEventHandler } from "react";
 import moment from "moment";
 import Link from "next/link";
 import Router from "next/router";
@@ -31,7 +31,7 @@ export default function User({
         submitError: false,
     });
 
-    const updateAboutInputValue = (event) => {
+    const updateAboutInputValue: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setAboutInputValue(event.target.value);
     };
 
@@ -45,11 +45,11 @@ export default function User({
         }
     };
 
-    const updateEmailInputValue = (event) => {
+    const updateEmailInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setEmailInputValue(event.target.value);
     };
 
-    const updateShowDeadValue = (event) => {
+    const updateShowDeadValue: ChangeEventHandler<HTMLSelectElement> = (event) => {
         setShowDeadValue(event.target.value);
     };
 
@@ -184,7 +184,6 @@ export default function User({
                                                 cols={60}
                                                 rows={setInitialTextareaHeight()}
                                                 wrap="virtual"
-                                                type="text"
                                                 value={aboutInputValue}
                                                 onChange={updateAboutInputValue}
                                             />
@@ -315,7 +314,7 @@ export default function User({
 
                                     {/* SUBMIT FORM SECTION */}
                                     <div className="user-submit-btn">
-                                        <input type="submit" value="update" onClick={() => submitUpdateRequest()} />
+                                        <input type="submit" value="update" onClick={submitUpdateRequest} />
                                         {loading && <span> loading...</span>}
                                     </div>
                                     {error.submitError ? (
@@ -415,7 +414,7 @@ export default function User({
                                                     <div className="user-item-content">
                                                         <span
                                                             className="user-item-ban-btn"
-                                                            onClick={() => requestAddShadowBan()}
+                                                            onClick={requestAddShadowBan}
                                                         >
                                                             Shadow-Ban
                                                         </span>
@@ -431,7 +430,7 @@ export default function User({
                                                         <span>Shadow-Banned (</span>
                                                         <span
                                                             className="user-item-ban-btn"
-                                                            onClick={() => requestRemoveShadowBan()}
+                                                            onClick={requestRemoveShadowBan}
                                                         >
                                                             Remove
                                                         </span>
@@ -446,7 +445,7 @@ export default function User({
                                                     <div className="user-item-content">
                                                         <span
                                                             className="user-item-ban-btn"
-                                                            onClick={() => requestAddUserBan()}
+                                                            onClick={requestAddUserBan}
                                                         >
                                                             Ban
                                                         </span>
@@ -459,7 +458,7 @@ export default function User({
                                                         <span>Banned (</span>
                                                         <span
                                                             className="user-item-ban-btn"
-                                                            onClick={() => requestRemoveUserBan()}
+                                                            onClick={requestRemoveUserBan}
                                                         >
                                                             Remove
                                                         </span>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
@@ -32,28 +32,28 @@ export default function Login({ goto }) {
 
     const [loading, setLoading] = useState(false);
 
-    const updateLoginUsernameInputValue = (event) => {
+    const updateLoginUsernameInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setLoginState({
             ...loginState,
             loginUsernameInputValue: event.target.value,
         });
     };
 
-    const updateLoginPasswordInputValue = (event) => {
+    const updateLoginPasswordInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setLoginState({
             ...loginState,
             loginPasswordInputValue: event.target.value,
         });
     };
 
-    const updateCreateAccountUsernameInputValue = (event) => {
+    const updateCreateAccountUsernameInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setCreateAccountState({
             ...createAccountState,
             createAccountUsernameInputValue: event.target.value,
         });
     };
 
-    const updateCreateAccountPasswordInputValue = (event) => {
+    const updateCreateAccountPasswordInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setCreateAccountState({
             ...createAccountState,
             createAcountPasswordInputValue: event.target.value,
@@ -222,7 +222,7 @@ export default function Login({ goto }) {
                 </div>
             </div>
             <div className="login-submit-btn">
-                <input type="submit" value="login" onClick={() => submitLogin()} />
+                <input type="submit" value="login" onClick={submitLogin} />
                 &nbsp;
                 {loading && <span> loading...</span>}
             </div>
@@ -288,7 +288,7 @@ export default function Login({ goto }) {
                 </div>
             </div>
             <div className="login-submit-btn">
-                <input type="submit" value="create account" onClick={() => submitCreateAccount()} />
+                <input type="submit" value="create account" onClick={submitCreateAccount} />
                 &nbsp;
                 {loading && <span> loading...</span>}
             </div>

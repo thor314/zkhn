@@ -105,8 +105,7 @@ export default function DeleteComment({
                                                         comment.isParent
                                                             ? `/item?id=${comment.parentItemId}`
                                                             : `/comment?id=${comment.parentCommentId}`
-                                                    }
-                                                >
+                                                    }>
                                                     <a>parent</a>
                                                 </Link>
                                             </span>

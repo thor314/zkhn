@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEventHandler } from "react";
 import Router from "next/router";
 
 import HeadMetadata from "../components/HeadMetadata";
@@ -16,7 +16,7 @@ export default function Reset({ resetToken, username }) {
         submitError: false,
     });
 
-    const updatePasswordInputValue = (event) => {
+    const updatePasswordInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setPasswordInputValue(event.target.value);
     };
 
@@ -109,7 +109,7 @@ export default function Reset({ resetToken, username }) {
                     </div>
                 </div>
                 <div className="reset-password-submit-btn">
-                    <input type="submit" value="Change" onClick={() => submitRequest()} />
+                    <input type="submit" value="Change" onClick={submitRequest} />
                     {loading && <span> loading...</span>}
                 </div>
             </div>

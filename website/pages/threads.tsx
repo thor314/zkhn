@@ -17,9 +17,7 @@ export default function Thread({
 }) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata
-                title={!getDataError && !notFoundError ? `${userId}'s Comments | zkNews` : "zkNews"}
-            />
+            <HeadMetadata title={!getDataError && !notFoundError ? `${userId}'s Comments | zkNews` : "zkNews"} />
             <Header
                 userSignedIn={authUserData && authUserData.userSignedIn}
                 username={authUserData && authUserData.username}
