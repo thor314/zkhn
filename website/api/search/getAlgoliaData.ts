@@ -1,7 +1,7 @@
 import algoliasearch from "algoliasearch/lite";
 import moment from "moment";
 
-const searchClient = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_PUBLIC_API_KEY);
+const searchClient = algoliasearch(process.env.ALGOLIA_APP_ID!, process.env.ALGOLIA_PUBLIC_API_KEY!);
 
 const indexRankedByPopularity = searchClient.initIndex("submissions_ranked_by_popularity");
 const indexRankedByDate = searchClient.initIndex("submissions_ranked_by_date");
@@ -73,11 +73,12 @@ export default async function getAlgoliaData(query) {
                 ? await indexRankedByDate.search(query.q, searchQueryData)
                 : await indexRankedByPopularity.search(query.q, searchQueryData);
 
-        content.sortBy = sortBy;
-        content.dateRange = dateRangeType;
-        content.itemType = itemType;
-
-        return content;
+        return {
+            ...content,
+            sortBy,
+            dateRange: dateRangeType,
+            itemType,
+        };
     } catch (error) {
         return { getDataError: true };
     }
