@@ -57,8 +57,7 @@ export default function Search({
                                       style={{
                                           padding: "8px 0px",
                                           borderBottom: "1px solid rgba(var(--c-white), 0.1)",
-                                      }}
-                                  >
+                                      }}>
                                       {hit.type === "item" ? (
                                           <SearchItem item={hit} key={hit.objectID} searchQuery={searchQuery} />
                                       ) : (
@@ -82,8 +81,7 @@ export default function Search({
                                 color: "var(--c-text-light)",
                                 opacity: 0.5,
                                 height: "30vh",
-                            }}
-                        >
+                            }}>
                             <b>
                                 No Results <i>:(</i>
                             </b>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import HeadMetadata from "../components/HeadMetadata";
+import HeadMetadata from "../../components/HeadMetadata";
 import SearchPageHeader from "../../components/search/SearchPageHeader";
 import SearchPageFooter from "../../components/search/SearchPageFooter";
 
@@ -12,8 +12,8 @@ export default function About() {
             <div className="search-about-content">
                 <h3>About</h3>
                 <p>
-                    zkNews search provides real-time full-text search for the zkNews community website. The
-                    search backend is implemented using{" "}
+                    zkNews search provides real-time full-text search for the zkNews community website. The search
+                    backend is implemented using{" "}
                     <Link href="http://www.algolia.com">
                         <a>Algolia</a>
                     </Link>{" "}
