@@ -8,7 +8,7 @@ import HeadMetadata from "../components/HeadMetadata";
 import getDeleteItemPageData from "../api/items/getDeleteItemPageData.js";
 import deleteItem from "../api/items/deleteItem.js";
 
-import renderCreatedTime from "../utils/renderCreatedTime.js";
+import renderCreatedTime from "../utils/renderCreatedTime";
 
 export default function DeleteItem({ item, authUserData, getDataError, notAllowedError, notFoundError, goToString }) {
     const [error, setError] = useState({

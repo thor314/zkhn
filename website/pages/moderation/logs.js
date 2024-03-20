@@ -4,8 +4,8 @@ import Router from "next/router";
 import AlternateHeader from "../components/AlternateHeader";
 import HeadMetadata from "../components/HeadMetadata";
 
-import renderCreatedTime from "../../utils/renderCreatedTime.js";
-import truncateItemTitle from "../../utils/truncateItemTitle.js";
+import renderCreatedTime from "../../utils/renderCreatedTime";
+import truncateItemTitle from "../../utils/truncateItemTitle";
 
 import getModerationLogsByPage from "../../api/moderation/getModerationLogsByPage.js";
 

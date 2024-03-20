@@ -6,11 +6,11 @@ import upvoteComment from "../api/comments/upvoteComment.js";
 import downvoteComment from "../api/comments/downvoteComment.js";
 import unvoteComment from "../api/comments/unvoteComment.js";
 
-import renderPointsString from "../utils/renderPointsString.js";
-import renderCreatedTime from "../utils/renderCreatedTime.js";
-import sortCommentChildren from "../utils/sortCommentChildren.js";
-import getNumberOfChildrenComments from "../utils/getNumberOfChildrenComments.js";
-import generateCommentTextClassName from "../utils/generateCommentTextClassName.js";
+import renderPointsString from "../utils/renderPointsString";
+import renderCreatedTime from "../utils/renderCreatedTime";
+import sortCommentChildren from "../utils/sortCommentChildren";
+import getNumberOfChildrenComments from "../utils/getNumberOfChildrenComments";
+import generateCommentTextClassName from "../utils/generateCommentTextClassName";
 import killComment from "../api/moderation/killComment.js";
 import unkillComment from "../api/moderation/unkillComment.js";
 

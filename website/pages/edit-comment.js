@@ -6,9 +6,9 @@ import Header from "../components/header.js";
 import Footer from "../components/footer.js";
 import HeadMetadata from "../components/HeadMetadata";
 
-import renderPointsString from "../utils/renderPointsString.js";
-import renderCreatedTime from "../utils/renderCreatedTime.js";
-import truncateItemTitle from "../utils/truncateItemTitle.js";
+import renderPointsString from "../utils/renderPointsString";
+import renderCreatedTime from "../utils/renderCreatedTime";
+import truncateItemTitle from "../utils/truncateItemTitle";
 
 import getEditCommentPageData from "../api/comments/getEditCommentPageData.js";
 import editComment from "../api/comments/editComment.js";

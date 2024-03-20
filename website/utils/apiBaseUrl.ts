@@ -1,4 +1,4 @@
-let apiBaseUrl;
+let apiBaseUrl: string | undefined;
 
 if (process.env.NODE_ENV === "development") {
     apiBaseUrl = process.env.DEVELOPMENT_API_URL;

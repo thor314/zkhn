@@ -1,4 +1,4 @@
-export default function getNumberOfChildrenComments(comment, count) {
+export default function getNumberOfChildrenComments(comment, count: number) {
     count = count || 1;
 
     for (let i = 0; i < comment.children.length; i++) {

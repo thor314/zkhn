@@ -12,7 +12,7 @@ import addNewComment from "../api/comments/addNewComment.js";
 import killItem from "../api/moderation/killItem.js";
 import unkillItem from "../api/moderation/unkillItem.js";
 
-import renderCreatedTime from "../utils/renderCreatedTime.js";
+import renderCreatedTime from "../utils/renderCreatedTime";
 
 export default function ItemComponent({ item, currUsername, goToString, userSignedIn, isModerator }) {
     const [loading, setLoading] = useState(false);

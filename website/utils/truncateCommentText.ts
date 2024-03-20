@@ -3,7 +3,7 @@
  * @param string
  * @returns string
  */
-export default function truncateCommentText(string) {
+export default function truncateCommentText(string: string) {
     if (string.length > 80) {
         return string.substring(0, 77) + "...";
     } else {

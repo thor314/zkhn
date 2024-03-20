@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import apiBaseUrl from "../../utils/apiBaseUrl.js";
+import apiBaseUrl from "../../utils/apiBaseUrl";
 
 export default function unvoteItem(itemId, callback) {
     axios

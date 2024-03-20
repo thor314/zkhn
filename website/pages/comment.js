@@ -6,7 +6,7 @@ import CommentSection from "../components/commentSection.js";
 
 import getCommentById from "../api/comments/getCommentById.js";
 
-import truncateCommentText from "../utils/truncateCommentText.js";
+import truncateCommentText from "../utils/truncateCommentText";
 
 export default function Comment({
     comment,

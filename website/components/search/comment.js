@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Highlighter from "react-highlight-words";
 
-import renderCreatedTime from "../../utils/renderCreatedTime.js";
-import truncateItemTitle from "../../utils/truncateItemTitle.js";
+import renderCreatedTime from "../../utils/renderCreatedTime";
+import truncateItemTitle from "../../utils/truncateItemTitle";
 
 export default function SearchCommentComponent({ comment, searchQuery }) {
     const highlightText = (text) => {

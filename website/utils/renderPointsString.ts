@@ -3,7 +3,7 @@
  * @param string
  * @returns string
  */
-export default function renderPointsString(points) {
+export default function renderPointsString(points: number) {
     if (points > 1 || points < -1 || !points) {
         return "points";
     } else {

@@ -1,7 +1,7 @@
 /**
  * @returns string: className of the faded text
  */
-export default function generateCommentTextClassName(points) {
+export default function generateCommentTextClassName(points: number) {
     if (points === -1) {
         return "comment-section-comment-text faded-level-1";
     } else if (points === -2) {

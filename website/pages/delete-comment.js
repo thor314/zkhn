@@ -5,9 +5,9 @@ import Link from "next/link";
 import AlternateHeader from "../components/AlternateHeader";
 import HeadMetadata from "../components/HeadMetadata";
 
-import renderPointsString from "../utils/renderPointsString.js";
-import renderCreatedTime from "../utils/renderCreatedTime.js";
-import truncateItemTitle from "../utils/truncateItemTitle.js";
+import renderPointsString from "../utils/renderPointsString";
+import renderCreatedTime from "../utils/renderCreatedTime";
+import truncateItemTitle from "../utils/truncateItemTitle";
 
 import getDeleteCommentPageData from "../api/comments/getDeleteCommentPageData.js";
 import deleteComment from "../api/comments/deleteComment.js";

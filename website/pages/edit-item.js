@@ -9,7 +9,7 @@ import HeadMetadata from "../components/HeadMetadata";
 import getEditItemPageData from "../api/items/getEditItemPageData.js";
 import editItem from "../api/items/editItem.js";
 
-import renderCreatedTime from "../utils/renderCreatedTime.js";
+import renderCreatedTime from "../utils/renderCreatedTime";
 
 // hack
 // TODO(TK 2024-02-09): why can't I just import this

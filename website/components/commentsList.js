@@ -9,9 +9,9 @@ import unfavoriteComment from "../api/comments/unfavoriteComment.js";
 import killComment from "../api/moderation/killComment.js";
 import unkillComment from "../api/moderation/unkillComment.js";
 
-import renderPointsString from "../utils/renderPointsString.js";
-import renderCreatedTime from "../utils/renderCreatedTime.js";
-import truncateItemTitle from "../utils/truncateItemTitle.js";
+import renderPointsString from "../utils/renderPointsString";
+import renderCreatedTime from "../utils/renderCreatedTime";
+import truncateItemTitle from "../utils/truncateItemTitle";
 
 export default function CommentsList({
     comments: commentsData,
