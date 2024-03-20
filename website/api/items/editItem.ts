@@ -2,16 +2,19 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function unfavoriteItem(itemId, callback) {
+export default function editItem(id, newItemTitle: string, newItemText: string, newItemCategory, callback) {
     axios
         .put(
-            apiBaseUrl + "/items/unfavorite-item",
+            apiBaseUrl + "/items/edit-item",
             {
-                id: itemId,
+                id: id,
+                newItemTitle: newItemTitle,
+                newItemText: newItemText,
+                newItemCategory: newItemCategory,
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);

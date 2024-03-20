@@ -4,7 +4,7 @@ import HeadMetadata from "../components/HeadMetadata";
 import ItemComponent from "../components/item.js";
 import CommentSection from "../components/commentSection.js";
 
-import getItemById from "../api/items/getItemById.js";
+import getItemById from "../api/items/getItemById";
 
 export default function Item({
     item,

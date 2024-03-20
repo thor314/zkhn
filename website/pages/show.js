@@ -5,7 +5,7 @@ import Footer from "../components/footer.js";
 import HeadMetadata from "../components/HeadMetadata";
 import ItemsList from "../components/itemsList.js";
 
-import getRankedShowItemsByPage from "../api/items/getRankedShowItemsByPage.js";
+import getRankedShowItemsByPage from "../api/items/getRankedShowItemsByPage";
 
 export default function Show({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (

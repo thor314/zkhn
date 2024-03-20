@@ -2,16 +2,16 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function favoriteItem(itemId, callback) {
+export default function deleteItem(id, callback) {
     axios
-        .post(
-            apiBaseUrl + "/items/favorite-item",
+        .put(
+            apiBaseUrl + "/items/delete-item",
             {
-                id: itemId,
+                id: id,
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);

@@ -3,7 +3,7 @@ import Footer from "../components/footer.js";
 import HeadMetadata from "../components/HeadMetadata";
 import ItemsList from "../components/itemsList.js";
 
-import getItemsSubmittedByUser from "../api/items/getItemsSubmittedByUser.js";
+import getItemsSubmittedByUser from "../api/items/getItemsSubmittedByUser";
 
 export default function Submitted({ items, authUserData, page, userId, isMore, getDataError, goToString }) {
     return (

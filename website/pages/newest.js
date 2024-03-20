@@ -2,7 +2,7 @@ import HeadMetadata from "../components/HeadMetadata";
 import Header from "../components/header.js";
 import Footer from "../components/footer.js";
 
-import getNewestItemsByPage from "../api/items/getNewestItemsByPage.js";
+import getNewestItemsByPage from "../api/items/getNewestItemsByPage";
 
 import ItemsList from "../components/itemsList.js";
 

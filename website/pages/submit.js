@@ -5,7 +5,7 @@ import HeadMetadata from "../components/HeadMetadata";
 import AlternateHeader from "../components/AlternateHeader";
 
 import authUser from "../api/users/authUser";
-import submitNewItem from "../api/items/submitNewItem.js";
+import submitNewItem from "../api/items/submitNewItem";
 
 // categories of post submission; text = discussion, else links
 export const categories = ["discussion", "blog", "tweet", "paper", "tool", "book", "announcement", "other"];

@@ -2,25 +2,21 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function submitNewItem(title, url, text, category, callback) {
+export default function favoriteItem(itemId, callback) {
     axios
         .post(
-            apiBaseUrl + "/items/submit-new-item",
+            apiBaseUrl + "/items/favorite-item",
             {
-                title: title,
-                url: url,
-                text: text,
-                category: category
+                id: itemId,
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);
         })
         .catch(function (error) {
-            console.error("An error occurred while submitting the new item:", error);
             callback({ submitError: true });
         });
 }

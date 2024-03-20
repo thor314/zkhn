@@ -3,7 +3,7 @@ import Footer from "../components/footer.js";
 import HeadMetadata from "../components/HeadMetadata";
 import ItemsList from "../components/itemsList.js";
 
-import getNewestShowItemsByPage from "../api/items/getNewestShowItemsByPage.js";
+import getNewestShowItemsByPage from "../api/items/getNewestShowItemsByPage";
 
 export default function ShowNew({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (

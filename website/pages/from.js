@@ -3,7 +3,7 @@ import Footer from "../components/footer.js";
 import HeadMetadata from "../components/HeadMetadata";
 import ItemsList from "../components/itemsList.js";
 
-import getItemsBySiteDomain from "../api/items/getItemsBySiteDomain.js";
+import getItemsBySiteDomain from "../api/items/getItemsBySiteDomain";
 
 export default function From({ items, authUserData, site, page, isMore, getDataError, goToString }) {
     return (
