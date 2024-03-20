@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import HeadMetadata from "../components/HeadMetadata";
-import AlternateHeader from "../components/AlternateHeader";
+import HeadMetadata from "../../components/HeadMetadata";
+import AlternateHeader from "../../components/AlternateHeader";
 
 import getShadowBannedUsersByPage from "../../api/moderation/getShadowBannedUsersByPage";
 

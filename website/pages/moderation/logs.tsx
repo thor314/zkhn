@@ -1,8 +1,9 @@
+import { type ChangeEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
-import AlternateHeader from "../components/AlternateHeader";
-import HeadMetadata from "../components/HeadMetadata";
+import AlternateHeader from "../../components/AlternateHeader";
+import HeadMetadata from "../../components/HeadMetadata";
 
 import renderCreatedTime from "../../utils/renderCreatedTime";
 import truncateItemTitle from "../../utils/truncateItemTitle";
@@ -10,7 +11,7 @@ import truncateItemTitle from "../../utils/truncateItemTitle";
 import getModerationLogsByPage from "../../api/moderation/getModerationLogsByPage";
 
 export default function Logs({ logs, category, page, isMore, getDataError, notAllowedError }) {
-    const updateFilterOptionValue = (event) => {
+    const updateFilterOptionValue: ChangeEventHandler<HTMLSelectElement> = (event) => {
         Router.push(`/moderation/logs?category=${event.target.value}`);
     };
 
