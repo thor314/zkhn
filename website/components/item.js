@@ -8,7 +8,7 @@ import favoriteItem from "../api/items/favoriteItem";
 import unfavoriteItem from "../api/items/unfavoriteItem";
 import hideItem from "../api/items/hideItem";
 import unhideItem from "../api/items/unhideItem";
-import addNewComment from "../api/comments/addNewComment.js";
+import addNewComment from "../api/comments/addNewComment";
 import killItem from "../api/moderation/killItem";
 import unkillItem from "../api/moderation/unkillItem";
 

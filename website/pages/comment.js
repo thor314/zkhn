@@ -4,7 +4,7 @@ import HeadMetadata from "../components/HeadMetadata";
 import CommentComponent from "../components/comment.js";
 import CommentSection from "../components/commentSection.js";
 
-import getCommentById from "../api/comments/getCommentById.js";
+import getCommentById from "../api/comments/getCommentById";
 
 import truncateCommentText from "../utils/truncateCommentText";
 

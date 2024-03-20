@@ -2,17 +2,16 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function upvoteComment(commentId, parentItemId, callback) {
+export default function addNewComment(commentData, callback) {
     axios
         .post(
-            apiBaseUrl + "/comments/upvote-comment",
+            apiBaseUrl + "/comments/add-new-comment",
             {
-                id: commentId,
-                parentItemId: parentItemId,
+                commentData: commentData,
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);

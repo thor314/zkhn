@@ -2,7 +2,7 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function editComment(id, newCommentText, callback) {
+export default function editComment(id, newCommentText: string, callback) {
     axios
         .put(
             apiBaseUrl + "/comments/edit-comment",
@@ -12,7 +12,7 @@ export default function editComment(id, newCommentText, callback) {
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);

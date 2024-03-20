@@ -2,21 +2,22 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function addNewComment(commentData, callback) {
+export default function favoriteComment(commentId, callback) {
     axios
         .post(
-            apiBaseUrl + "/comments/add-new-comment",
+            apiBaseUrl + "/comments/favorite-comment",
             {
-                commentData: commentData,
+                id: commentId,
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);
         })
         .catch(function (error) {
+            // console.log("ERR", error);
             callback({ submitError: true });
         });
 }

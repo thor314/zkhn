@@ -2,10 +2,10 @@ import { useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
-import upvoteComment from "../api/comments/upvoteComment.js";
-import downvoteComment from "../api/comments/downvoteComment.js";
-import unvoteComment from "../api/comments/unvoteComment.js";
-import unfavoriteComment from "../api/comments/unfavoriteComment.js";
+import upvoteComment from "../api/comments/upvoteComment";
+import downvoteComment from "../api/comments/downvoteComment";
+import unvoteComment from "../api/comments/unvoteComment";
+import unfavoriteComment from "../api/comments/unfavoriteComment";
 import killComment from "../api/moderation/killComment";
 import unkillComment from "../api/moderation/unkillComment";
 

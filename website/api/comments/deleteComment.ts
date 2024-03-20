@@ -2,22 +2,21 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function favoriteComment(commentId, callback) {
+export default function deleteComment(id, callback) {
     axios
-        .post(
-            apiBaseUrl + "/comments/favorite-comment",
+        .put(
+            apiBaseUrl + "/comments/delete-comment",
             {
-                id: commentId,
+                id: id,
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);
         })
         .catch(function (error) {
-            // console.log("ERR", error);
             callback({ submitError: true });
         });
 }

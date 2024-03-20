@@ -2,16 +2,17 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function deleteComment(id, callback) {
+export default function downvoteComment(commentId, parentItemId, callback) {
     axios
-        .put(
-            apiBaseUrl + "/comments/delete-comment",
+        .post(
+            apiBaseUrl + "/comments/downvote-comment",
             {
-                id: id,
+                id: commentId,
+                parentItemId: parentItemId,
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);

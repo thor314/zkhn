@@ -7,7 +7,7 @@ import ItemsList from "../components/itemsList.js";
 import CommentsList from "../components/commentsList.js";
 
 import getUserFavoritedItemsByPage from "../api/items/getUserFavoritedItemsByPage";
-import getUserFavoritedCommentsByPage from "../api/comments/getUserFavoritedCommentsByPage.js";
+import getUserFavoritedCommentsByPage from "../api/comments/getUserFavoritedCommentsByPage";
 
 export default function Favorites({
     items,

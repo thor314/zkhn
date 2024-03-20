@@ -9,8 +9,8 @@ import renderPointsString from "../utils/renderPointsString";
 import renderCreatedTime from "../utils/renderCreatedTime";
 import truncateItemTitle from "../utils/truncateItemTitle";
 
-import getDeleteCommentPageData from "../api/comments/getDeleteCommentPageData.js";
-import deleteComment from "../api/comments/deleteComment.js";
+import getDeleteCommentPageData from "../api/comments/getDeleteCommentPageData";
+import deleteComment from "../api/comments/deleteComment";
 
 export default function DeleteComment({
     comment,

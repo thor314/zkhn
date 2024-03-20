@@ -3,7 +3,7 @@ import Footer from "../components/footer.js";
 import HeadMetadata from "../components/HeadMetadata";
 import CommentsList from "../components/commentsList.js";
 
-import getNewestCommentsByPage from "../api/comments/getNewestCommentsByPage.js";
+import getNewestCommentsByPage from "../api/comments/getNewestCommentsByPage";
 
 export default function NewComments({ comments, authUserData, page, isMore, getDataError, goToString }) {
     return (

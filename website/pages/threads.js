@@ -3,7 +3,7 @@ import Footer from "../components/footer.js";
 import HeadMetadata from "../components/HeadMetadata";
 import CommentsList from "../components/commentsList.js";
 
-import getUserCommentsByPage from "../api/comments/getUserCommentsByPage.js";
+import getUserCommentsByPage from "../api/comments/getUserCommentsByPage";
 
 export default function Thread({
     comments,
