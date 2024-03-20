@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HeadMetadata from "../components/HeadMetadata";
-import CommentsList from "../components/commentsList.js";
+import CommentsList from "../components/CommentsList";
 
 import getNewestCommentsByPage from "../api/comments/getNewestCommentsByPage";
 

@@ -1,8 +1,8 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HeadMetadata from "../components/HeadMetadata";
-import ItemComponent from "../components/item.js";
-import CommentSection from "../components/commentSection.js";
+import ItemComponent from "../components/Item";
+import CommentSection from "../components/CommentSection";
 
 import getItemById from "../api/items/getItemById";
 

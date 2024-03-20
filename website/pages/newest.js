@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 import getNewestItemsByPage from "../api/items/getNewestItemsByPage";
 
-import ItemsList from "../components/itemsList.js";
+import ItemsList from "../components/ItemsList";
 
 export default function Newest({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (

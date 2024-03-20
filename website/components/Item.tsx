@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
@@ -19,9 +19,9 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
     const [numOfVote, setNumOfVote] = useState(item.points);
     const [commentInputValue, setCommentInputValue] = useState("");
     const [error, setError] = useState({
-        commentTextTooLongError: "",
-        commentTextRequiredError: "",
-        commentSubmitError: "",
+        commentTextTooLongError: false,
+        commentTextRequiredError: false,
+        commentSubmitError: false,
     });
 
     const requestUpvoteItem = () => {
@@ -163,7 +163,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
         });
     };
 
-    const updateCommentInputValue = (event) => {
+    const updateCommentInputValue: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setCommentInputValue(event.target.value);
     };
 
@@ -266,7 +266,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                                     {item.votedOnByUser || item.dead ? (
                                         <span className="item-upvote hide"></span>
                                     ) : (
-                                        <span className="item-upvote" onClick={() => requestUpvoteItem()}></span>
+                                        <span className="item-upvote" onClick={requestUpvoteItem}></span>
                                     )}
                                 </>
                             ) : null}
@@ -289,7 +289,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                         </td>
                     </tr>
                     <tr className="item-details-bottom">
-                        <td colSpan="1"></td>
+                        <td colSpan={1}></td>
                         <td>
                             {/* ITEM POINTS | NUM OF VOTE */}
                             <span>
@@ -309,7 +309,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                             {item.votedOnByUser && !item.unvoteExpired && !item.dead ? (
                                 <>
                                     <span> | </span>
-                                    <span className="item-unvote" onClick={() => requestUnvoteItem()}>
+                                    <span className="item-unvote" onClick={requestUnvoteItem}>
                                         un-vote
                                     </span>
                                 </>
@@ -318,14 +318,14 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                             {!item.hiddenByUser ? (
                                 <>
                                     <span> | </span>
-                                    <span className="item-hide" onClick={() => requestHideItem()}>
+                                    <span className="item-hide" onClick={requestHideItem}>
                                         hide
                                     </span>
                                 </>
                             ) : (
                                 <>
                                     <span> | </span>
-                                    <span className="item-hide" onClick={() => requestUnhideItem()}>
+                                    <span className="item-hide" onClick={requestUnhideItem}>
                                         un-hide
                                     </span>
                                 </>
@@ -343,14 +343,14 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                             {!item.favoritedByUser ? (
                                 <>
                                     <span> | </span>
-                                    <span className="item-favorite" onClick={() => requestFavoriteItem()}>
+                                    <span className="item-favorite" onClick={requestFavoriteItem}>
                                         favorite
                                     </span>
                                 </>
                             ) : (
                                 <>
                                     <span> | </span>
-                                    <span className="item-favorite" onClick={() => requestUnfavoriteItem()}>
+                                    <span className="item-favorite" onClick={requestUnfavoriteItem}>
                                         un-favorite
                                     </span>
                                 </>
@@ -381,7 +381,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                             {isModerator && !item.dead ? (
                                 <>
                                     <span> | </span>
-                                    <span className="item-kill" onClick={() => requestKillItem()}>
+                                    <span className="item-kill" onClick={requestKillItem}>
                                         kill
                                     </span>
                                 </>
@@ -390,7 +390,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                             {isModerator && item.dead ? (
                                 <>
                                     <span> | </span>
-                                    <span className="item-kill" onClick={() => requestUnkillItem()}>
+                                    <span className="item-kill" onClick={requestUnkillItem}>
                                         un-kill
                                     </span>
                                 </>
@@ -436,10 +436,10 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
             {!item.dead ? (
                 <>
                     <div className="item-comment-box">
-                        <textarea type="text" value={commentInputValue} onChange={updateCommentInputValue} />
+                        <textarea value={commentInputValue} onChange={updateCommentInputValue} />
                     </div>
                     <div className="item-add-comment-btn">
-                        <input type="submit" value="add comment" onClick={() => requestAddNewComment()} />
+                        <input type="submit" value="add comment" onClick={requestAddNewComment} />
                         &nbsp;
                         {loading && <span> loading...</span>}
                     </div>

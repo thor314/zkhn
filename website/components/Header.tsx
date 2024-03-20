@@ -32,8 +32,7 @@ export default function Header({ userSignedIn, username, karma, goto, pageName, 
                                 <>
                                     <Link
                                         className={pageName === "threads" ? "white-text" : null}
-                                        href={`/threads?id=${username}`}
-                                    >
+                                        href={`/threads?id=${username}`}>
                                         threads
                                     </Link>
                                     <span> | </span>

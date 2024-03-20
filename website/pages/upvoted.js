@@ -1,8 +1,8 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HeadMetadata from "../components/HeadMetadata";
-import ItemsList from "../components/itemsList.js";
-import CommentsList from "../components/commentsList.js";
+import ItemsList from "../components/ItemsList";
+import CommentsList from "../components/CommentsList";
 
 import getUserUpvotedItemsByPage from "../api/items/getUserUpvotedItemsByPage";
 import getUserUpvotedCommentsByPage from "../api/comments/getUserUpvotedCommentsByPage";

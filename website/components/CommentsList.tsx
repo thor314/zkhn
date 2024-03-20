@@ -184,10 +184,9 @@ export default function CommentsList({
                                                                       requestUpvoteComment(
                                                                           comment.id,
                                                                           comment.parentItemId,
-                                                                          index,
+                                                                          index
                                                                       )
-                                                                  }
-                                                              >
+                                                                  }>
                                                                   <span></span>
                                                               </div>
                                                           </>
@@ -211,10 +210,9 @@ export default function CommentsList({
                                                                       requestDownvoteComment(
                                                                           comment.id,
                                                                           comment.parentItemId,
-                                                                          index,
+                                                                          index
                                                                       )
-                                                                  }
-                                                              >
+                                                                  }>
                                                                   <span></span>
                                                               </div>
                                                           </>
@@ -252,8 +250,7 @@ export default function CommentsList({
                                                           <span> | </span>
                                                           <span
                                                               className="listed-comment-unvote"
-                                                              onClick={() => requestUnvoteComment(comment.id, index)}
-                                                          >
+                                                              onClick={() => requestUnvoteComment(comment.id, index)}>
                                                               un-vote
                                                           </span>
                                                       </>
@@ -267,8 +264,7 @@ export default function CommentsList({
                                                               comment.isParent
                                                                   ? `/item?id=${comment.parentItemId}`
                                                                   : `/comment?id=${comment.parentCommentId}`
-                                                          }
-                                                      >
+                                                          }>
                                                           <a>parent</a>
                                                       </Link>
                                                   </span>
@@ -279,8 +275,7 @@ export default function CommentsList({
                                                           <span> | </span>
                                                           <span
                                                               className="listed-comment-unfavorite"
-                                                              onClick={() => requestUnfavoriteComment(comment.id)}
-                                                          >
+                                                              onClick={() => requestUnfavoriteComment(comment.id)}>
                                                               un-favorite
                                                           </span>
                                                       </>
@@ -310,8 +305,7 @@ export default function CommentsList({
                                                               <Link
                                                                   href={`/delete-comment?id=${
                                                                       comment.id
-                                                                  }&goto=${encodeURIComponent(goToString)}`}
-                                                              >
+                                                                  }&goto=${encodeURIComponent(goToString)}`}>
                                                                   <a>delete</a>
                                                               </Link>
                                                           </span>
@@ -324,8 +318,7 @@ export default function CommentsList({
                                                       <>
                                                           <span
                                                               className="listed-comment-kill"
-                                                              onClick={() => requestKillComment(comment.id, index)}
-                                                          >
+                                                              onClick={() => requestKillComment(comment.id, index)}>
                                                               kill
                                                           </span>
                                                       </>
@@ -336,8 +329,7 @@ export default function CommentsList({
                                                       <>
                                                           <span
                                                               className="listed-comment-kill"
-                                                              onClick={() => requestUnkillComment(comment.id, index)}
-                                                          >
+                                                              onClick={() => requestUnkillComment(comment.id, index)}>
                                                               un-kill
                                                           </span>
                                                       </>

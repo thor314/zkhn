@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ChangeEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
@@ -33,7 +33,7 @@ export default function CommentComponent({
         replySubmitError: false,
     });
 
-    const updateReplyInputValue = (event) => {
+    const updateReplyInputValue: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setReplyInputValue(event.target.value);
     };
 
@@ -125,7 +125,7 @@ export default function CommentComponent({
 
         if (!userSignedIn) {
             // location.href = `/login?goto=${encodeuricomponent(gotostring)}`;
-            Router.push(`/login?goto=${encodeuricomponent(gotostring)}`);
+            Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
         } else {
             setLoading(true);
 
@@ -149,7 +149,7 @@ export default function CommentComponent({
 
         if (!userSignedIn) {
             // location.href = `/login?goto=${encodeuricomponent(gotostring)}`;
-            Router.push(`/login?goto=${encodeuricomponent(gotostring)}`);
+            Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
         } else {
             setLoading(true);
 
@@ -187,7 +187,7 @@ export default function CommentComponent({
                 setLoading(false);
                 if (response.authError) {
                     // location.href = `/login?goto=${encodeuricomponent(gotostring)}`;
-                    Router.push(`/login?goto=${encodeuricomponent(gotostring)}`);
+                    Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
                 } else {
                     // location.href = `/favorites?id=${currUsername}&comments=t`;
                     Router.push(`/favorites?id=${currUsername}&comments=t`);
@@ -263,7 +263,7 @@ export default function CommentComponent({
                                         <>
                                             <div
                                                 className="comment-content-upvote"
-                                                onClick={() => requestUpvoteComment()}
+                                                onClick={requestUpvoteComment}
                                             >
                                                 <span></span>
                                             </div>
@@ -284,7 +284,7 @@ export default function CommentComponent({
                                         <>
                                             <div
                                                 className="comment-content-downvote"
-                                                onClick={() => requestDownvoteComment()}
+                                                onClick={requestDownvoteComment}
                                             >
                                                 <span></span>
                                             </div>
@@ -321,7 +321,7 @@ export default function CommentComponent({
                                 {comment.votedOnByUser && !comment.unvoteExpired && !comment.dead ? (
                                     <>
                                         <span> | </span>
-                                        <span className="comment-content-unvote" onClick={() => requestUnvoteComment()}>
+                                        <span className="comment-content-unvote" onClick={requestUnvoteComment}>
                                             un-vote
                                         </span>
                                     </>
@@ -402,7 +402,7 @@ export default function CommentComponent({
                                 {/* KILL COMMENT */}
                                 {isModerator && !comment.dead ? (
                                     <>
-                                        <span className="comment-content-kill" onClick={() => requestKillComment()}>
+                                        <span className="comment-content-kill" onClick={requestKillComment}>
                                             kill
                                         </span>
                                     </>
@@ -411,7 +411,7 @@ export default function CommentComponent({
                                 {/* UNKILL COMMENT */}
                                 {isModerator && comment.dead ? (
                                     <>
-                                        <span className="comment-content-kill" onClick={() => requestUnkillComment()}>
+                                        <span className="comment-content-kill" onClick={requestUnkillComment}>
                                             un-kill
                                         </span>
                                     </>
@@ -439,10 +439,10 @@ export default function CommentComponent({
             {!comment.dead ? (
                 <>
                     <div className="comment-content-repy-box">
-                        <textarea type="text" value={replyInputValue} onChange={updateReplyInputValue} />
+                        <textarea value={replyInputValue} onChange={updateReplyInputValue} />
                     </div>
                     <div className="comment-content-reply-btn">
-                        <input type="submit" value="reply" onClick={() => requestSubmitReply()} />
+                        <input type="submit" value="reply" onClick={requestSubmitReply} />
                         {loading && <span> loading...</span>}
                     </div>
                     {error.replyTextRequiredError ? (

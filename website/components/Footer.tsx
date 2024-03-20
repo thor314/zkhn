@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useState, type ChangeEventHandler, type KeyboardEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
-export default function Footer({}) {
+export default function Footer() {
     const [searchInputValue, setSearchInputValue] = useState("");
 
-    const updateSearchInputValue = (event) => {
+    const updateSearchInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setSearchInputValue(event.target.value);
     };
 
-    const listenForEnterKeyPress = (event) => {
-        if (event.keyCode === 13 && searchInputValue) {
+    const listenForEnterKeyPress: KeyboardEventHandler<HTMLInputElement> = (event) => {
+        if (event.key === "Enter" && searchInputValue) {
             // location.href = `/search?q=${searchInputValue}`;
             Router.push(`/search?q=${searchInputValue}`);
         }
