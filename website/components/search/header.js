@@ -2,10 +2,10 @@ import { useState } from "react";
 import Router from "next/router";
 import Link from "next/link";
 
-import SearchBarIcon from "./svg/searchBarIcon.js";
-import AlgoliaLogo from "./svg/algoliaLogo.js";
-import SettingsIcon from "./svg/settingsIcon.js";
-import LeftArrow from "./svg/leftArrow.js";
+import SearchBarIcon from "./svg/SearchBarIcon";
+import AlgoliaLogo from "./svg/AlgoliaLogo";
+import SettingsIcon from "./svg/SettingsIcon";
+import LeftArrow from "./svg/LeftArrow";
 
 export default function SearchPageHeader({
     showSearchBar,

@@ -4,7 +4,7 @@ import moment from "moment";
 
 import "react-day-picker/lib/style.css";
 
-import CancelIcon from "./svg/cancelIcon.js";
+import CancelIcon from "./svg/CancelIcon";
 
 const getInitialFromDate = (timestamp) => {
     if (timestamp) {

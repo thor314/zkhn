@@ -1,4 +1,4 @@
-export default function AlgoliaLogo({}) {
+export default function AlgoliaLogo() {
     return (
         <svg viewBox="0 0 485 120" xmlns="http://www.w3.org/2000/svg">
             <g fill="none">

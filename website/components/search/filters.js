@@ -5,9 +5,9 @@ import moment from "moment";
 
 import DatePicker from "../../components/search/datePicker.js";
 
-import UpArrow from "../../components/search/svg/upArrow.js";
-import DownArrow from "../../components/search/svg/downArrow.js";
-import RightArrow from "../../components/search/svg/rightArrow.js";
+import UpArrow from "../../components/search/svg/UpArrow";
+import DownArrow from "../../components/search/svg/DownArrow";
+import RightArrow from "../../components/search/svg/RightArrow";
 
 export default function Filters({
     searchQuery,

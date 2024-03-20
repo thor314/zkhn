@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import DoubleLeftArrowsIcon from "./svg/doubleLeftArrowsIcon.js";
-import DoubleRightArrowsIcon from "./svg/doubleRightArrowsIcon.js";
+import DoubleLeftArrowsIcon from "./svg/DoubleLeftArrowsIcon";
+import DoubleRightArrowsIcon from "./svg/DoubleRightArrowsIcon";
 
 export default function PageNumber({
     currPageNumber,

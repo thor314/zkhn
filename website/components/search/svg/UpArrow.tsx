@@ -1,4 +1,4 @@
-export default function SearchBarIcon({}) {
+export default function UpArrow() {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -9,10 +9,8 @@ export default function SearchBarIcon({}) {
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            strokeLinejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     );
 }

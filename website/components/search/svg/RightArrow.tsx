@@ -1,4 +1,4 @@
-export default function UpArrow({}) {
+export default function RightArrow() {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -9,9 +9,8 @@ export default function UpArrow({}) {
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <polyline points="18 15 12 9 6 15"></polyline>
+            strokeLinejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
     );
 }
