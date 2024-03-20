@@ -2,16 +2,16 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function unkillItem(itemId, callback) {
+export default function killItem(itemId, callback) {
     axios
         .put(
-            apiBaseUrl + "/moderation/unkill-item",
+            apiBaseUrl + "/moderation/kill-item",
             {
                 id: itemId,
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);

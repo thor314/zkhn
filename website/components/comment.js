@@ -12,8 +12,8 @@ import downvoteComment from "../api/comments/downvoteComment.js";
 import unvoteComment from "../api/comments/unvoteComment.js";
 import favoriteComment from "../api/comments/favoriteComment.js";
 import unfavoriteComment from "../api/comments/unfavoriteComment.js";
-import killComment from "../api/moderation/killComment.js";
-import unkillComment from "../api/moderation/unkillComment.js";
+import killComment from "../api/moderation/killComment";
+import unkillComment from "../api/moderation/unkillComment";
 
 export default function CommentComponent({
     comment,

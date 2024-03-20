@@ -7,7 +7,7 @@ import HeadMetadata from "../components/HeadMetadata";
 import renderCreatedTime from "../../utils/renderCreatedTime";
 import truncateItemTitle from "../../utils/truncateItemTitle";
 
-import getModerationLogsByPage from "../../api/moderation/getModerationLogsByPage.js";
+import getModerationLogsByPage from "../../api/moderation/getModerationLogsByPage";
 
 export default function Logs({ logs, category, page, isMore, getDataError, notAllowedError }) {
     const updateFilterOptionValue = (event) => {

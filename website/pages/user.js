@@ -9,10 +9,10 @@ import HeadMetadata from "../components/HeadMetadata";
 
 import getUserData from "../api/users/getUserData";
 import updateUserData from "../api/users/updateUserData";
-import addUserShadowBan from "../api/moderation/addUserShadowBan.js";
-import removeUserShadowBan from "../api/moderation/removeUserShadowBan.js";
-import addUserBan from "../api/moderation/addUserBan.js";
-import removeUserBan from "../api/moderation/removeUserBan.js";
+import addUserShadowBan from "../api/moderation/addUserShadowBan";
+import removeUserShadowBan from "../api/moderation/removeUserShadowBan";
+import addUserBan from "../api/moderation/addUserBan";
+import removeUserBan from "../api/moderation/removeUserBan";
 
 export default function User({
     username,

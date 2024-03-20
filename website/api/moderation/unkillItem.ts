@@ -2,16 +2,16 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function removeUserShadowBan(username, callback) {
+export default function unkillItem(itemId, callback) {
     axios
         .put(
-            apiBaseUrl + "/moderation/remove-user-shadow-ban",
+            apiBaseUrl + "/moderation/unkill-item",
             {
-                username: username,
+                id: itemId,
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);

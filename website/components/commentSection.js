@@ -11,8 +11,8 @@ import renderCreatedTime from "../utils/renderCreatedTime";
 import sortCommentChildren from "../utils/sortCommentChildren";
 import getNumberOfChildrenComments from "../utils/getNumberOfChildrenComments";
 import generateCommentTextClassName from "../utils/generateCommentTextClassName";
-import killComment from "../api/moderation/killComment.js";
-import unkillComment from "../api/moderation/unkillComment.js";
+import killComment from "../api/moderation/killComment";
+import unkillComment from "../api/moderation/unkillComment";
 
 /**
  * Render each comment item recursively.

@@ -2,16 +2,16 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function addUserBan(username, callback) {
+export default function unkillComment(commentId, callback) {
     axios
         .put(
-            apiBaseUrl + "/moderation/add-user-ban",
+            apiBaseUrl + "/moderation/unkill-comment",
             {
-                username: username,
+                id: commentId,
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);

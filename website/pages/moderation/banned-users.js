@@ -1,7 +1,7 @@
 import AlternateHeader from "../components/AlternateHeader";
 import HeadMetadata from "../components/HeadMetadata";
 
-import getBannedUsersByPage from "../../api/moderation/getBannedUsersByPage.js";
+import getBannedUsersByPage from "../../api/moderation/getBannedUsersByPage";
 
 export default function BannedUsers({ users, page, isMore, getDataError, notAllowedError }) {
     return (

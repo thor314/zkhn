@@ -7,7 +7,7 @@ import unvoteItem from "../api/items/unvoteItem.js";
 import unfavoriteItem from "../api/items/unfavoriteItem.js";
 import hideItem from "../api/items/hideItem.js";
 import unhideItem from "../api/items/unhideItem.js";
-import killItem from "../api/moderation/killItem.js";
+import killItem from "../api/moderation/killItem";
 import unkillItem from "../api/moderation/unkillItem.js";
 
 import renderCreatedTime from "../utils/renderCreatedTime";

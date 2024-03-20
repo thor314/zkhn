@@ -6,8 +6,8 @@ import upvoteComment from "../api/comments/upvoteComment.js";
 import downvoteComment from "../api/comments/downvoteComment.js";
 import unvoteComment from "../api/comments/unvoteComment.js";
 import unfavoriteComment from "../api/comments/unfavoriteComment.js";
-import killComment from "../api/moderation/killComment.js";
-import unkillComment from "../api/moderation/unkillComment.js";
+import killComment from "../api/moderation/killComment";
+import unkillComment from "../api/moderation/unkillComment";
 
 import renderPointsString from "../utils/renderPointsString";
 import renderCreatedTime from "../utils/renderCreatedTime";

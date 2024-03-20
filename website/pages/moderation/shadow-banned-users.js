@@ -3,7 +3,7 @@ import Link from "next/link";
 import HeadMetadata from "../components/HeadMetadata";
 import AlternateHeader from "../components/AlternateHeader";
 
-import getShadowBannedUsersByPage from "../../api/moderation/getShadowBannedUsersByPage.js";
+import getShadowBannedUsersByPage from "../../api/moderation/getShadowBannedUsersByPage";
 
 export default function ShadowBannedUsers({ users, page, isMore, getDataError, notAllowedError }) {
     return (

@@ -2,16 +2,16 @@ import axios from "axios";
 
 import apiBaseUrl from "../../utils/apiBaseUrl";
 
-export default function killComment(commentId, callback) {
+export default function removeUserShadowBan(username: string, callback) {
     axios
         .put(
-            apiBaseUrl + "/moderation/kill-comment",
+            apiBaseUrl + "/moderation/remove-user-shadow-ban",
             {
-                id: commentId,
+                username: username,
             },
             {
                 withCredentials: true,
-            },
+            }
         )
         .then(function (response) {
             callback(response.data);
