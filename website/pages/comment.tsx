@@ -6,7 +6,7 @@ import CommentSection from "@/components/CommentSection";
 
 import getCommentById from "@/api/comments/getCommentById";
 
-import truncateCommentText from "@/utils/truncateCommentText";
+import { truncateCommentText } from "@/utils/truncate";
 
 export default function Comment({
     comment,

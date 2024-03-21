@@ -11,7 +11,7 @@ import unkillComment from "@/api/moderation/unkillComment";
 
 import renderPointsString from "@/utils/renderPointsString";
 import renderCreatedTime from "@/utils/renderCreatedTime";
-import truncateItemTitle from "@/utils/truncateItemTitle";
+import { truncateItemTitle } from "@/utils/truncate";
 
 export default function CommentsList({
     comments: commentsData,

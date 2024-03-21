@@ -7,7 +7,7 @@ import HeadMetadata from "@/components/HeadMetadata";
 
 import renderPointsString from "@/utils/renderPointsString";
 import renderCreatedTime from "@/utils/renderCreatedTime";
-import truncateItemTitle from "@/utils/truncateItemTitle";
+import { truncateItemTitle } from "@/utils/truncate";
 
 import getDeleteCommentPageData from "@/api/comments/getDeleteCommentPageData";
 import deleteComment from "@/api/comments/deleteComment";

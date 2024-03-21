@@ -4,7 +4,7 @@ import Router from "next/router";
 
 import renderPointsString from "@/utils/renderPointsString";
 import renderCreatedTime from "@/utils/renderCreatedTime";
-import truncateItemTitle from "@/utils/truncateItemTitle";
+import { truncateItemTitle } from "@/utils/truncate";
 
 import addNewComment from "@/api/comments/addNewComment";
 import upvoteComment from "@/api/comments/upvoteComment";

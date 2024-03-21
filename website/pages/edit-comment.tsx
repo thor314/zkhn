@@ -8,7 +8,7 @@ import HeadMetadata from "@/components/HeadMetadata";
 
 import renderPointsString from "@/utils/renderPointsString";
 import renderCreatedTime from "@/utils/renderCreatedTime";
-import truncateItemTitle from "@/utils/truncateItemTitle";
+import { truncateItemTitle } from "@/utils/truncate";
 
 import getEditCommentPageData from "@/api/comments/getEditCommentPageData";
 import editComment from "@/api/comments/editComment";

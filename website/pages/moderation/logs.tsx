@@ -6,7 +6,7 @@ import AlternateHeader from "@/components/AlternateHeader";
 import HeadMetadata from "@/components/HeadMetadata";
 
 import renderCreatedTime from "@/utils/renderCreatedTime";
-import truncateItemTitle from "@/utils/truncateItemTitle";
+import { truncateItemTitle } from "@/utils/truncate";
 
 import getModerationLogsByPage from "@/api/moderation/getModerationLogsByPage";
 

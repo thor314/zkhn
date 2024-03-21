@@ -4,9 +4,5 @@
  * @returns string
  */
 export default function renderPointsString(points: number) {
-    if (points > 1 || points < -1 || !points) {
-        return "points";
-    } else {
-        return "point";
-    }
+    return Math.abs(Math.round(points)) === 1 ? "point" : "points";
 }
