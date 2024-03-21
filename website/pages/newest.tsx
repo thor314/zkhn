@@ -1,10 +1,10 @@
-import HeadMetadata from "../components/HeadMetadata";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-import getNewestItemsByPage from "../api/items/getNewestItemsByPage";
+import getNewestItemsByPage from "@/api/items/getNewestItemsByPage";
 
-import ItemsList from "../components/ItemsList";
+import ItemsList from "@/components/ItemsList";
 
 export default function Newest({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (

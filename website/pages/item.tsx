@@ -1,10 +1,10 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import ItemComponent from "../components/Item";
-import CommentSection from "../components/CommentSection";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import ItemComponent from "@/components/Item";
+import CommentSection from "@/components/CommentSection";
 
-import getItemById from "../api/items/getItemById";
+import getItemById from "@/api/items/getItemById";
 
 export default function Item({
     item,

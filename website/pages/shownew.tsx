@@ -1,9 +1,9 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import ItemsList from "../components/ItemsList";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import ItemsList from "@/components/ItemsList";
 
-import getNewestShowItemsByPage from "../api/items/getNewestShowItemsByPage";
+import getNewestShowItemsByPage from "@/api/items/getNewestShowItemsByPage";
 
 export default function ShowNew({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (

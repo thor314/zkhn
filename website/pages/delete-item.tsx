@@ -2,13 +2,13 @@ import { useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
-import AlternateHeader from "../components/AlternateHeader";
-import HeadMetadata from "../components/HeadMetadata";
+import AlternateHeader from "@/components/AlternateHeader";
+import HeadMetadata from "@/components/HeadMetadata";
 
-import getDeleteItemPageData from "../api/items/getDeleteItemPageData";
-import deleteItem from "../api/items/deleteItem";
+import getDeleteItemPageData from "@/api/items/getDeleteItemPageData";
+import deleteItem from "@/api/items/deleteItem";
 
-import renderCreatedTime from "../utils/renderCreatedTime";
+import renderCreatedTime from "@/utils/renderCreatedTime";
 
 export default function DeleteItem({ item, authUserData, getDataError, notAllowedError, notFoundError, goToString }) {
     const [error, setError] = useState({

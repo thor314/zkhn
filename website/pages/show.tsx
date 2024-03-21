@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import ItemsList from "../components/ItemsList";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import ItemsList from "@/components/ItemsList";
 
-import getRankedShowItemsByPage from "../api/items/getRankedShowItemsByPage";
+import getRankedShowItemsByPage from "@/api/items/getRankedShowItemsByPage";
 
 export default function Show({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (

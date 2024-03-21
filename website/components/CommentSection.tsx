@@ -2,17 +2,17 @@ import { useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
-import upvoteComment from "../api/comments/upvoteComment";
-import downvoteComment from "../api/comments/downvoteComment";
-import unvoteComment from "../api/comments/unvoteComment";
+import upvoteComment from "@/api/comments/upvoteComment";
+import downvoteComment from "@/api/comments/downvoteComment";
+import unvoteComment from "@/api/comments/unvoteComment";
 
-import renderPointsString from "../utils/renderPointsString";
-import renderCreatedTime from "../utils/renderCreatedTime";
-import sortCommentChildren from "../utils/sortCommentChildren";
-import getNumberOfChildrenComments from "../utils/getNumberOfChildrenComments";
-import generateCommentTextClassName from "../utils/generateCommentTextClassName";
-import killComment from "../api/moderation/killComment";
-import unkillComment from "../api/moderation/unkillComment";
+import renderPointsString from "@/utils/renderPointsString";
+import renderCreatedTime from "@/utils/renderCreatedTime";
+import sortCommentChildren from "@/utils/sortCommentChildren";
+import getNumberOfChildrenComments from "@/utils/getNumberOfChildrenComments";
+import generateCommentTextClassName from "@/utils/generateCommentTextClassName";
+import killComment from "@/api/moderation/killComment";
+import unkillComment from "@/api/moderation/unkillComment";
 
 /**
  * Render each comment item recursively.

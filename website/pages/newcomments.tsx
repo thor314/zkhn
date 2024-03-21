@@ -1,9 +1,9 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import CommentsList from "../components/CommentsList";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import CommentsList from "@/components/CommentsList";
 
-import getNewestCommentsByPage from "../api/comments/getNewestCommentsByPage";
+import getNewestCommentsByPage from "@/api/comments/getNewestCommentsByPage";
 
 export default function NewComments({ comments, authUserData, page, isMore, getDataError, goToString }) {
     return (

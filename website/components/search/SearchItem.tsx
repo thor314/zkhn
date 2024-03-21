@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Highlighter from "react-highlight-words";
 
-import renderCreatedTime from "../../utils/renderCreatedTime";
+import renderCreatedTime from "@/utils/renderCreatedTime";
 
 export default function SearchItemComponent({ item, searchQuery }) {
     const highlightText = (text: string) => {

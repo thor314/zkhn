@@ -1,9 +1,9 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import ItemsList from "../components/ItemsList";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import ItemsList from "@/components/ItemsList";
 
-import getItemsBySiteDomain from "../api/items/getItemsBySiteDomain";
+import getItemsBySiteDomain from "@/api/items/getItemsBySiteDomain";
 
 export default function From({ items, authUserData, site, page, isMore, getDataError, goToString }) {
     return (

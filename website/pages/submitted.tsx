@@ -1,9 +1,9 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import ItemsList from "../components/ItemsList";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import ItemsList from "@/components/ItemsList";
 
-import getItemsSubmittedByUser from "../api/items/getItemsSubmittedByUser";
+import getItemsSubmittedByUser from "@/api/items/getItemsSubmittedByUser";
 
 export default function Submitted({ items, authUserData, page, userId, isMore, getDataError, goToString }) {
     return (

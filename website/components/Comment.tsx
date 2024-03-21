@@ -2,18 +2,18 @@ import { useState, type ChangeEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
-import renderPointsString from "../utils/renderPointsString";
-import renderCreatedTime from "../utils/renderCreatedTime";
-import truncateItemTitle from "../utils/truncateItemTitle";
+import renderPointsString from "@/utils/renderPointsString";
+import renderCreatedTime from "@/utils/renderCreatedTime";
+import truncateItemTitle from "@/utils/truncateItemTitle";
 
-import addNewComment from "../api/comments/addNewComment";
-import upvoteComment from "../api/comments/upvoteComment";
-import downvoteComment from "../api/comments/downvoteComment";
-import unvoteComment from "../api/comments/unvoteComment";
-import favoriteComment from "../api/comments/favoriteComment";
-import unfavoriteComment from "../api/comments/unfavoriteComment";
-import killComment from "../api/moderation/killComment";
-import unkillComment from "../api/moderation/unkillComment";
+import addNewComment from "@/api/comments/addNewComment";
+import upvoteComment from "@/api/comments/upvoteComment";
+import downvoteComment from "@/api/comments/downvoteComment";
+import unvoteComment from "@/api/comments/unvoteComment";
+import favoriteComment from "@/api/comments/favoriteComment";
+import unfavoriteComment from "@/api/comments/unfavoriteComment";
+import killComment from "@/api/moderation/killComment";
+import unkillComment from "@/api/moderation/unkillComment";
 
 export default function CommentComponent({
     comment,

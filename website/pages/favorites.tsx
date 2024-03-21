@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import ItemsList from "../components/ItemsList";
-import CommentsList from "../components/CommentsList";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import ItemsList from "@/components/ItemsList";
+import CommentsList from "@/components/CommentsList";
 
-import getUserFavoritedItemsByPage from "../api/items/getUserFavoritedItemsByPage";
-import getUserFavoritedCommentsByPage from "../api/comments/getUserFavoritedCommentsByPage";
+import getUserFavoritedItemsByPage from "@/api/items/getUserFavoritedItemsByPage";
+import getUserFavoritedCommentsByPage from "@/api/comments/getUserFavoritedCommentsByPage";
 
 export default function Favorites({
     items,

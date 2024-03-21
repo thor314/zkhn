@@ -2,10 +2,10 @@ import { useState, type ChangeEventHandler, type KeyboardEventHandler } from "re
 import Router from "next/router";
 import Link from "next/link";
 
-import SearchBarIcon from "./svg/SearchBarIcon";
-import AlgoliaLogo from "./svg/AlgoliaLogo";
-import SettingsIcon from "./svg/SettingsIcon";
-import LeftArrow from "./svg/LeftArrow";
+import SearchBarIcon from "@/components/search/svg/SearchBarIcon";
+import AlgoliaLogo from "@/components/search/svg/AlgoliaLogo";
+import SettingsIcon from "@/components/search/svg/SettingsIcon";
+import LeftArrow from "@/components/search/svg/LeftArrow";
 
 export default function SearchPageHeader({
     showSearchBar,

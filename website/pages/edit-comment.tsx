@@ -2,16 +2,16 @@ import { useState, type ChangeEventHandler } from "react";
 import Router from "next/router";
 import Link from "next/link";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
 
-import renderPointsString from "../utils/renderPointsString";
-import renderCreatedTime from "../utils/renderCreatedTime";
-import truncateItemTitle from "../utils/truncateItemTitle";
+import renderPointsString from "@/utils/renderPointsString";
+import renderCreatedTime from "@/utils/renderCreatedTime";
+import truncateItemTitle from "@/utils/truncateItemTitle";
 
-import getEditCommentPageData from "../api/comments/getEditCommentPageData";
-import editComment from "../api/comments/editComment";
+import getEditCommentPageData from "@/api/comments/getEditCommentPageData";
+import editComment from "@/api/comments/editComment";
 
 export default function EditComment({
     comment,

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import apiBaseUrl from "../../utils/apiBaseUrl";
+import apiBaseUrl from "@/utils/apiBaseUrl";
 
 export default function killComment(commentId, callback) {
     axios

@@ -1,12 +1,12 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import CommentComponent from "../components/Comment";
-import CommentSection from "../components/CommentSection";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import CommentComponent from "@/components/Comment";
+import CommentSection from "@/components/CommentSection";
 
-import getCommentById from "../api/comments/getCommentById";
+import getCommentById from "@/api/comments/getCommentById";
 
-import truncateCommentText from "../utils/truncateCommentText";
+import truncateCommentText from "@/utils/truncateCommentText";
 
 export default function Comment({
     comment,

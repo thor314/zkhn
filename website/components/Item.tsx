@@ -2,17 +2,17 @@ import { useState, type ChangeEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
-import upvoteItem from "../api/items/upvoteItem";
-import unvoteItem from "../api/items/unvoteItem";
-import favoriteItem from "../api/items/favoriteItem";
-import unfavoriteItem from "../api/items/unfavoriteItem";
-import hideItem from "../api/items/hideItem";
-import unhideItem from "../api/items/unhideItem";
-import addNewComment from "../api/comments/addNewComment";
-import killItem from "../api/moderation/killItem";
-import unkillItem from "../api/moderation/unkillItem";
+import upvoteItem from "@/api/items/upvoteItem";
+import unvoteItem from "@/api/items/unvoteItem";
+import favoriteItem from "@/api/items/favoriteItem";
+import unfavoriteItem from "@/api/items/unfavoriteItem";
+import hideItem from "@/api/items/hideItem";
+import unhideItem from "@/api/items/unhideItem";
+import addNewComment from "@/api/comments/addNewComment";
+import killItem from "@/api/moderation/killItem";
+import unkillItem from "@/api/moderation/unkillItem";
 
-import renderCreatedTime from "../utils/renderCreatedTime";
+import renderCreatedTime from "@/utils/renderCreatedTime";
 
 export default function ItemComponent({ item, currUsername, goToString, userSignedIn, isModerator }) {
     const [loading, setLoading] = useState(false);

@@ -1,8 +1,8 @@
-import AlternateHeader from "../components/AlternateHeader";
-import HeadMetadata from "../components/HeadMetadata";
-import Comment from "../components/Comment";
+import AlternateHeader from "@/components/AlternateHeader";
+import HeadMetadata from "@/components/HeadMetadata";
+import Comment from "@/components/Comment";
 
-import getReplyPageData from "../api/comments/getReplyPageData";
+import getReplyPageData from "@/api/comments/getReplyPageData";
 
 export default function Reply({ comment, authUserData, getDataError, notFoundError, goToString }) {
     return (

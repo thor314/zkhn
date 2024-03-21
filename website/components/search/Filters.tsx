@@ -3,11 +3,11 @@ import Router from "next/router";
 import Link from "next/link";
 import moment from "moment";
 
-import DatePicker from "./DatePicker";
+import DatePicker from "@/components/search/DatePicker";
 
-import UpArrow from "./svg/UpArrow";
-import DownArrow from "./svg/DownArrow";
-import RightArrow from "./svg/RightArrow";
+import UpArrow from "@/components/search/svg/UpArrow";
+import DownArrow from "@/components/search/svg/DownArrow";
+import RightArrow from "@/components/search/svg/RightArrow";
 
 type ItemType = "all" | "item" | "comment";
 type SortBy = "popularity" | "date";

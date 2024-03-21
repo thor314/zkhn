@@ -1,11 +1,11 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import ItemsList from "../components/ItemsList";
-import CommentsList from "../components/CommentsList";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import ItemsList from "@/components/ItemsList";
+import CommentsList from "@/components/CommentsList";
 
-import getUserUpvotedItemsByPage from "../api/items/getUserUpvotedItemsByPage";
-import getUserUpvotedCommentsByPage from "../api/comments/getUserUpvotedCommentsByPage";
+import getUserUpvotedItemsByPage from "@/api/items/getUserUpvotedItemsByPage";
+import getUserUpvotedCommentsByPage from "@/api/comments/getUserUpvotedCommentsByPage";
 
 export default function Upvoted({
     items,

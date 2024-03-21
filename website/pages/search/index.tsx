@@ -1,12 +1,12 @@
-import HeadMetadata from "../../components/HeadMetadata";
-import SearchPageHeader from "../../components/search/SearchPageHeader";
-import SearchPageFooter from "../../components/search/SearchPageFooter";
-import SearchItem from "../../components/search/SearchItem";
-import SearchComment from "../../components/search/SearchComment";
-import Filters from "../../components/search/Filters";
-import PageNumbers from "../../components/search/PageNumbers";
+import HeadMetadata from "@/components/HeadMetadata";
+import SearchPageHeader from "@/components/search/SearchPageHeader";
+import SearchPageFooter from "@/components/search/SearchPageFooter";
+import SearchItem from "@/components/search/SearchItem";
+import SearchComment from "@/components/search/SearchComment";
+import Filters from "@/components/search/Filters";
+import PageNumbers from "@/components/search/PageNumbers";
 
-import getAlgoliaData from "../../api/search/getAlgoliaData";
+import getAlgoliaData from "@/api/search/getAlgoliaData";
 
 export default function Search({
     searchQuery,

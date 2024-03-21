@@ -1,9 +1,9 @@
 import { useState, type ChangeEventHandler, type MouseEventHandler } from "react";
 
-import HeadMetadata from "../components/HeadMetadata";
-import AlternateHeader from "../components/AlternateHeader";
+import HeadMetadata from "@/components/HeadMetadata";
+import AlternateHeader from "@/components/AlternateHeader";
 
-import requestPasswordResetLink from "../api/users/requestPasswordResetLink";
+import requestPasswordResetLink from "@/api/users/requestPasswordResetLink";
 
 export default function Forgot() {
     const [usernameInputValue, setUsernameInputValue] = useState("");

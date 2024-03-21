@@ -1,9 +1,9 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import ItemsList from "../components/ItemsList";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import ItemsList from "@/components/ItemsList";
 
-import getUserHiddenItemsByPage from "../api/items/getUserHiddenItemsByPage";
+import getUserHiddenItemsByPage from "@/api/items/getUserHiddenItemsByPage";
 
 export default function Hidden({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (

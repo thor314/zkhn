@@ -3,16 +3,16 @@ import moment from "moment";
 import Link from "next/link";
 import Router from "next/router";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
 
-import getUserData from "../api/users/getUserData";
-import updateUserData from "../api/users/updateUserData";
-import addUserShadowBan from "../api/moderation/addUserShadowBan";
-import removeUserShadowBan from "../api/moderation/removeUserShadowBan";
-import addUserBan from "../api/moderation/addUserBan";
-import removeUserBan from "../api/moderation/removeUserBan";
+import getUserData from "@/api/users/getUserData";
+import updateUserData from "@/api/users/updateUserData";
+import addUserShadowBan from "@/api/moderation/addUserShadowBan";
+import removeUserShadowBan from "@/api/moderation/removeUserShadowBan";
+import addUserBan from "@/api/moderation/addUserBan";
+import removeUserBan from "@/api/moderation/removeUserBan";
 
 export default function User({
     username,

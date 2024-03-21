@@ -1,9 +1,9 @@
-import HeadMetadata from "../components/HeadMetadata";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import ItemsList from "../components/ItemsList";
+import HeadMetadata from "@/components/HeadMetadata";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ItemsList from "@/components/ItemsList";
 
-import getRankedItemsByPage from "../api/items/getRankedItemsByPage";
+import getRankedItemsByPage from "@/api/items/getRankedItemsByPage";
 
 export default function News({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (

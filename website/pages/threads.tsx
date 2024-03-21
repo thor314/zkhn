@@ -1,9 +1,9 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import CommentsList from "../components/CommentsList";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import CommentsList from "@/components/CommentsList";
 
-import getUserCommentsByPage from "../api/comments/getUserCommentsByPage";
+import getUserCommentsByPage from "@/api/comments/getUserCommentsByPage";
 
 export default function Thread({
     comments,

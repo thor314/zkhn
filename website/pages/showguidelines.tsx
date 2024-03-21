@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import HeadMetadata from "../components/HeadMetadata";
+import HeadMetadata from "@/components/HeadMetadata";
 
 export default function ShowGuidelines() {
     return (

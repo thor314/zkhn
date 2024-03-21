@@ -1,12 +1,12 @@
 import moment from "moment";
 import Link from "next/link";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import ItemsList from "../components/ItemsList";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import ItemsList from "@/components/ItemsList";
 
-import getRankedItemsByDay from "../api/items/getRankedItemsByDay";
+import getRankedItemsByDay from "@/api/items/getRankedItemsByDay";
 
 export default function Past({ items, authUserData, day, page, isMore, getDataError, invalidDateError, goToString }) {
     const renderGoBackwardLinks = () => {

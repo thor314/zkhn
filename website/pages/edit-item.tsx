@@ -2,14 +2,14 @@ import { useState, type ChangeEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
 
-import getEditItemPageData from "../api/items/getEditItemPageData";
-import editItem from "../api/items/editItem";
+import getEditItemPageData from "@/api/items/getEditItemPageData";
+import editItem from "@/api/items/editItem";
 
-import renderCreatedTime from "../utils/renderCreatedTime";
+import renderCreatedTime from "@/utils/renderCreatedTime";
 
 // hack
 // TODO(TK 2024-02-09): why can't I just import this

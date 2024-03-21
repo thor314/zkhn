@@ -1,10 +1,10 @@
 import { useState, type ChangeEventHandler } from "react";
 import Router from "next/router";
 
-import HeadMetadata from "../components/HeadMetadata";
-import AlternateHeader from "../components/AlternateHeader";
+import HeadMetadata from "@/components/HeadMetadata";
+import AlternateHeader from "@/components/AlternateHeader";
 
-import resetPassword from "../api/users/resetPassword";
+import resetPassword from "@/api/users/resetPassword";
 
 export default function Reset({ resetToken, username }) {
     const [passwordInputValue, setPasswordInputValue] = useState("");

@@ -1,9 +1,9 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import HeadMetadata from "../components/HeadMetadata";
-import ItemsList from "../components/ItemsList";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import HeadMetadata from "@/components/HeadMetadata";
+import ItemsList from "@/components/ItemsList";
 
-import getRankedAskItemsByPage from "../api/items/getRankedAskItemsByPage";
+import getRankedAskItemsByPage from "@/api/items/getRankedAskItemsByPage";
 
 export default function Ask({ items, authUserData, page, isMore, getDataError, goToString }) {
     return (

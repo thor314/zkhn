@@ -2,12 +2,12 @@ import { useState, type ChangeEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
-import HeadMetadata from "../components/HeadMetadata";
-import AlternateHeader from "../components/AlternateHeader";
+import HeadMetadata from "@/components/HeadMetadata";
+import AlternateHeader from "@/components/AlternateHeader";
 
-import createNewUser from "../api/users/createNewUser";
-import loginUser from "../api/users/loginUser";
-import authUser from "../api/users/authUser";
+import createNewUser from "@/api/users/createNewUser";
+import loginUser from "@/api/users/loginUser";
+import authUser from "@/api/users/authUser";
 
 export default function Login({ goto }) {
     const [loginState, setLoginState] = useState({

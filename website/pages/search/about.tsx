@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import HeadMetadata from "../../components/HeadMetadata";
-import SearchPageHeader from "../../components/search/SearchPageHeader";
-import SearchPageFooter from "../../components/search/SearchPageFooter";
+import HeadMetadata from "@/components/HeadMetadata";
+import SearchPageHeader from "@/components/search/SearchPageHeader";
+import SearchPageFooter from "@/components/search/SearchPageFooter";
 
 export default function About() {
     return (
