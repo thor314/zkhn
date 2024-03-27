@@ -1,8 +1,9 @@
 import { useState, type ChangeEventHandler, type MouseEventHandler } from "react";
-import DayPicker, { DateUtils } from "react-day-picker";
+import { DayPicker, addToRange } from "react-day-picker";
+import {} from "date-fns";
 import moment from "moment";
 
-import "react-day-picker/lib/style.css";
+import "react-day-picker/dist/style.css";
 
 import CancelIcon from "@/components/search/svg/CancelIcon";
 
@@ -26,11 +27,12 @@ export default function DatePicker({ startDate, endDate, elRef, show, hideDatePi
     const [from, setFrom] = useState(getInitialFromDate(startDate));
     const [to, setTo] = useState(getInitialToDate(endDate));
 
+    // TODO: make sure this works correctly after react-day-picker upgrade
     const handleDayClick = (day, modifiers) => {
         if (!modifiers.disabled) {
-            const range = DateUtils.addDayToRange(day, { from, to });
-            setFrom(range.from);
-            setTo(range.to);
+            const range = addToRange(day, { from, to });
+            setFrom(range?.from!);
+            setTo(range?.to!);
         }
     };
 
@@ -53,9 +55,9 @@ export default function DatePicker({ startDate, endDate, elRef, show, hideDatePi
             <div className="date-picker-container">
                 <DayPicker
                     numberOfMonths={1}
-                    selectedDays={[from, { from, to }]}
+                    selected={[from, { from, to }]}
                     onDayClick={handleDayClick}
-                    disabledDays={{ after: new Date() }}
+                    disabled={{ after: new Date() }}
                 />
                 <div className="date-picker-form">
                     <fieldset>

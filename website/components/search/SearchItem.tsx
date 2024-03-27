@@ -30,39 +30,39 @@ export default function SearchItemComponent({ item, searchQuery }) {
         <div className="search-results-item">
             <div className="search-results-item-data">
                 <div className="search-results-item-title-and-link">
-                    <Link href={`/item?id=${item.objectID}`}>
-                        <a className="search-results-item-title">{highlightText(item.title)}</a>
+                    <Link href={`/item?id=${item.objectID}`} className="search-results-item-title">
+                        {highlightText(item.title)}
                     </Link>
                     {item.url ? (
-                        <Link href={item.url}>
-                            <a className="search-results-item-link">({highlightText(item.url)})</a>
-                        </Link>
+                        (<Link href={item.url} className="search-results-item-link">
+                            ({highlightText(item.url)})
+                        </Link>)
                     ) : null}
                 </div>
                 <div className="search-results-item-details">
                     <span>
                         <Link href={`/item?id=${item.objectID}`}>
-                            <a>
-                                {item.points.toLocaleString()} {item.points === 1 ? "point" : "points"}
-                            </a>
+
+                            {item.points.toLocaleString()} {item.points === 1 ? "point" : "points"}
+
                         </Link>
                     </span>
                     <span className="search-results-item-details-separator">|</span>
                     <span>
                         <Link href={`/user?id=${item.by}`}>
-                            <a>{highlightText(item.by)}</a>
+                            {highlightText(item.by)}
                         </Link>
                     </span>
                     <span className="search-results-item-details-separator">|</span>
                     <span>
                         <Link href={`/item?id=${item.objectID}`}>
-                            <a>{renderCreatedTime(item.created)}</a>
+                            {renderCreatedTime(item.created)}
                         </Link>
                     </span>
                     <span className="search-results-item-details-separator">|</span>
                     <span>
                         <Link href={`/item?id=${item.objectID}`}>
-                            <a>{item.commentCount.toLocaleString()} comments</a>
+                            {item.commentCount.toLocaleString()}comments
                         </Link>
                     </span>
                 </div>

@@ -8,9 +8,9 @@ export default function NewsGuidelines() {
             <HeadMetadata title="zkNews Guidelines" />
             <div className="news-guidelines-top-image">
                 <Link href="/">
-                    <a>
-                        <img src="/favicon.png" />
-                    </a>
+
+                    <img src="/favicon.png" />
+
                 </Link>
                 <h1>zkNews</h1>
             </div>

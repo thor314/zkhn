@@ -8,9 +8,9 @@ export default function NewsFaq() {
             <HeadMetadata title="zkNews FAQ" />
             <div className="news-faq-top-image">
                 <Link href="/">
-                    <a>
-                        <img src="/favicon.png" />
-                    </a>
+
+                    <img src="/favicon.png" />
+
                 </Link>
                 <h1>zkNews</h1>
             </div>
@@ -19,7 +19,7 @@ export default function NewsFaq() {
                 <p className="news-faq-text-title">Are there rules about submissions and comments?</p>
                 <p>
                     <Link href="/newsguidelines">
-                        <a>Newsguidelines page</a>
+                        Newsguidelines page
                     </Link>
                 </p>
                 <p className="news-faq-text-title">How are items ranked?</p>
@@ -34,7 +34,7 @@ export default function NewsFaq() {
                 <p className="news-faq-text-title">What kind of formatting can you use in comments?</p>
                 <p>
                     <Link href="/formatdoc">
-                        <a>Formatting options page</a>
+                        Formatting options page
                     </Link>
                 </p>
                 <p className="news-faq-text-title">How do I submit a question?</p>
@@ -51,7 +51,7 @@ export default function NewsFaq() {
                 <p>
                     If you have an email address in your profile, request a password reset{" "}
                     <Link href="/forgot">
-                        <a>here</a>
+                        here
                     </Link>
                     Otherwise, you're out of luck. Sorry.
                 </p>

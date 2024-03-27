@@ -308,12 +308,12 @@ export default function CommentComponent({
                                     <span>
                                         {numOfVote.toLocaleString()} {renderPointsString(numOfVote)} by&nbsp;
                                     </span>
-                                    <Link href={`/user?id=${comment.by}`}>{comment.by}</Link>
+                                    <Link href={`/user?id=${comment.by}`} legacyBehavior>{comment.by}</Link>
                                 </span>
 
                                 {/* COMMENT TIME CREATED */}
                                 <span className="comment-content-time">
-                                    <Link href={`/comment?id=${comment.id}`}>{renderCreatedTime(comment.created)}</Link>
+                                    <Link href={`/comment?id=${comment.id}`} legacyBehavior>{renderCreatedTime(comment.created)}</Link>
                                 </span>
                                 {comment.dead ? <span className="comment-content-dead"> [dead]</span> : null}
 
@@ -422,7 +422,7 @@ export default function CommentComponent({
                                 {/* COMMENT BASED ON POST TITLE */}
                                 <span>
                                     on:&nbsp;
-                                    <Link href={`/item?id=${comment.parentItemId}`}>
+                                    <Link href={`/item?id=${comment.parentItemId}`} legacyBehavior>
                                         {truncateItemTitle(comment.parentItemTitle)}
                                     </Link>
                                 </span>

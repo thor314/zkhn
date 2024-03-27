@@ -6,19 +6,19 @@ export default function SearchPageFooter() {
             <ul>
                 <li>
                     <Link href="/search/about">
-                        <a>About</a>
+                        About
                     </Link>
                 </li>
                 <li>•</li>
                 <li style={{ cursor: "not-allowed", pointerEvents: "none" }}>
                     <Link href="/search/settings">
-                        <a>Settings</a>
+                        Settings
                     </Link>
                 </li>
                 <li>•</li>
                 <li>
                     <Link href="/">
-                        <a>zkNews</a>
+                        zkNews
                     </Link>
                 </li>
             </ul>

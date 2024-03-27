@@ -26,7 +26,7 @@ export default function SearchPageHeader({
     };
 
     const checkForEnterKeypress: KeyboardEventHandler<HTMLInputElement> = (event) => {
-        if (event.key = "Enter") {
+        if (event.key === "Enter") {
             submitSearchInputRequest(event.currentTarget.value);
         }
     };
@@ -46,18 +46,18 @@ export default function SearchPageHeader({
 
     return (
         <div className="search-header">
-            <Link href="/">
-                <a className="search-header-logo">
-                    <img src="/android-chrome-512x512.png" />
-                    <div className="search-header-logo-label">
-                        <span>
-                            <b>
-                                Search <br />
-                                zkNews
-                            </b>
-                        </span>
-                    </div>
-                </a>
+            <Link href="/" className="search-header-logo">
+
+                <img src="/android-chrome-512x512.png" />
+                <div className="search-header-logo-label">
+                    <span>
+                        <b>
+                            Search <br />
+                            zkNews
+                        </b>
+                    </span>
+                </div>
+
             </Link>
 
             {/* SEARCH BAR */}
@@ -76,9 +76,9 @@ export default function SearchPageHeader({
                     <div className="search-header-bar-powered-by">
                         <span className="search-header-bar-powered-by-label">Search by</span>
                         <Link href="https://www.algolia.com">
-                            <a>
-                                <AlgoliaLogo />
-                            </a>
+
+                            <AlgoliaLogo />
+
                         </Link>
                     </div>
                 </div>
@@ -88,10 +88,10 @@ export default function SearchPageHeader({
             {showSettingsButton ? (
                 <div className="search-header-settings" style={{ cursor: "not-allowed", pointerEvents: "none" }}>
                     <Link href="/search/settings">
-                        <a>
-                            <SettingsIcon />
-                            <span className="search-header-settings-label">Settings</span>
-                        </a>
+
+                        <SettingsIcon />
+                        <span className="search-header-settings-label">Settings</span>
+
                     </Link>
                 </div>
             ) : null}
@@ -100,10 +100,8 @@ export default function SearchPageHeader({
             {showBackButton ? (
                 <div className="search-header-back">
                     <Link href="/search">
-                        <a>
-                            <LeftArrow />
-                            Back
-                        </a>
+
+                        <LeftArrow />Back
                     </Link>
                 </div>
             ) : null}

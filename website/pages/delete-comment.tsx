@@ -85,7 +85,7 @@ export default function DeleteComment({
                                             <span>
                                                 by&nbsp;
                                                 <Link href={`/user?id=${comment.by}`}>
-                                                    <a>{comment.by}</a>
+                                                    {comment.by}
                                                 </Link>
                                                 &nbsp;
                                             </span>
@@ -93,7 +93,7 @@ export default function DeleteComment({
                                             {/* COMMENT CREATED TIME */}
                                             <span>
                                                 <Link href={`/comment?id=${comment.id}`}>
-                                                    <a>{renderCreatedTime(comment.created)}</a>
+                                                    {renderCreatedTime(comment.created)}
                                                 </Link>
                                             </span>
                                             <span> | </span>
@@ -106,7 +106,7 @@ export default function DeleteComment({
                                                             ? `/item?id=${comment.parentItemId}`
                                                             : `/comment?id=${comment.parentCommentId}`
                                                     }>
-                                                    <a>parent</a>
+                                                    parent
                                                 </Link>
                                             </span>
                                             <span> | </span>
@@ -114,7 +114,7 @@ export default function DeleteComment({
                                             {/* EDIT COMMENT */}
                                             <span>
                                                 <Link href={`/edit-comment?id=${comment.id}`}>
-                                                    <a>edit</a>
+                                                    edit
                                                 </Link>
                                             </span>
                                             <span> | </span>
@@ -123,7 +123,7 @@ export default function DeleteComment({
                                             <span className="delete-comment-top-section-article-title">
                                                 on:&nbsp;
                                                 <Link href={`/item?id=${comment.parentItemId}`}>
-                                                    <a>{truncateItemTitle(comment?.parentItemTitle)}</a>
+                                                    {truncateItemTitle(comment?.parentItemTitle)}
                                                 </Link>
                                             </span>
 

@@ -43,11 +43,11 @@ export default function PageNumbers({
                 {!isFirstPage ? (
                     <li>
                         <Link href={createLinkForPageButton(1)}>
-                            <a>
-                                <button>
-                                    <DoubleLeftArrowsIcon />
-                                </button>
-                            </a>
+
+                            <button>
+                                <DoubleLeftArrowsIcon />
+                            </button>
+
                         </Link>
                     </li>
                 ) : null}
@@ -55,9 +55,9 @@ export default function PageNumbers({
                     return (
                         <li key={page}>
                             <Link href={createLinkForPageButton(page)}>
-                                <a>
-                                    <button>{page}</button>
-                                </a>
+
+                                <button>{page}</button>
+
                             </Link>
                         </li>
                     );
@@ -69,9 +69,9 @@ export default function PageNumbers({
                     return (
                         <li key={page}>
                             <Link href={createLinkForPageButton(page + 1)}>
-                                <a>
-                                    <button>{page + 1}</button>
-                                </a>
+
+                                <button>{page + 1}</button>
+
                             </Link>
                         </li>
                     );
@@ -79,11 +79,11 @@ export default function PageNumbers({
                 {!isLastPage && totalNumOfPages > maxNumOfResults ? (
                     <li className="search-results-pagination-item Pagination_next">
                         <Link href={createLinkForPageButton(totalNumOfPages)}>
-                            <a>
-                                <button>
-                                    <DoubleRightArrowsIcon />
-                                </button>
-                            </a>
+
+                            <button>
+                                <DoubleRightArrowsIcon />
+                            </button>
+
                         </Link>
                     </li>
                 ) : null}

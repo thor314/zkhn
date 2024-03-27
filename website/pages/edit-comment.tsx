@@ -130,7 +130,7 @@ export default function EditComment({
                                             <span>
                                                 by{" "}
                                                 <Link href={`/user?id=${comment.by}`}>
-                                                    <a>{comment.by}</a>
+                                                    {comment.by}
                                                 </Link>
                                                 &nbsp;
                                             </span>
@@ -138,7 +138,7 @@ export default function EditComment({
                                             {/* COMMENT CREATED */}
                                             <span>
                                                 <Link href={`/comment?id=${comment.id}`}>
-                                                    <a>{renderCreatedTime(comment.created)}</a>
+                                                    {renderCreatedTime(comment.created)}
                                                 </Link>
                                             </span>
                                             <span> | </span>
@@ -152,7 +152,7 @@ export default function EditComment({
                                                             : `/comment?id=${comment.parentCommentId}`
                                                     }
                                                 >
-                                                    <a>parent</a>
+                                                    parent
                                                 </Link>
                                             </span>
                                             <span> | </span>
@@ -160,7 +160,7 @@ export default function EditComment({
                                             {/* DELETE COMMENT */}
                                             <span>
                                                 <Link href={`/delete-comment?id=${comment.id}`}>
-                                                    <a>delete</a>
+                                                    delete
                                                 </Link>
                                             </span>
                                             <span> | </span>
@@ -169,7 +169,7 @@ export default function EditComment({
                                             <span className="edit-comment-top-section-article-title">
                                                 on:&nbsp;
                                                 <Link href={`/item?id=${comment.parentItemId}`}>
-                                                    <a>{truncateItemTitle(comment.parentItemTitle)}</a>
+                                                    {truncateItemTitle(comment.parentItemTitle)}
                                                 </Link>
                                             </span>
 
@@ -194,7 +194,7 @@ export default function EditComment({
                             />
                             <span className="edit-comment-input-box-help">
                                 <Link href="/formatdoc">
-                                    <a>help</a>
+                                    help
                                 </Link>
                             </span>
                         </div>
