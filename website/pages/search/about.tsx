@@ -15,7 +15,7 @@ export default function About() {
                     zkNews search provides real-time full-text search for the zkNews community website. The search
                     backend is implemented using{" "}
                     <Link href="http://www.algolia.com">
-                        <a>Algolia</a>
+                        Algolia
                     </Link>{" "}
                     instant search engine.
                 </p>
@@ -23,24 +23,24 @@ export default function About() {
                 <p>
                     Items and comments are updated in real-time and indexed in the{" "}
                     <Link href="http://www.algolia.com">
-                        <a>Algolia</a>
+                        Algolia
                     </Link>{" "}
                     search engine.
                 </p>
                 <h3>Credits</h3>
                 <p>
                     <Link href="http://www.algolia.com">
-                        <a>Algolia</a>
+                        Algolia
                     </Link>
                 </p>
                 <p>
                     <Link href="https://github.com/algolia/algoliasearch-client-javascript">
-                        <a>Algolia JavaScript API</a>
+                        Algolia JavaScript API
                     </Link>
                 </p>
                 <p>
                     <Link href="https://news.ycombinator.com/">
-                        <a>Hacker News</a>
+                        Hacker News
                     </Link>
                 </p>
             </div>

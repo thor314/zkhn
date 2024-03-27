@@ -225,23 +225,23 @@ export default function Filters({
                             }>
                             <li>
                                 <Link href={createLinkForItemTypeButton("all")}>
-                                    <a>
-                                        <button>All</button>
-                                    </a>
+
+                                    <button>All</button>
+
                                 </Link>
                             </li>
                             <li>
                                 <Link href={createLinkForItemTypeButton("item")}>
-                                    <a>
-                                        <button>Items</button>
-                                    </a>
+
+                                    <button>Items</button>
+
                                 </Link>
                             </li>
                             <li>
                                 <Link href={createLinkForItemTypeButton("comment")}>
-                                    <a>
-                                        <button>Comments</button>
-                                    </a>
+
+                                    <button>Comments</button>
+
                                 </Link>
                             </li>
                         </ul>
@@ -266,16 +266,16 @@ export default function Filters({
                                 }>
                                 <li>
                                     <Link href={createLinkForSortByButton("popularity")}>
-                                        <a>
-                                            <button>Popularity</button>
-                                        </a>
+
+                                        <button>Popularity</button>
+
                                     </Link>
                                 </li>
                                 <li>
                                     <Link href={createLinkForSortByButton("date")}>
-                                        <a>
-                                            <button>Date</button>
-                                        </a>
+
+                                        <button>Date</button>
+
                                     </Link>
                                 </li>
                             </ul>
@@ -300,37 +300,37 @@ export default function Filters({
                                 }>
                                 <li>
                                     <Link href={createLinkForDateRangeButton("allTime")}>
-                                        <a>
-                                            <button>All Time</button>
-                                        </a>
+
+                                        <button>All Time</button>
+
                                     </Link>
                                 </li>
                                 <li>
                                     <Link href={createLinkForDateRangeButton("last24h")}>
-                                        <a>
-                                            <button>Last 24h</button>
-                                        </a>
+
+                                        <button>Last 24h</button>
+
                                     </Link>
                                 </li>
                                 <li>
                                     <Link href={createLinkForDateRangeButton("pastWeek")}>
-                                        <a>
-                                            <button>Past Week</button>
-                                        </a>
+
+                                        <button>Past Week</button>
+
                                     </Link>
                                 </li>
                                 <li>
                                     <Link href={createLinkForDateRangeButton("pastMonth")}>
-                                        <a>
-                                            <button>Past Month</button>
-                                        </a>
+
+                                        <button>Past Month</button>
+
                                     </Link>
                                 </li>
                                 <li>
                                     <Link href={createLinkForDateRangeButton("pastYear")}>
-                                        <a>
-                                            <button>Past Year</button>
-                                        </a>
+
+                                        <button>Past Year</button>
+
                                     </Link>
                                 </li>
                                 <li>

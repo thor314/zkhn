@@ -16,9 +16,9 @@ export default function Header({ userSignedIn, username, karma, goto, pageName, 
                 <tr>
                     <td className="header-logo">
                         <Link href="/">
-                            <a>
-                                <img src="/android-chrome-512x512.png" />
-                            </a>
+
+                            <img src="/android-chrome-512x512.png" />
+
                         </Link>
                     </td>
                     <td className="header-links">
@@ -67,7 +67,7 @@ export default function Header({ userSignedIn, username, karma, goto, pageName, 
                         <span className="header-right-nav-links-items">
                             {userSignedIn ? (
                                 <>
-                                    <Link href={`/user?id=${username}`}>{username}</Link>
+                                    <Link href={`/user?id=${username}`} legacyBehavior>{username}</Link>
                                     <span> ({karma.toLocaleString()})</span>
                                     <span> | </span>
                                     <span className="header-logout" onClick={() => requestLogout()}>

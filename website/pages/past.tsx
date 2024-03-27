@@ -14,30 +14,28 @@ export default function Past({ items, authUserData, day, page, isMore, getDataEr
         const backOneMonth = moment(day).subtract(1, "month").format("YYYY-MM-DD");
         const backOneYear = moment(day).subtract(1, "year").format("YYYY-MM-DD");
 
-        return (
-            <>
-                <span>Go back a </span>
-                <span>
-                    <Link href={`/past?day=${backOneDay}`}>
-                        <a>day</a>
-                    </Link>
-                    ,&nbsp;
-                </span>
-                <span>
-                    <Link href={`/past?day=${backOneMonth}`}>
-                        <a>month</a>
-                    </Link>
-                    ,&nbsp;
-                </span>
-                <span>
-                    or&nbsp;
-                    <Link href={`/past?day=${backOneYear}`}>
-                        <a>year</a>
-                    </Link>
-                    .&nbsp;
-                </span>
-            </>
-        );
+        return <>
+            <span>Go back a </span>
+            <span>
+                <Link href={`/past?day=${backOneDay}`}>
+                    day
+                </Link>
+                ,&nbsp;
+            </span>
+            <span>
+                <Link href={`/past?day=${backOneMonth}`}>
+                    month
+                </Link>
+                ,&nbsp;
+            </span>
+            <span>
+                or&nbsp;
+                <Link href={`/past?day=${backOneYear}`}>
+                    year
+                </Link>
+                .&nbsp;
+            </span>
+        </>;
     };
 
     const renderGoForwardLinks = () => {
@@ -52,15 +50,15 @@ export default function Past({ items, authUserData, day, page, isMore, getDataEr
                 <span>
                     Go forward a&nbsp;
                     <Link href={`/past?day=${forwardOneDay}`}>
-                        <a>day</a>
+                        day
                     </Link>
                     ,&nbsp;
                     <Link href={`/past?day=${forwardOneMonth}`}>
-                        <a>month</a>
+                        month
                     </Link>
                     &nbsp; or&nbsp;
                     <Link href={`/past?day=${forwardOneYear}`}>
-                        <a>year</a>
+                        year
                     </Link>
                     .
                 </span>

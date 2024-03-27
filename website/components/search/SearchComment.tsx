@@ -32,24 +32,24 @@ export default function SearchCommentComponent({ comment, searchQuery }) {
             <div className="search-results-comment-details">
                 <span>
                     <Link href={`/user?id=${comment.by}`}>
-                        <a>{highlightText(comment.by)}</a>
+                        {highlightText(comment.by)}
                     </Link>
                 </span>
                 <span className="search-results-comment-details-separator">|</span>
                 <span>
                     <Link href={`/comment?id=${comment.objectID}`}>
-                        <a>{renderCreatedTime(comment.created)}</a>
+                        {renderCreatedTime(comment.created)}
                     </Link>
                 </span>
                 <span className="search-results-comment-details-separator">|</span>
                 <Link href={comment.isParent ? `/item?id=${comment.parentItemId}` : `/comment?id=${comment.objectID}`}>
-                    <a>parent</a>
+                    parent
                 </Link>
                 <span className="search-results-comment-details-separator">|</span>
                 <span>
                     on:&nbsp;
                     <Link href={`/item?id=${comment.parentItemId}`}>
-                        <a>{highlightText(truncateItemTitle(comment.parentItemTitle))}</a>
+                        {highlightText(truncateItemTitle(comment.parentItemTitle))}
                     </Link>
                 </span>
             </div>

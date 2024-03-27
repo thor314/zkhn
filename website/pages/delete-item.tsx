@@ -79,11 +79,11 @@ export default function DeleteItem({ item, authUserData, getDataError, notAllowe
                                         </td>
                                         <td>
                                             <span className="delete-item-title">
-                                                <Link href={item.url}>{item.title}</Link>
+                                                <Link href={item.url} legacyBehavior>{item.title}</Link>
                                             </span>
                                             {item.url ? (
                                                 <span className="delete-item-domain">
-                                                    (<Link href={`/from?site=${item.domain}`}>{item.domain}</Link>)
+                                                    (<Link href={`/from?site=${item.domain}`} legacyBehavior>{item.domain}</Link>)
                                                 </span>
                                             ) : null}
                                         </td>
@@ -97,10 +97,10 @@ export default function DeleteItem({ item, authUserData, getDataError, notAllowe
                                                 {item.points.toLocaleString()} {item.points === 1 ? "point" : "points"}
                                             </span>
                                             <span>
-                                                &nbsp; by <Link href={`/user?id=${item.by}`}>{item.by}</Link>&nbsp;
+                                                &nbsp; by <Link href={`/user?id=${item.by}`} legacyBehavior>{item.by}</Link>&nbsp;
                                             </span>
                                             <span className="delete-item-time">
-                                                <Link href={`/item?id=${item.id}`}>
+                                                <Link href={`/item?id=${item.id}`} legacyBehavior>
                                                     {renderCreatedTime(item.created)}
                                                 </Link>
                                             </span>

@@ -151,221 +151,219 @@ export default function CommentsList({
         });
     };
 
-    return (
-        <>
-            {comments
-                ? comments.map((comment, index) => {
-                      return (
-                          <div key={comment.id} className="listed-comment">
-                              <table>
-                                  <tbody>
-                                      <tr>
-                                          <td valign="top">
-                                              {/* STAR IF THIS COMMENT BELONGS TO USER */}
-                                              {currUsername === comment.by ? (
-                                                  <div className="listed-comment-star">
-                                                      <span>*</span>
-                                                  </div>
-                                              ) : null}
-                                              {currUsername !== comment.by ? (
+    return <>
+        {comments
+            ? comments.map((comment, index) => {
+                  return (
+                      <div key={comment.id} className="listed-comment">
+                          <table>
+                              <tbody>
+                                  <tr>
+                                      <td valign="top">
+                                          {/* STAR IF THIS COMMENT BELONGS TO USER */}
+                                          {currUsername === comment.by ? (
+                                              <div className="listed-comment-star">
+                                                  <span>*</span>
+                                              </div>
+                                          ) : null}
+                                          {currUsername !== comment.by ? (
+                                              <>
+                                                  {/* UPVOTE BOTTON */}
+                                                  {comment.votedOnByUser || comment.dead ? (
+                                                      <>
+                                                          <div className="listed-comment-upvote hide">
+                                                              <span></span>
+                                                          </div>
+                                                      </>
+                                                  ) : (
+                                                      <>
+                                                          <div
+                                                              className="listed-comment-upvote"
+                                                              onClick={() =>
+                                                                  requestUpvoteComment(
+                                                                      comment.id,
+                                                                      comment.parentItemId,
+                                                                      index
+                                                                  )
+                                                              }>
+                                                              <span></span>
+                                                          </div>
+                                                      </>
+                                                  )}
+                                              </>
+                                          ) : null}
+                                          {currUsername !== comment.by ? (
+                                              <>
+                                                  {/* DOWNVOTE BOTTON */}
+                                                  {comment.votedOnByUser || !showDownvote || comment.dead ? (
+                                                      <>
+                                                          <div className="listed-comment-downvote hide">
+                                                              <span></span>
+                                                          </div>
+                                                      </>
+                                                  ) : (
+                                                      <>
+                                                          <div
+                                                              className="listed-comment-downvote"
+                                                              onClick={() =>
+                                                                  requestDownvoteComment(
+                                                                      comment.id,
+                                                                      comment.parentItemId,
+                                                                      index
+                                                                  )
+                                                              }>
+                                                              <span></span>
+                                                          </div>
+                                                      </>
+                                                  )}
+                                              </>
+                                          ) : null}
+                                      </td>
+                                      <td>
+                                          <div className="listed-comment-head">
+                                              {/* COMMENT POINTS */}
+                                              <span>
+                                                  {comment.points.toLocaleString()}&nbsp;
+                                                  {renderPointsString(comment.points)} by&nbsp;
+                                              </span>
+
+                                              {/* COMMENT BY/AUTHOR */}
+                                              <span>
+                                                  <Link href={`/user?id=${comment.by}`}>
+                                                      {comment.by}
+                                                  </Link>
+                                                  &nbsp;
+                                              </span>
+
+                                              {/* COMMENT CREATED TIME */}
+                                              <span>
+                                                  <Link href={`/comment?id=${comment.id}`}>
+                                                      {renderCreatedTime(comment.created)}
+                                                  </Link>
+                                              </span>
+
+                                              {/* UNVOTE COMMENT */}
+                                              {comment.dead ? <span> [dead]</span> : null}
+                                              {comment.votedOnByUser && !comment.unvoteExpired ? (
                                                   <>
-                                                      {/* UPVOTE BOTTON */}
-                                                      {comment.votedOnByUser || comment.dead ? (
-                                                          <>
-                                                              <div className="listed-comment-upvote hide">
-                                                                  <span></span>
-                                                              </div>
-                                                          </>
-                                                      ) : (
-                                                          <>
-                                                              <div
-                                                                  className="listed-comment-upvote"
-                                                                  onClick={() =>
-                                                                      requestUpvoteComment(
-                                                                          comment.id,
-                                                                          comment.parentItemId,
-                                                                          index
-                                                                      )
-                                                                  }>
-                                                                  <span></span>
-                                                              </div>
-                                                          </>
-                                                      )}
+                                                      <span> | </span>
+                                                      <span
+                                                          className="listed-comment-unvote"
+                                                          onClick={() => requestUnvoteComment(comment.id, index)}>
+                                                          un-vote
+                                                      </span>
                                                   </>
                                               ) : null}
-                                              {currUsername !== comment.by ? (
+                                              <span> | </span>
+
+                                              {/* COMMENT PARENT */}
+                                              <span className="listed-comment-parent">
+                                                  <Link
+                                                      href={
+                                                          comment.isParent
+                                                              ? `/item?id=${comment.parentItemId}`
+                                                              : `/comment?id=${comment.parentCommentId}`
+                                                      }>
+                                                      parent
+                                                  </Link>
+                                              </span>
+
+                                              {/* FAVORITE COMMENT */}
+                                              {showUnfavoriteOption ? (
                                                   <>
-                                                      {/* DOWNVOTE BOTTON */}
-                                                      {comment.votedOnByUser || !showDownvote || comment.dead ? (
-                                                          <>
-                                                              <div className="listed-comment-downvote hide">
-                                                                  <span></span>
-                                                              </div>
-                                                          </>
-                                                      ) : (
-                                                          <>
-                                                              <div
-                                                                  className="listed-comment-downvote"
-                                                                  onClick={() =>
-                                                                      requestDownvoteComment(
-                                                                          comment.id,
-                                                                          comment.parentItemId,
-                                                                          index
-                                                                      )
-                                                                  }>
-                                                                  <span></span>
-                                                              </div>
-                                                          </>
-                                                      )}
+                                                      <span> | </span>
+                                                      <span
+                                                          className="listed-comment-unfavorite"
+                                                          onClick={() => requestUnfavoriteComment(comment.id)}>
+                                                          un-favorite
+                                                      </span>
                                                   </>
                                               ) : null}
-                                          </td>
-                                          <td>
-                                              <div className="listed-comment-head">
-                                                  {/* COMMENT POINTS */}
-                                                  <span>
-                                                      {comment.points.toLocaleString()}&nbsp;
-                                                      {renderPointsString(comment.points)} by&nbsp;
-                                                  </span>
 
-                                                  {/* COMMENT BY/AUTHOR */}
-                                                  <span>
-                                                      <Link href={`/user?id=${comment.by}`}>
-                                                          <a>{comment.by}</a>
-                                                      </Link>
-                                                      &nbsp;
-                                                  </span>
+                                              {/* EDIT COMMENT */}
+                                              {comment.by === currUsername &&
+                                              !comment.editAndDeleteExpired &&
+                                              !comment.dead ? (
+                                                  <>
+                                                      <span> | </span>
+                                                      <span>
+                                                          <Link href={`/edit-comment?id=${comment.id}`}>
+                                                              edit
+                                                          </Link>
+                                                      </span>
+                                                  </>
+                                              ) : null}
 
-                                                  {/* COMMENT CREATED TIME */}
-                                                  <span>
-                                                      <Link href={`/comment?id=${comment.id}`}>
-                                                          <a>{renderCreatedTime(comment.created)}</a>
-                                                      </Link>
-                                                  </span>
+                                              {/* DELETE COMMENT */}
+                                              {comment.by === currUsername &&
+                                              !comment.editAndDeleteExpired &&
+                                              !comment.dead ? (
+                                                  <>
+                                                      <span> | </span>
+                                                      <span>
+                                                          <Link
+                                                              href={`/delete-comment?id=${
+                                                                  comment.id
+                                                              }&goto=${encodeURIComponent(goToString)}`}>
+                                                              delete
+                                                          </Link>
+                                                      </span>
+                                                  </>
+                                              ) : null}
+                                              <span> | </span>
 
-                                                  {/* UNVOTE COMMENT */}
-                                                  {comment.dead ? <span> [dead]</span> : null}
-                                                  {comment.votedOnByUser && !comment.unvoteExpired ? (
-                                                      <>
-                                                          <span> | </span>
-                                                          <span
-                                                              className="listed-comment-unvote"
-                                                              onClick={() => requestUnvoteComment(comment.id, index)}>
-                                                              un-vote
-                                                          </span>
-                                                      </>
-                                                  ) : null}
-                                                  <span> | </span>
+                                              {/* KILL COMMENT */}
+                                              {isModerator && !comment.dead ? (
+                                                  <>
+                                                      <span
+                                                          className="listed-comment-kill"
+                                                          onClick={() => requestKillComment(comment.id, index)}>
+                                                          kill
+                                                      </span>
+                                                  </>
+                                              ) : null}
 
-                                                  {/* COMMENT PARENT */}
-                                                  <span className="listed-comment-parent">
-                                                      <Link
-                                                          href={
-                                                              comment.isParent
-                                                                  ? `/item?id=${comment.parentItemId}`
-                                                                  : `/comment?id=${comment.parentCommentId}`
-                                                          }>
-                                                          <a>parent</a>
-                                                      </Link>
-                                                  </span>
+                                              {/* UNKILL COMMENT */}
+                                              {isModerator && comment.dead ? (
+                                                  <>
+                                                      <span
+                                                          className="listed-comment-kill"
+                                                          onClick={() => requestUnkillComment(comment.id, index)}>
+                                                          un-kill
+                                                      </span>
+                                                  </>
+                                              ) : null}
 
-                                                  {/* FAVORITE COMMENT */}
-                                                  {showUnfavoriteOption ? (
-                                                      <>
-                                                          <span> | </span>
-                                                          <span
-                                                              className="listed-comment-unfavorite"
-                                                              onClick={() => requestUnfavoriteComment(comment.id)}>
-                                                              un-favorite
-                                                          </span>
-                                                      </>
-                                                  ) : null}
+                                              <span> | </span>
 
-                                                  {/* EDIT COMMENT */}
-                                                  {comment.by === currUsername &&
-                                                  !comment.editAndDeleteExpired &&
-                                                  !comment.dead ? (
-                                                      <>
-                                                          <span> | </span>
-                                                          <span>
-                                                              <Link href={`/edit-comment?id=${comment.id}`}>
-                                                                  <a>edit</a>
-                                                              </Link>
-                                                          </span>
-                                                      </>
-                                                  ) : null}
-
-                                                  {/* DELETE COMMENT */}
-                                                  {comment.by === currUsername &&
-                                                  !comment.editAndDeleteExpired &&
-                                                  !comment.dead ? (
-                                                      <>
-                                                          <span> | </span>
-                                                          <span>
-                                                              <Link
-                                                                  href={`/delete-comment?id=${
-                                                                      comment.id
-                                                                  }&goto=${encodeURIComponent(goToString)}`}>
-                                                                  <a>delete</a>
-                                                              </Link>
-                                                          </span>
-                                                      </>
-                                                  ) : null}
-                                                  <span> | </span>
-
-                                                  {/* KILL COMMENT */}
-                                                  {isModerator && !comment.dead ? (
-                                                      <>
-                                                          <span
-                                                              className="listed-comment-kill"
-                                                              onClick={() => requestKillComment(comment.id, index)}>
-                                                              kill
-                                                          </span>
-                                                      </>
-                                                  ) : null}
-
-                                                  {/* UNKILL COMMENT */}
-                                                  {isModerator && comment.dead ? (
-                                                      <>
-                                                          <span
-                                                              className="listed-comment-kill"
-                                                              onClick={() => requestUnkillComment(comment.id, index)}>
-                                                              un-kill
-                                                          </span>
-                                                      </>
-                                                  ) : null}
-
-                                                  <span> | </span>
-
-                                                  {/* COMMENT FROM ITEM */}
-                                                  <span>
-                                                      on:&nbsp;
-                                                      <Link href={`/item?id=${comment.parentItemId}`}>
-                                                          <a>{truncateItemTitle(comment.parentItemTitle)}</a>
-                                                      </Link>
-                                                  </span>
-                                              </div>
-                                              <div className="listed-comment-text">
-                                                  <span dangerouslySetInnerHTML={{ __html: comment.text }}></span>
-                                              </div>
-                                          </td>
-                                      </tr>
-                                  </tbody>
-                              </table>
-                          </div>
-                      );
-                  })
-                : null}
-            {isMore ? (
-                <div className="listed-comments-more">
-                    {/* ANYMORE COMMENT? */}
-                    <Link href={isMoreLink}>
-                        <span>
-                            <a>More</a>
-                        </span>
-                    </Link>
-                </div>
-            ) : null}
-        </>
-    );
+                                              {/* COMMENT FROM ITEM */}
+                                              <span>
+                                                  on:&nbsp;
+                                                  <Link href={`/item?id=${comment.parentItemId}`}>
+                                                      {truncateItemTitle(comment.parentItemTitle)}
+                                                  </Link>
+                                              </span>
+                                          </div>
+                                          <div className="listed-comment-text">
+                                              <span dangerouslySetInnerHTML={{ __html: comment.text }}></span>
+                                          </div>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  );
+              })
+            : null}
+        {isMore ? (
+            <div className="listed-comments-more">
+                {/* ANYMORE COMMENT? */}
+                <Link href={isMoreLink} legacyBehavior>
+                    <span>
+                        <a>More</a>
+                    </span>
+                </Link>
+            </div>
+        ) : null}
+    </>;
 }

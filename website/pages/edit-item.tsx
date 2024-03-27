@@ -140,19 +140,19 @@ export default function EditItem({ item, authUserData, notAllowedError, getDataE
                             </div>
                             <div className="edit-item-title-and-domain grid-item">
                                 <span className="edit-item-title">
-                                    <Link href={item.url ? item.url : `/item?id=${item.id}`}>{item.title}</Link>
+                                    <Link href={item.url ? item.url : `/item?id=${item.id}`} legacyBehavior>{item.title}</Link>
                                 </span>
                                 {item.url && (
                                     <span className="edit-item-domain">
-                                        (<Link href={`/from?site=${item.domain}`}>{item.domain}</Link>)
+                                        (<Link href={`/from?site=${item.domain}`} legacyBehavior>{item.domain}</Link>)
                                     </span>
                                 )}
                             </div>
                             <div className="edit-item-details-bottom grid-item">
                                 <span className="edit-item-score">{item.points.toLocaleString()} points</span>
-                                &nbsp; by <Link href={`/user?id=${item.by}`}>{item.by}</Link>&nbsp;
+                                &nbsp; by <Link href={`/user?id=${item.by}`} legacyBehavior>{item.by}</Link>&nbsp;
                                 <span className="edit-item-time">
-                                    <Link href={`/item?id=${item.id}`}>{renderCreatedTime(item.created)}</Link>
+                                    <Link href={`/item?id=${item.id}`} legacyBehavior>{renderCreatedTime(item.created)}</Link>
                                 </span>
                                 <span> | </span>
                                 <span>

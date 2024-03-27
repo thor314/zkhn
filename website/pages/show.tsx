@@ -25,11 +25,11 @@ export default function Show({ items, authUserData, page, isMore, getDataError, 
                             <span>
                                 Please read the&nbsp;
                                 <Link href="/showguidelines">
-                                    <a>rules</a>
+                                    rules
                                 </Link>
                                 . You can also browse the&nbsp;
                                 <Link href="/shownew">
-                                    <a>newest</a>
+                                    newest
                                 </Link>
                                 &nbsp;Show submissions.
                             </span>

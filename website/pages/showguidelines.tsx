@@ -8,9 +8,9 @@ export default function ShowGuidelines() {
             <HeadMetadata title="Show Guidelines | zkNews" />
             <div className="show-guidelines-top-image">
                 <Link href="/">
-                    <a>
-                        <img src="/favicon.png" />
-                    </a>
+
+                    <img src="/favicon.png" />
+
                 </Link>
                 <h1>zkNews</h1>
             </div>
@@ -20,15 +20,15 @@ export default function ShowGuidelines() {
                 <p>
                     Show CNs can be found via{" "}
                     <Link href="/show">
-                        <a>show</a>
+                        show
                     </Link>{" "}
                     in the top bar, and the newest ones are{" "}
                     <Link href="/shownew">
-                        <a>here</a>
+                        here
                     </Link>
                     . To post one yourself, simply{" "}
                     <Link href="/submit">
-                        <a>submit</a>
+                        submit
                     </Link>{" "}
                     a story whose title begins with "Show CN".
                 </p>

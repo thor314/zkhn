@@ -60,214 +60,212 @@ function Comment({
 
     // console.log("COMMENT", comment);
 
-    return (
-        <>
-            <div
-                key={comment.id}
-                className={type === "parent" ? "comment-section-comment parent" : "comment-section-comment child"}>
-                {!comment.isCollapsed ? (
-                    <div className="comment-section-comment-details">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td valign="top">
-                                        {/* COMMENT BY USER PUT * START AS VOTE BUTTON */}
-                                        {comment.by === currUsername ? (
-                                            <div className="comment-section-comment-star">
-                                                <span>*</span>
-                                            </div>
-                                        ) : null}
-                                        {/* UPVOTE BUTTON */}
-                                        {comment.by !== currUsername ? (
-                                            <>
-                                                {comment.votedOnByUser || comment.dead ? (
-                                                    <>
-                                                        <div className="comment-section-comment-upvote hide">
-                                                            <span></span>
-                                                        </div>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <div
-                                                            className="comment-section-comment-upvote"
-                                                            onClick={() => requestUpvoteComment(comment.id)}>
-                                                            <span></span>
-                                                        </div>
-                                                    </>
-                                                )}
-                                            </>
-                                        ) : null}
-                                        {/* DOWNVOTE BUTTON */}
-                                        {comment.by !== currUsername ? (
-                                            <>
-                                                {comment.votedOnByUser || !showDownvote || comment.dead ? (
-                                                    <>
-                                                        <div className="comment-section-comment-downvote hide">
-                                                            <span></span>
-                                                        </div>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <div
-                                                            className="comment-section-comment-downvote"
-                                                            onClick={() => requestDownvoteComment(comment.id)}>
-                                                            <span></span>
-                                                        </div>
-                                                    </>
-                                                )}
-                                            </>
-                                        ) : null}
-                                    </td>
-                                    <td>
-                                        {/* COMMENT POINT */}
-                                        <span>
-                                            {comment.points}&nbsp;
-                                            {renderPointsString(comment.points)}
-                                        </span>
-                                        &nbsp;|&nbsp;
-                                        {/* AUTHOR OF COMMENT | BY */}
-                                        <span>
-                                            <Link href={`/user?id=${comment.by}`}>
-                                                <a>{comment.by}</a>
-                                            </Link>
-                                        </span>
-                                        <span>
-                                            &nbsp;
-                                            <Link href={`/comment?id=${comment.id}`}>
-                                                <a>{renderCreatedTime(comment.created)}</a>
-                                            </Link>
-                                        </span>
-                                        {/* IS COMMENT DEAD? */}
-                                        {comment.dead ? <span> [dead]</span> : null}
-                                        {/* COMMENT VOTED? PUT UNVOTE */}
-                                        {comment.votedOnByUser && !comment.unvoteExpired ? (
-                                            <>
-                                                <span> | </span>
-                                                <span
-                                                    className="comment-section-comment-unvote-btn"
-                                                    onClick={() => requestUnvoteComment(comment.id)}>
-                                                    un-vote
-                                                </span>
-                                            </>
-                                        ) : null}
-                                        {/* EDIT COMMENT */}
-                                        {comment.by === currUsername &&
-                                        !comment.editAndDeleteExpired &&
-                                        !comment.dead ? (
-                                            <>
-                                                <span> | </span>
-                                                <span>
-                                                    <Link href={`/edit-comment?id=${comment.id}`}>
-                                                        <a>edit</a>
-                                                    </Link>
-                                                </span>
-                                            </>
-                                        ) : null}
-                                        {/* DELETE COMMENT */}
-                                        {comment.by === currUsername &&
-                                        !comment.editAndDeleteExpired &&
-                                        !comment.dead ? (
-                                            <>
-                                                <span> | </span>
-                                                <span>
-                                                    <Link
-                                                        href={`/delete-comment?id=${
-                                                            comment.id
-                                                        }&goto=${encodeURIComponent(goToString)}`}>
-                                                        <a>delete</a>
-                                                    </Link>
-                                                </span>
-                                            </>
-                                        ) : null}
-                                        {/* KILL COMMENT */}
-                                        {isModerator && !comment.dead ? (
-                                            <>
-                                                <span> | </span>
-                                                <span
-                                                    className="comment-section-kill"
-                                                    onClick={() => requestKillComment(comment.id)}>
-                                                    kill
-                                                </span>
-                                            </>
-                                        ) : null}
-                                        {/* UNKILL COMMENT */}
-                                        {isModerator && comment.dead ? (
-                                            <>
-                                                <span> | </span>
-                                                <span
-                                                    className="comment-section-kill"
-                                                    onClick={() => requestUnkillComment(comment.id)}>
-                                                    un-kill
-                                                </span>
-                                            </>
-                                        ) : null}
-                                        {/* COLLAPSE/EXPAND COMMENT */}
-                                        <span
-                                            className="comment-section-comment-collapse-btn"
-                                            onClick={() => collapseComment(comment.id, parentCommentIndex)}>
-                                            [‒]
-                                        </span>
-                                        {/* COMMENT CONTENT */}
-                                        <div className={generateCommentTextClassName(comment.points)}>
-                                            <span dangerouslySetInnerHTML={{ __html: comment.text }}></span>
+    return <>
+        <div
+            key={comment.id}
+            className={type === "parent" ? "comment-section-comment parent" : "comment-section-comment child"}>
+            {!comment.isCollapsed ? (
+                <div className="comment-section-comment-details">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td valign="top">
+                                    {/* COMMENT BY USER PUT * START AS VOTE BUTTON */}
+                                    {comment.by === currUsername ? (
+                                        <div className="comment-section-comment-star">
+                                            <span>*</span>
                                         </div>
-                                        {/* GOT TO REPLY COMMENT */}
-                                        <div className="comment-section-comment-reply">
+                                    ) : null}
+                                    {/* UPVOTE BUTTON */}
+                                    {comment.by !== currUsername ? (
+                                        <>
+                                            {comment.votedOnByUser || comment.dead ? (
+                                                <>
+                                                    <div className="comment-section-comment-upvote hide">
+                                                        <span></span>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <div
+                                                        className="comment-section-comment-upvote"
+                                                        onClick={() => requestUpvoteComment(comment.id)}>
+                                                        <span></span>
+                                                    </div>
+                                                </>
+                                            )}
+                                        </>
+                                    ) : null}
+                                    {/* DOWNVOTE BUTTON */}
+                                    {comment.by !== currUsername ? (
+                                        <>
+                                            {comment.votedOnByUser || !showDownvote || comment.dead ? (
+                                                <>
+                                                    <div className="comment-section-comment-downvote hide">
+                                                        <span></span>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <div
+                                                        className="comment-section-comment-downvote"
+                                                        onClick={() => requestDownvoteComment(comment.id)}>
+                                                        <span></span>
+                                                    </div>
+                                                </>
+                                            )}
+                                        </>
+                                    ) : null}
+                                </td>
+                                <td>
+                                    {/* COMMENT POINT */}
+                                    <span>
+                                        {comment.points}&nbsp;
+                                        {renderPointsString(comment.points)}
+                                    </span>
+                                    &nbsp;|&nbsp;
+                                    {/* AUTHOR OF COMMENT | BY */}
+                                    <span>
+                                        <Link href={`/user?id=${comment.by}`}>
+                                            {comment.by}
+                                        </Link>
+                                    </span>
+                                    <span>
+                                        &nbsp;
+                                        <Link href={`/comment?id=${comment.id}`}>
+                                            {renderCreatedTime(comment.created)}
+                                        </Link>
+                                    </span>
+                                    {/* IS COMMENT DEAD? */}
+                                    {comment.dead ? <span> [dead]</span> : null}
+                                    {/* COMMENT VOTED? PUT UNVOTE */}
+                                    {comment.votedOnByUser && !comment.unvoteExpired ? (
+                                        <>
+                                            <span> | </span>
+                                            <span
+                                                className="comment-section-comment-unvote-btn"
+                                                onClick={() => requestUnvoteComment(comment.id)}>
+                                                un-vote
+                                            </span>
+                                        </>
+                                    ) : null}
+                                    {/* EDIT COMMENT */}
+                                    {comment.by === currUsername &&
+                                    !comment.editAndDeleteExpired &&
+                                    !comment.dead ? (
+                                        <>
+                                            <span> | </span>
                                             <span>
-                                                <Link href={`/reply?id=${comment.id}`}>
-                                                    <a>reply</a>
+                                                <Link href={`/edit-comment?id=${comment.id}`}>
+                                                    edit
                                                 </Link>
                                             </span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        </>
+                                    ) : null}
+                                    {/* DELETE COMMENT */}
+                                    {comment.by === currUsername &&
+                                    !comment.editAndDeleteExpired &&
+                                    !comment.dead ? (
+                                        <>
+                                            <span> | </span>
+                                            <span>
+                                                <Link
+                                                    href={`/delete-comment?id=${
+                                                        comment.id
+                                                    }&goto=${encodeURIComponent(goToString)}`}>
+                                                    delete
+                                                </Link>
+                                            </span>
+                                        </>
+                                    ) : null}
+                                    {/* KILL COMMENT */}
+                                    {isModerator && !comment.dead ? (
+                                        <>
+                                            <span> | </span>
+                                            <span
+                                                className="comment-section-kill"
+                                                onClick={() => requestKillComment(comment.id)}>
+                                                kill
+                                            </span>
+                                        </>
+                                    ) : null}
+                                    {/* UNKILL COMMENT */}
+                                    {isModerator && comment.dead ? (
+                                        <>
+                                            <span> | </span>
+                                            <span
+                                                className="comment-section-kill"
+                                                onClick={() => requestUnkillComment(comment.id)}>
+                                                un-kill
+                                            </span>
+                                        </>
+                                    ) : null}
+                                    {/* COLLAPSE/EXPAND COMMENT */}
+                                    <span
+                                        className="comment-section-comment-collapse-btn"
+                                        onClick={() => collapseComment(comment.id, parentCommentIndex)}>
+                                        [‒]
+                                    </span>
+                                    {/* COMMENT CONTENT */}
+                                    <div className={generateCommentTextClassName(comment.points)}>
+                                        <span dangerouslySetInnerHTML={{ __html: comment.text }}></span>
+                                    </div>
+                                    {/* GOT TO REPLY COMMENT */}
+                                    <div className="comment-section-comment-reply">
+                                        <span>
+                                            <Link href={`/reply?id=${comment.id}`}>
+                                                reply
+                                            </Link>
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                        {/* RENDER CHILD COMMENT */}
-                        <NestedComments
-                            key={comment.id}
-                            parentCommentIndex={parentCommentIndex}
-                            comment={comment}
-                            type="child"
-                            currUsername={currUsername}
-                            showDownvote={showDownvote}
-                            goToString={goToString}
-                            requestUpvoteComment={requestUpvoteComment}
-                            requestDownvoteComment={requestDownvoteComment}
-                            requestUnvoteComment={requestUnvoteComment}
-                            collapseComment={collapseComment}
-                            uncollapseComment={uncollapseComment}
-                            requestKillComment={requestKillComment}
-                            requestUnkillComment={requestUnkillComment}
-                        />
-                    </div>
-                ) : (
-                    // IF COMMENT IS COLLPASED, SHOW THIS
-                    <div className="comment-section-comment-collapsed">
-                        <span>
-                            <Link href={`/user?id=${comment.by}`}>
-                                <a>{comment.by}</a>
-                            </Link>
-                            &nbsp;
+                    {/* RENDER CHILD COMMENT */}
+                    <NestedComments
+                        key={comment.id}
+                        parentCommentIndex={parentCommentIndex}
+                        comment={comment}
+                        type="child"
+                        currUsername={currUsername}
+                        showDownvote={showDownvote}
+                        goToString={goToString}
+                        requestUpvoteComment={requestUpvoteComment}
+                        requestDownvoteComment={requestDownvoteComment}
+                        requestUnvoteComment={requestUnvoteComment}
+                        collapseComment={collapseComment}
+                        uncollapseComment={uncollapseComment}
+                        requestKillComment={requestKillComment}
+                        requestUnkillComment={requestUnkillComment}
+                    />
+                </div>
+            ) : (
+                // IF COMMENT IS COLLPASED, SHOW THIS
+                <div className="comment-section-comment-collapsed">
+                    <span>
+                        <Link href={`/user?id=${comment.by}`}>
+                            {comment.by}
+                        </Link>
+                        &nbsp;
+                    </span>
+                    <span>
+                        <Link href={`/comment?id=${comment.id}`}>
+                            {renderCreatedTime(comment.created)}
+                        </Link>
+                    </span>
+                    <div className="comment-section-comment-collapsed-btn">
+                        <span
+                            className="comment-section-comment-collapsed-btn-value"
+                            onClick={() => uncollapseComment(comment.id, parentCommentIndex)}>
+                            [+{comment.numOfHiddenChildren}]
                         </span>
-                        <span>
-                            <Link href={`/comment?id=${comment.id}`}>
-                                <a>{renderCreatedTime(comment.created)}</a>
-                            </Link>
-                        </span>
-                        <div className="comment-section-comment-collapsed-btn">
-                            <span
-                                className="comment-section-comment-collapsed-btn-value"
-                                onClick={() => uncollapseComment(comment.id, parentCommentIndex)}>
-                                [+{comment.numOfHiddenChildren}]
-                            </span>
-                        </div>
                     </div>
-                )}
-            </div>
-        </>
-    );
+                </div>
+            )}
+        </div>
+    </>;
 }
 
 export default function CommentSection({
@@ -465,40 +463,38 @@ export default function CommentSection({
         });
     };
 
-    return (
-        <>
-            {comments
-                ? comments.map((comment, index) => {
-                      return (
-                          <Comment
-                              key={comment.id}
-                              parentCommentIndex={index}
-                              comment={comment}
-                              type="parent"
-                              currUsername={currUsername}
-                              showDownvote={showDownvote}
-                              goToString={goToString}
-                              requestUpvoteComment={requestUpvoteComment}
-                              requestDownvoteComment={requestDownvoteComment}
-                              requestUnvoteComment={requestUnvoteComment}
-                              collapseComment={collapseComment}
-                              uncollapseComment={uncollapseComment}
-                              isModerator={isModerator}
-                              requestKillComment={requestKillComment}
-                              requestUnkillComment={requestUnkillComment}
-                          />
-                      );
-                  })
-                : null}
-            {isMore ? (
-                <div className="comment-section-more">
-                    <span>
-                        <Link href={isMoreLink}>
-                            <a>More</a>
-                        </Link>
-                    </span>
-                </div>
-            ) : null}
-        </>
-    );
+    return <>
+        {comments
+            ? comments.map((comment, index) => {
+                  return (
+                      <Comment
+                          key={comment.id}
+                          parentCommentIndex={index}
+                          comment={comment}
+                          type="parent"
+                          currUsername={currUsername}
+                          showDownvote={showDownvote}
+                          goToString={goToString}
+                          requestUpvoteComment={requestUpvoteComment}
+                          requestDownvoteComment={requestDownvoteComment}
+                          requestUnvoteComment={requestUnvoteComment}
+                          collapseComment={collapseComment}
+                          uncollapseComment={uncollapseComment}
+                          isModerator={isModerator}
+                          requestKillComment={requestKillComment}
+                          requestUnkillComment={requestUnkillComment}
+                      />
+                  );
+              })
+            : null}
+        {isMore ? (
+            <div className="comment-section-more">
+                <span>
+                    <Link href={isMoreLink}>
+                        More
+                    </Link>
+                </span>
+            </div>
+        ) : null}
+    </>;
 }

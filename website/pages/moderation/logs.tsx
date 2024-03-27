@@ -46,7 +46,7 @@ export default function Logs({ logs, category, page, isMore, getDataError, notAl
                                                     <td>{renderCreatedTime(log.created)}</td>
                                                     <td>
                                                         <Link href={`/user?id=${log.moderatorUsername}`}>
-                                                            <a>{log.moderatorUsername}</a>
+                                                            {log.moderatorUsername}
                                                         </Link>
                                                     </td>
                                                     <td>
@@ -54,7 +54,7 @@ export default function Logs({ logs, category, page, isMore, getDataError, notAl
                                                             <span>
                                                                 Shadow ban added for user:&nbsp;
                                                                 <Link href={`/user?id=${log.username}`}>
-                                                                    <a>{log.username}</a>
+                                                                    {log.username}
                                                                 </Link>
                                                                 .
                                                             </span>
@@ -63,7 +63,7 @@ export default function Logs({ logs, category, page, isMore, getDataError, notAl
                                                             <span>
                                                                 Removed shadow ban for user:&nbsp;
                                                                 <Link href={`/user?id=${log.username}`}>
-                                                                    <a>{log.username}</a>
+                                                                    {log.username}
                                                                 </Link>
                                                                 .
                                                             </span>
@@ -72,7 +72,7 @@ export default function Logs({ logs, category, page, isMore, getDataError, notAl
                                                             <span>
                                                                 Banned user:&nbsp;
                                                                 <Link href={`/user?id=${log.username}`}>
-                                                                    <a>{log.username}</a>
+                                                                    {log.username}
                                                                 </Link>
                                                                 .
                                                             </span>
@@ -81,7 +81,7 @@ export default function Logs({ logs, category, page, isMore, getDataError, notAl
                                                             <span>
                                                                 Removed ban for user:&nbsp;
                                                                 <Link href={`/user?id=${log.username}`}>
-                                                                    <a>{log.username}</a>
+                                                                    {log.username}
                                                                 </Link>
                                                                 .
                                                             </span>
@@ -90,11 +90,11 @@ export default function Logs({ logs, category, page, isMore, getDataError, notAl
                                                             <span>
                                                                 Killed item&nbsp;
                                                                 <Link href={`/item?id=${log.itemId}`}>
-                                                                    <a>{truncateItemTitle(log.itemTitle)}</a>
+                                                                    {truncateItemTitle(log.itemTitle)}
                                                                 </Link>
                                                                 &nbsp; by{" "}
                                                                 <Link href={`/user?id=${log.itemBy}`}>
-                                                                    <a>{log.itemBy}</a>
+                                                                    {log.itemBy}
                                                                 </Link>
                                                                 .
                                                             </span>
@@ -103,11 +103,11 @@ export default function Logs({ logs, category, page, isMore, getDataError, notAl
                                                             <span>
                                                                 Unkilled item&nbsp;
                                                                 <Link href={`/item?id=${log.itemId}`}>
-                                                                    <a>{truncateItemTitle(log.itemTitle)}</a>
+                                                                    {truncateItemTitle(log.itemTitle)}
                                                                 </Link>
                                                                 &nbsp; by{" "}
                                                                 <Link href={`/user?id=${log.itemBy}`}>
-                                                                    <a>{log.itemBy}</a>
+                                                                    {log.itemBy}
                                                                 </Link>
                                                                 .
                                                             </span>
@@ -116,15 +116,15 @@ export default function Logs({ logs, category, page, isMore, getDataError, notAl
                                                             <span>
                                                                 Killed&nbsp;
                                                                 <Link href={`/comment?id=${log.commentId}`}>
-                                                                    <a>comment</a>
+                                                                    comment
                                                                 </Link>
                                                                 &nbsp; by{" "}
                                                                 <Link href={`/user?id=${log.commentBy}`}>
-                                                                    <a>{log.commentBy}</a>
+                                                                    {log.commentBy}
                                                                 </Link>
                                                                 &nbsp; on&nbsp;
                                                                 <Link href={`/item?id=${log.itemId}`}>
-                                                                    <a>{truncateItemTitle(log.itemTitle)}</a>
+                                                                    {truncateItemTitle(log.itemTitle)}
                                                                 </Link>
                                                                 .
                                                             </span>
@@ -133,15 +133,15 @@ export default function Logs({ logs, category, page, isMore, getDataError, notAl
                                                             <span>
                                                                 Unkilled&nbsp;
                                                                 <Link href={`/comment?id=${log.commentId}`}>
-                                                                    <a>comment</a>
+                                                                    comment
                                                                 </Link>
                                                                 &nbsp; by{" "}
                                                                 <Link href={`/user?id=${log.commentBy}`}>
-                                                                    <a>{log.commentBy}</a>
+                                                                    {log.commentBy}
                                                                 </Link>
                                                                 &nbsp; on&nbsp;
                                                                 <Link href={`/item?id=${log.itemId}`}>
-                                                                    <a>{truncateItemTitle(log.itemTitle)}</a>
+                                                                    {truncateItemTitle(log.itemTitle)}
                                                                 </Link>
                                                                 .
                                                             </span>
@@ -161,9 +161,9 @@ export default function Logs({ logs, category, page, isMore, getDataError, notAl
                         {isMore ? (
                             <div className="moderation-logs-more">
                                 <Link href={`/moderation/logs?category=${category}&page=${page + 1}`}>
-                                    <a>
-                                        <span>More</span>
-                                    </a>
+
+                                    <span>More</span>
+
                                 </Link>
                             </div>
                         ) : null}

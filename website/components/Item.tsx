@@ -275,15 +275,15 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                             {/* IS ITEM DEAD? */}
                             <span className="item-title">
                                 <Link href={item.url ? item.url : `/item?id=${item.id}`}>
-                                    <a>
-                                        {item.dead ? "[dead] " : null}
-                                        {item.title}
-                                    </a>
+
+                                    {item.dead ? "[dead] " : null}
+                                    {item.title}
+
                                 </Link>
                             </span>
                             {item.url ? (
                                 <span className="item-domain">
-                                    (<Link href={`/from?site=${item.domain}`}>{item.domain}</Link>)
+                                    (<Link href={`/from?site=${item.domain}`} legacyBehavior>{item.domain}</Link>)
                                 </span>
                             ) : null}
                         </td>
@@ -298,12 +298,12 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                             &nbsp;
                             {/* ITEM MADE BY */}
                             <span>
-                                by <Link href={`/user?id=${item.by}`}>{item.by}</Link>
+                                by <Link href={`/user?id=${item.by}`} legacyBehavior>{item.by}</Link>
                                 &nbsp;
                             </span>
                             {/* ITEM CREATED DATE */}
                             <span>
-                                <Link href={`/item?id=${item.id}`}>{renderCreatedTime(item.created)}</Link>
+                                <Link href={`/item?id=${item.id}`} legacyBehavior>{renderCreatedTime(item.created)}</Link>
                             </span>
                             {/* UNVOTE */}
                             {item.votedOnByUser && !item.unvoteExpired && !item.dead ? (
@@ -403,10 +403,9 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                                             <span> | </span>
                                             <span className="item-comments">
                                                 <Link href={`/item?id=${item.id}`}>
-                                                    <a>
-                                                        {item.commentCount.toLocaleString()} comment
-                                                        {item.commentCount > 1 ? "s" : null}
-                                                    </a>
+
+                                                    {item.commentCount.toLocaleString()}comment{item.commentCount > 1 ? "s" : null}
+
                                                 </Link>
                                             </span>
                                         </>

@@ -25,7 +25,7 @@ export default function ShadowBannedUsers({ users, page, isMore, getDataError, n
                                                 <tr key={index}>
                                                     <td>
                                                         <Link href={`/user?id=${user.username}`}>
-                                                            <a>{user.username}</a>
+                                                            {user.username}
                                                         </Link>
                                                     </td>
                                                 </tr>
