@@ -26,7 +26,7 @@ export default function SearchPageHeader({
     };
 
     const checkForEnterKeypress: KeyboardEventHandler<HTMLInputElement> = (event) => {
-        if (event.key = "Enter") {
+        if (event.key === "Enter") {
             submitSearchInputRequest(event.currentTarget.value);
         }
     };
