@@ -29,7 +29,7 @@ export const createUser = makeEndpoint({
         success: z.literal(true),
         username: z.string(),
         auth_token: z.string(),
-        auth_token_expiration_timestamp: z.string().transform((timestamp) => new Date(timestamp)),
+        auth_token_expiration_timestamp: z.string().datetime(),
     }),
     errors,
 });
@@ -48,6 +48,17 @@ export const login = makeEndpoint({
         )
         .build(),
     response: z.literal(""),
+    errors,
+});
+
+export const logout = makeEndpoint({
+    method: "post",
+    path: "/users/logout",
+    alias: "logout",
+    parameters: parametersBuilder()
+        .addBody(z.object({}))
+        .build(),
+    response: z.object({}),
     errors,
 });
 

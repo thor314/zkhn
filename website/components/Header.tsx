@@ -1,13 +1,27 @@
 import Link from "next/link";
 import Router from "next/router";
 
-import logoutUser from "@/api/users/logoutUser";
+import apiClient from "@/zodios/apiClient";
 
-export default function Header({ userSignedIn, username, karma, goto, pageName, label }) {
+type HeaderProps = {
+    userSignedIn: boolean,
+    username: string,
+    karma: number,
+    goto: string,
+    pageName: "ask" | "show" | "submit" | "newest" | "newcomments" | "threads",
+    label: string,
+}
+
+export default function Header({ userSignedIn, username, karma, goto, pageName, label }: HeaderProps) {
     const requestLogout = () => {
-        logoutUser(() => {
-            Router.push(Router.asPath);
-        });
+        apiClient.logout({})
+            .then(_ => {
+                Router.push(Router.asPath);
+            })
+            .catch(error => {
+                console.error(`Header.tsx requestLogout error:`)
+                console.error(error)
+            });
     };
 
     return (
@@ -31,7 +45,7 @@ export default function Header({ userSignedIn, username, karma, goto, pageName, 
                             {userSignedIn ? (
                                 <>
                                     <Link
-                                        className={pageName === "threads" ? "white-text" : null}
+                                        className={pageName === "threads" ? "white-text" : ""}
                                         href={`/threads?id=${username}`}>
                                         threads
                                     </Link>
@@ -44,15 +58,15 @@ export default function Header({ userSignedIn, username, karma, goto, pageName, 
                                 comments
                             </Link> */}
                             <span> | </span>
-                            <Link className={pageName === "ask" ? "white-text" : null} href="/ask">
+                            <Link className={pageName === "ask" ? "white-text" : ""} href="/ask">
                                 ask
                             </Link>
                             <span> | </span>
-                            <Link className={pageName === "show" ? "white-text" : null} href="/show">
+                            <Link className={pageName === "show" ? "white-text" : ""} href="/show">
                                 show
                             </Link>
                             <span> | </span>
-                            <Link className={pageName === "submit" ? "white-text" : null} href="/submit">
+                            <Link className={pageName === "submit" ? "white-text" : ""} href="/submit">
                                 submit
                             </Link>
                             {label ? (
@@ -70,7 +84,7 @@ export default function Header({ userSignedIn, username, karma, goto, pageName, 
                                     <Link href={`/user?id=${username}`} legacyBehavior>{username}</Link>
                                     <span> ({karma.toLocaleString()})</span>
                                     <span> | </span>
-                                    <span className="header-logout" onClick={() => requestLogout()}>
+                                    <span className="header-logout" onClick={requestLogout}>
                                         logout
                                     </span>
                                 </>
