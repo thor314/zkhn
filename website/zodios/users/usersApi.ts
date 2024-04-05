@@ -1,7 +1,7 @@
 import { makeApi } from "@zodios/core";
 
-import { createUser, login } from "@/zodios/users/users";
+import { createUser, login, authenticate } from "@/zodios/users/users";
 
-const usersApi = makeApi([createUser, login]);
+const usersApi = makeApi([createUser, login, authenticate]);
 
 export default usersApi;

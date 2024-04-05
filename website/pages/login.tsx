@@ -6,7 +6,6 @@ import { isErrorFromAlias } from "@zodios/core";
 
 import apiClient from "@/zodios/apiClient";
 import usersApi from "@/zodios/users/usersApi";
-import authUser from "@/api/users/authUser";
 
 import HeadMetadata from "@/components/HeadMetadata";
 import AlternateHeader from "@/components/AlternateHeader";
@@ -206,13 +205,17 @@ export default function Login({ goto }: InferGetServerSidePropsType<typeof getSe
 }
 
 export const getServerSideProps = (async ({ req, res, query }) => {
-    // TODO: replace with new auth function
-    const authResult = await authUser(req);
-    if (authResult.success) {
+    try {
+        await apiClient.authenticate({
+            headers: { cookie: req.headers.cookie }
+        });
         res.writeHead(302, {
             Location: "/",
         });
         res.end();
+    } catch (error) {
+        // PROD: most errors will just be 401 not logged in, but 403 banned 
+        // and 500 internal server errors should be handled somehow?
     }
 
     const goto = decodeURIComponent((

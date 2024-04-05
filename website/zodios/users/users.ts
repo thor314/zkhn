@@ -1,4 +1,4 @@
-import { makeEndpoint, makeErrors } from "@zodios/core";
+import { makeEndpoint, makeErrors, parametersBuilder } from "@zodios/core";
 import z from "zod";
 
 const errors = makeErrors([
@@ -15,18 +15,16 @@ export const createUser = makeEndpoint({
     method: "post",
     path: "/users",
     alias: "createUser",
-    parameters: [
-        {
-            name: "createUser",
-            type: "Body",
-            schema: z.object({
+    parameters: parametersBuilder()
+        .addBody(
+            z.object({
                 username: z.string(),
                 password: z.string(),
                 email: z.string().email().optional(),
                 about: z.string().optional(),
-            }),
-        },
-    ],
+            })
+        )
+        .build(),
     response: z.object({
         success: z.literal(true),
         username: z.string(),
@@ -40,17 +38,30 @@ export const login = makeEndpoint({
     method: "post",
     path: "/users/login",
     alias: "login",
-    parameters: [
-        {
-            name: "login",
-            type: "Body",
-            schema: z.object({
+    parameters: parametersBuilder()
+        .addBody(
+            z.object({
                 username: z.string(),
                 password: z.string(),
-                next: z.string().or(z.literal(null)).default(null),
-            }),
-        },
-    ],
-    response: z.object({}),
+                next: z.string().or(z.null()).default(null),
+            })
+        )
+        .build(),
+    response: z.literal(""),
+    errors,
+});
+
+export const authenticate = makeEndpoint({
+    method: "get",
+    path: "/users/authenticate",
+    alias: "authenticate",
+    response: z.object({
+        banned: z.boolean(),
+        containsEmail: z.boolean(),
+        isModerator: z.boolean(),
+        karma: z.number(),
+        showDead: z.boolean(),
+        username: z.string(),
+    }),
     errors,
 });
