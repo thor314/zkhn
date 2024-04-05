@@ -62,6 +62,30 @@ export const logout = makeEndpoint({
     errors,
 });
 
+const AuthUserAuthenticatedSchema = z.object({
+    userSignedIn: z.literal(true),
+    username: z.string(),
+    karma: z.number().int(),
+    containsEmail: z.boolean(),
+    showDead: z.boolean(),
+    showDownvote: z.boolean(),
+    isModerator: z.boolean(),
+    banned: z.boolean(),
+    cookiesIncluded: z.literal(true),
+});
+
+const AuthUserUnauthenticatedSchema = z.object({
+    userSignedIn: z.literal(false),
+    username: z.null(),
+    karma: z.null(),
+    containsEmail: z.null(),
+    showDead: z.literal(false),
+    showDownvote: z.literal(false),
+    isModerator: z.null(),
+    banned: z.literal(false),
+    cookiesIncluded: z.literal(false),
+});
+
 export const authenticate = makeEndpoint({
     method: "get",
     path: "/users/authenticate",
@@ -72,6 +96,25 @@ export const authenticate = makeEndpoint({
         isModerator: z.boolean(),
         karma: z.number(),
         showDead: z.boolean(),
+        username: z.string(),
+        authUser: AuthUserUnauthenticatedSchema.or(AuthUserAuthenticatedSchema),
+    }),
+    errors,
+});
+
+export const getUser = makeEndpoint({
+    method: "get",
+    path: "/users/:username",
+    alias: "getUser",
+    response: z.object({
+        about: z.string().or(z.null()),
+        authUser: AuthUserUnauthenticatedSchema.or(AuthUserAuthenticatedSchema),
+        banned: z.boolean(),
+        created: z.string().datetime(),
+        email: z.string().email().or(z.null()),
+        karma: z.number().int(),
+        showDead: z.boolean().or(z.null()),
+        showPrivateUserData: z.boolean(),
         username: z.string(),
     }),
     errors,
