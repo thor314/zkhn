@@ -20,7 +20,7 @@ export const createUser = makeEndpoint({
             z.object({
                 username: z.string(),
                 password: z.string(),
-                email: z.string().email().optional(),
+                email: z.string().optional(),
                 about: z.string().optional(),
             })
         )
@@ -50,9 +50,7 @@ export const logout = makeEndpoint({
     method: "post",
     path: "/users/logout",
     alias: "logout",
-    parameters: parametersBuilder()
-        .addBody(z.object({}))
-        .build(),
+    parameters: parametersBuilder().addBody(z.object({})).build(),
     response: z.object({}),
     errors,
 });
@@ -132,15 +130,43 @@ export const getUser = makeEndpoint({
     path: "/users/:username",
     alias: "getUser",
     response: z.object({
-        about: z.string().or(z.null()),
-        authUser: AuthUserUnauthenticatedSchema.or(AuthUserAuthenticatedSchema),
+        about: z
+            .string()
+            .or(z.null())
+            .transform((about) => about ?? ""),
+        authUser: AuthUserUnauthenticatedSchema
+            .transform((authUser) => ({ ...authUser, isModerator: false }))
+            .or(AuthUserAuthenticatedSchema),
         banned: z.boolean(),
         created: z.string().datetime(),
-        email: z.string().email().or(z.null()),
+        email: z
+            .string()
+            .or(z.null())
+            .transform((email) => email ?? ""),
         karma: z.number().int(),
-        showDead: z.boolean().or(z.null()),
+        showDead: z
+            .boolean()
+            .or(z.null())
+            .transform((showDead) => showDead ?? false),
         showPrivateUserData: z.boolean(),
         username: z.string(),
     }),
+    errors,
+});
+
+export const updateUser = makeEndpoint({
+    method: "put",
+    path: "/users",
+    alias: "updateUser",
+    parameters: parametersBuilder()
+        .addBody(
+            z.object({
+                about: z.string(),
+                email: z.string(),
+                showDead: z.boolean(),
+            })
+        )
+        .build(),
+    response: z.literal(""),
     errors,
 });

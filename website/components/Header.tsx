@@ -8,7 +8,7 @@ type HeaderProps = {
     username: string,
     karma: number,
     goto: string,
-    pageName: "ask" | "show" | "submit" | "newest" | "newcomments" | "threads",
+    pageName: "ask" | "show" | "submit" | "newest" | "newcomments" | "threads" | "",
     label: string,
 }
 
