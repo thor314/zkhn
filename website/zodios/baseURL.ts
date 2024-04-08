@@ -1,3 +1,7 @@
-// TODO: change to get from process.env when api migration complete
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = (
+    process.env.NODE_ENV === "development"
+        ? process.env.DEVELOPMENT_API_URL
+        : process.env.PRODUCTION_API_URL
+) ?? "";
+
 export default API_BASE_URL;
