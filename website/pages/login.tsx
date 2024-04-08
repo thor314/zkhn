@@ -204,25 +204,35 @@ export default function Login({ goto }: InferGetServerSidePropsType<typeof getSe
     );
 }
 
-export const getServerSideProps = (async ({ req, res, query }) => {
-    try {
-        await apiClient.authenticate({
-            headers: { cookie: req.headers.cookie }
-        });
-        res.writeHead(302, {
-            Location: "/",
-        });
-        res.end();
-    } catch (error) {
-        // PROD: most errors will just be 401 not logged in, but 403 banned 
-        // and 500 internal server errors should be handled somehow?
-    }
-
+export const getServerSideProps = (async ({ req, query }) => {
     const goto = decodeURIComponent((
         Array.isArray(query.goto)
             ? query.goto[0]
             : query.goto
     ) ?? "");
+
+    try {
+        await apiClient.authenticate({
+            headers: { cookie: req.headers.cookie }
+        });
+        return {
+            redirect: {
+                // destination: "/",
+                destination: `/${goto}`,
+                permanent: false,
+            }
+        }
+    } catch (error) {
+        if (isErrorFromAlias(usersApi, "authenticate", error)) {
+            if (error.response.data.code !== 401) {
+                console.log(`====== ERROR login.tsx authenticate ======`)
+                console.log(error)
+                // PROD: most errors will just be 401 not logged in, but 403 banned 
+                // and 500 internal server errors should be handled somehow?
+            }
+        }
+    }
+
     return {
         props: { goto },
     };
