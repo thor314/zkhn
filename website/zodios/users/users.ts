@@ -97,6 +97,36 @@ export const authenticate = makeEndpoint({
     errors,
 });
 
+const BaseChangePasswordRequestSchema = z.object({
+    username: z.string(),
+    newPassword: z.string(),
+});
+
+export const changePassword = makeEndpoint({
+    method: "put",
+    path: "/users/change-password",
+    alias: "changePassword",
+    parameters: parametersBuilder()
+        .addBody(
+            BaseChangePasswordRequestSchema.merge(
+                z
+                    .object({
+                        currentPassword: z.string(),
+                    })
+                    .strict()
+            ).or(
+                BaseChangePasswordRequestSchema.merge(
+                    z.object({
+                        resetPasswordToken: z.string(),
+                    })
+                ).strict()
+            )
+        )
+        .build(),
+    response: z.literal(""),
+    errors,
+});
+
 export const getUser = makeEndpoint({
     method: "get",
     path: "/users/:username",
