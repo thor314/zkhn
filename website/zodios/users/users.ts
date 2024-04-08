@@ -25,12 +25,7 @@ export const createUser = makeEndpoint({
             })
         )
         .build(),
-    response: z.object({
-        success: z.literal(true),
-        username: z.string(),
-        auth_token: z.string(),
-        auth_token_expiration_timestamp: z.string().datetime(),
-    }),
+    response: z.literal(""),
     errors,
 });
 
@@ -97,7 +92,7 @@ export const authenticate = makeEndpoint({
         karma: z.number(),
         showDead: z.boolean(),
         username: z.string(),
-        authUser: AuthUserUnauthenticatedSchema.or(AuthUserAuthenticatedSchema),
+        authUser: AuthUserAuthenticatedSchema,
     }),
     errors,
 });
