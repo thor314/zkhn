@@ -1,15 +1,16 @@
 import { useState, type ChangeEventHandler } from "react";
+import { type InferGetServerSidePropsType, type GetServerSideProps } from "next";
 import Link from "next/link";
 import Router from "next/router";
+import { isErrorFromAlias } from "@zodios/core";
+
+import apiClient from "@/zodios/apiClient";
 
 import HeadMetadata from "@/components/HeadMetadata";
 import AlternateHeader from "@/components/AlternateHeader";
 
-import createNewUser from "@/api/users/createNewUser";
-import loginUser from "@/api/users/loginUser";
-import authUser from "@/api/users/authUser";
 
-export default function Login({ goto }) {
+export default function Login({ goto }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const [loginState, setLoginState] = useState({
         loginUsernameInputValue: "",
         loginPasswordInputValue: "",
@@ -20,16 +21,8 @@ export default function Login({ goto }) {
         createAcountPasswordInputValue: "",
     });
 
-    const [error, setError] = useState({
-        loginCredentialError: false,
-        loginSubmitError: false,
-        createAccountUsernameExistsError: false,
-        createAccountUsernameLengthError: false,
-        createAccountPasswordLengthError: false,
-        createAccountSubmitError: false,
-        bannedError: false,
-    });
-
+    const [createAccountError, setCreateAccountError] = useState("");
+    const [loginError, setLoginError] = useState("");
     const [loading, setLoading] = useState(false);
 
     const updateLoginUsernameInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -60,115 +53,52 @@ export default function Login({ goto }) {
         });
     };
 
-    const submitLogin = () => {
+    const submitLogin = async () => {
         if (loading) return;
 
-        const username = loginState.loginUsernameInputValue;
-        const password = loginState.loginPasswordInputValue;
+        setLoginError("");
 
-        if (username.length === 0 || password.length === 0) {
-            setError({
-                ...error,
-                loginCredentialError: true,
-                loginSubmitError: false,
-            });
+        if (loginState.loginUsernameInputValue.length === 0) {
+            setLoginError("Username cannot be empty");
+        } else if (loginState.loginPasswordInputValue.length === 0) {
+            setLoginError("Password cannot be empty");
         } else {
             setLoading(true);
-
-            loginUser(username, password, (response) => {
+            try {
+                const res = await apiClient.login({
+                    username: loginState.loginUsernameInputValue,
+                    password: loginState.loginPasswordInputValue,
+                });
                 setLoading(false);
-                if (response.credentialError) {
-                    setError({
-                        ...error,
-                        loginCredentialError: true,
-                        loginSubmitError: false,
-                    });
-                } else if (response.bannedError) {
-                    setError({
-                        ...error,
-                        bannedError: true,
-                        loginCredentialError: false,
-                        loginSubmitError: false,
-                    });
-                } else if (response.submitError || !response.success) {
-                    setError({
-                        ...error,
-                        loginCredentialError: false,
-                        loginSubmitError: true,
-                    });
-                } else {
-                    Router.push(`/${goto}`);
-                    // location.href = `/${goto}`;
+                Router.push(`/${goto}`);
+            } catch (error) {
+                setLoading(false);
+                if (isErrorFromAlias(apiClient.api, "login", error)) {
+                    setLoginError(error.response.data.error);
                 }
-            });
+            }
         }
     };
 
-    const submitCreateAccount = () => {
+    const submitCreateAccount = async () => {
         if (loading) return;
 
-        const username = createAccountState.createAccountUsernameInputValue;
-        const password = createAccountState.createAcountPasswordInputValue;
+        setCreateAccountError("");
 
-        if (username.length < 2 || username.length > 15) {
-            setError({
-                ...error,
-                createAccountUsernameExistsError: false,
-                createAccountUsernameLengthError: true,
-                createAccountPasswordLengthError: false,
-                createAccountSubmitError: false,
+        // TODO: validate username and password
+        setLoading(true);
+        try {
+            const res = await apiClient.createUser({
+                username: createAccountState.createAccountUsernameInputValue,
+                password: createAccountState.createAcountPasswordInputValue,
             });
-        } else if (password.length < 8) {
-            setError({
-                ...error,
-                createAccountUsernameExistsError: false,
-                createAccountUsernameLengthError: false,
-                createAccountPasswordLengthError: true,
-                createAccountSubmitError: false,
-            });
-        } else {
-            setLoading(true);
-
-            createNewUser(username, password, (response) => {
-                setLoading(false);
-                if (response.usernameLengthError) {
-                    setError({
-                        ...error,
-                        createAccountUsernameExistsError: false,
-                        createAccountUsernameLengthError: true,
-                        createAccountPasswordLengthError: false,
-                        createAccountSubmitError: false,
-                    });
-                } else if (response.passwordLengthError) {
-                    setError({
-                        ...error,
-                        createAccountUsernameExistsError: false,
-                        createAccountUsernameLengthError: false,
-                        createAccountPasswordLengthError: true,
-                        createAccountSubmitError: false,
-                    });
-                } else if (response.alreadyExistUser) {
-                    setError({
-                        ...error,
-                        createAccountUsernameExistsError: true,
-                        createAccountUsernameLengthError: false,
-                        createAccountPasswordLengthError: false,
-                        createAccountSubmitError: false,
-                    });
-                } else if (response.submitError || !response.success) {
-                    setError({
-                        ...error,
-                        createAccountUsernameExistsError: false,
-                        createAccountUsernameLengthError: false,
-                        createAccountPasswordLengthError: false,
-                        createAccountSubmitError: true,
-                    });
-                } else {
-                    // refer most bottom below on `getServerSideProps` for ${goto}
-                    Router.push(`/${goto}`);
-                    // location.href = `/${goto}`;
-                }
-            });
+            setLoading(false);
+            Router.push(`/${goto}`);
+        } catch (error) {
+            setLoading(false);
+            if (isErrorFromAlias(apiClient.api, "createUser", error)) {
+                setCreateAccountError(error.response.data.error);
+            }
         }
     };
 
@@ -178,19 +108,10 @@ export default function Login({ goto }) {
             <AlternateHeader displayMessage="Login | Signup" />
 
             {/*LOGIN SECTION*/}
-            {error.loginCredentialError ? (
+            {/* PROD: better messages for bad login, banned user, other */}
+            {loginError ? (
                 <div className="login-error-msg">
-                    <span>Bad login.</span>
-                </div>
-            ) : null}
-            {error.loginSubmitError ? (
-                <div className="login-error-msg">
-                    <span>An error occurred.</span>
-                </div>
-            ) : null}
-            {error.bannedError ? (
-                <div className="login-error-msg">
-                    <span>User is banned.</span>
+                    <span>{loginError}</span>
                 </div>
             ) : null}
 
@@ -240,24 +161,10 @@ export default function Login({ goto }) {
             />
 
             {/*CREATE ACCOUNT SECTION*/}
-            {error.createAccountUsernameExistsError ? (
+            {/* PROD: better messages for taken username, username/password length, other */}
+            {createAccountError ? (
                 <div className="login-error-msg">
-                    <span>That username is taken.</span>
-                </div>
-            ) : null}
-            {error.createAccountUsernameLengthError ? (
-                <div className="login-error-msg">
-                    <span>Username must be between 2 and 15 characters long.</span>
-                </div>
-            ) : null}
-            {error.createAccountPasswordLengthError ? (
-                <div className="login-error-msg">
-                    <span>Passwords should be at least 8 characters.</span>
-                </div>
-            ) : null}
-            {error.createAccountSubmitError ? (
-                <div className="login-error-msg">
-                    <span>An error occurred.</span>
+                    <span>{createAccountError}</span>
                 </div>
             ) : null}
             <div className="login-header">
@@ -296,20 +203,36 @@ export default function Login({ goto }) {
     );
 }
 
-export async function getServerSideProps({ req, res, query }) {
-    const authResult = await authUser(req);
+export const getServerSideProps = (async ({ req, query }) => {
+    const goto = decodeURIComponent((
+        Array.isArray(query.goto)
+            ? query.goto[0]
+            : query.goto
+    ) ?? "");
 
-    if (authResult.success) {
-        res.writeHead(302, {
-            Location: "/",
+    try {
+        await apiClient.authenticate({
+            headers: { cookie: req.headers.cookie }
         });
-
-        res.end();
+        return {
+            redirect: {
+                // destination: "/",
+                destination: `/${goto}`,
+                permanent: false,
+            }
+        }
+    } catch (error) {
+        if (isErrorFromAlias(apiClient.api, "authenticate", error)) {
+            if (error.response.data.code !== 401) {
+                console.log(`====== ERROR login.tsx authenticate ======`)
+                console.log(error)
+                // PROD: most errors will just be 401 not logged in, but 403 banned 
+                // and 500 internal server errors should be handled somehow?
+            }
+        }
     }
 
     return {
-        props: {
-            goto: query.goto ? decodeURIComponent(query.goto) : "",
-        },
+        props: { goto },
     };
-}
+}) satisfies GetServerSideProps;

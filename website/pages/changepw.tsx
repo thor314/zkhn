@@ -1,79 +1,52 @@
 import { useState, type ChangeEventHandler } from "react";
 import Router from "next/router";
+import Link from "next/link";
+import { type InferGetServerSidePropsType, type GetServerSideProps } from "next";
+import { isErrorFromAlias } from "@zodios/core";
+
+import apiClient from "@/zodios/apiClient";
 
 import HeadMetadata from "@/components/HeadMetadata";
 import AlternateHeader from "@/components/AlternateHeader";
 
-import authUser from "@/api/users/authUser";
-import changePassword from "@/api/users/changePassword";
-
-export default function ChangePw({ userContainsEmail, username }) {
-    const [currentInputValue, setCurrentInputValue] = useState("");
-    const [newInputValue, setNewInputValue] = useState("");
+// TODO: when email works, update to alternately use resetPasswordToken without requiring login
+export default function ChangePw({
+    userContainsEmail,
+    username
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+    const [currentPasswordInputValue, setCurrentPasswordInputValue] = useState("");
+    const [newPasswordInputValue, setNewPasswordInputValue] = useState("");
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState({
-        invalidCurrentPassword: false,
-        newPasswordLengthError: false,
-        submitError: false,
-    });
+    const [errorMessage, setErrorMessage] = useState("");
 
-    const updateCurrentInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
-        setCurrentInputValue(event.target.value);
+    const handleChangeCurrentPassword: ChangeEventHandler<HTMLInputElement> = (event) => {
+        setCurrentPasswordInputValue(event.target.value);
     };
 
-    const updateNewInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
-        setNewInputValue(event.target.value);
+    const handleChangeNewPassword: ChangeEventHandler<HTMLInputElement> = (event) => {
+        setNewPasswordInputValue(event.target.value);
     };
 
-    const submitRequest = () => {
+    const submitRequest = async () => {
         if (loading) return;
 
-        const currentPassword = currentInputValue;
-        const newPassword = newInputValue;
-
-        if (!currentPassword) {
-            setError({
-                invalidCurrentPassword: true,
-                newPasswordLengthError: false,
-                submitError: false,
+        // TODO: validate current and new password
+        setErrorMessage("");
+        setLoading(true);
+        try {
+            const res = await apiClient.changePassword({
+                username: username,
+                newPassword: newPasswordInputValue,
+                currentPassword: currentPasswordInputValue,
             });
-        } else if (newPassword.length < 8) {
-            setError({
-                invalidCurrentPassword: false,
-                newPasswordLengthError: true,
-                submitError: false,
-            });
-        } else {
-            setLoading(true);
-
-            changePassword(currentPassword, newPassword, (response) => {
-                setLoading(false);
-                if (response.authError) {
-                    // location.href = "/login?goto=changepw";
-                    Router.push("/login?goto=changepw");
-                } else if (response.newPasswordLengthError) {
-                    setError({
-                        invalidCurrentPassword: false,
-                        newPasswordLengthError: true,
-                        submitError: false,
-                    });
-                } else if (response.invalidCurrentPassword) {
-                    setError({
-                        invalidCurrentPassword: true,
-                        newPasswordLengthError: false,
-                        submitError: false,
-                    });
-                } else if (response.submitError || !response.success) {
-                    setError({
-                        invalidCurrentPassword: false,
-                        newPasswordLengthError: false,
-                        submitError: true,
-                    });
-                } else {
-                    // location.href = "/login";
-                    Router.push("/login");
-                }
-            });
+            await apiClient.logout({});
+            setLoading(false);
+            Router.push("/login");
+        } catch (error) {
+            setLoading(false);
+            if (isErrorFromAlias(apiClient.api, "changePassword", error)) {
+                setErrorMessage(error.response.data.error);
+            }
         }
     };
 
@@ -85,28 +58,19 @@ export default function ChangePw({ userContainsEmail, username }) {
                 {!userContainsEmail && (
                     <div className="changepw-error-msg">
                         <span>
-                            First, please put a valid email address in your <a href={`/user?id=${username}`}>profile</a>
+                            First, please put a valid email address in your <Link href={`/user?id=${username}`}>profile</Link>
                             . Otherwise you could lose your account if you mistype your new password.
                         </span>
                     </div>
                 )}
 
                 {/* ERROR INFO AREA */}
-                {error.invalidCurrentPassword ? (
+                {/* PROD: better messages for invalid current password, invalid/too short new password, internal server error */}
+                {errorMessage ? (
                     <div className="changepw-error-msg">
-                        <span>Invalid current password.</span>
+                        <span>{errorMessage}</span>
                     </div>
-                ) : null}
-                {error.newPasswordLengthError ? (
-                    <div className="changepw-error-msg">
-                        <span>Passwords should be at least 8 characters.</span>
-                    </div>
-                ) : null}
-                {error.submitError ? (
-                    <div className="changepw-error-msg">
-                        <span>An error occurred.</span>
-                    </div>
-                ) : null}
+                ) : <></>}
 
                 {/* CURRENT PASSWORD FIELD */}
                 <div className="changepw-input-item">
@@ -114,7 +78,7 @@ export default function ChangePw({ userContainsEmail, username }) {
                         <span>Current Password:</span>
                     </div>
                     <div className="changepw-input-item-input">
-                        <input type="password" value={currentInputValue} onChange={updateCurrentInputValue} />
+                        <input type="password" value={currentPasswordInputValue} onChange={handleChangeCurrentPassword} />
                     </div>
                 </div>
 
@@ -124,7 +88,7 @@ export default function ChangePw({ userContainsEmail, username }) {
                         <span>New Password:</span>
                     </div>
                     <div className="changepw-input-item-input">
-                        <input type="password" value={newInputValue} onChange={updateNewInputValue} />
+                        <input type="password" value={newPasswordInputValue} onChange={handleChangeNewPassword} />
                     </div>
                 </div>
 
@@ -138,21 +102,35 @@ export default function ChangePw({ userContainsEmail, username }) {
     );
 }
 
-export async function getServerSideProps({ req, res, query }) {
-    const authResult = await authUser(req);
-
-    if (!authResult.success) {
-        res.writeHead(302, {
-            Location: "/login?goto=changepw",
+export const getServerSideProps = (async ({ req }) => {
+    try {
+        const authResult = await apiClient.authenticate({
+            headers: { cookie: req.headers.cookie }
         });
-
-        res.end();
+        return {
+            props: {
+                userContainsEmail: authResult.authUser.containsEmail,
+                username: authResult.authUser.username,
+            }
+        }
+    } catch (error) {
+        if (isErrorFromAlias(apiClient.api, "authenticate", error)) {
+            // PROD: Need to handle 403 banned and 500 internal server errors
+            if (error.response.data.code === 401) {
+                // User not logged in, redirect
+                return {
+                    redirect: {
+                        destination: "/login?goto=changepw",
+                        permanent: false,
+                    }
+                }
+            }
+        }
+        return {
+            props: {
+                userContainsEmail: false,
+                username: "",
+            }
+        }
     }
-
-    return {
-        props: {
-            userContainsEmail: authResult.authUser.containsEmail,
-            username: authResult.authUser.username,
-        },
-    };
-}
+}) satisfies GetServerSideProps;
