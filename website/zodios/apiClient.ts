@@ -1,7 +1,7 @@
 import { Zodios, mergeApis } from "@zodios/core";
 
 import usersApi from "@/zodios/users/usersApi";
-import API_BASE_URL from "@/zodios/utilities/baseURL";
+import API_BASE_URL from "@/zodios/utilities/apiBaseURL";
 
 import withCredentialsPlugin from "@/zodios/plugins/withCredentialsPlugin";
 import loggerPlugin from "@/zodios/plugins/loggerPlugin";
