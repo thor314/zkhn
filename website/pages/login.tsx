@@ -5,7 +5,6 @@ import Router from "next/router";
 import { isErrorFromAlias } from "@zodios/core";
 
 import apiClient from "@/zodios/apiClient";
-import usersApi from "@/zodios/users/usersApi";
 
 import HeadMetadata from "@/components/HeadMetadata";
 import AlternateHeader from "@/components/AlternateHeader";
@@ -74,7 +73,7 @@ export default function Login({ goto }: InferGetServerSidePropsType<typeof getSe
                 Router.push(`/${goto}`);
             } catch (error) {
                 setLoading(false);
-                if (isErrorFromAlias(usersApi, "login", error)) {
+                if (isErrorFromAlias(apiClient.api, "login", error)) {
                     setLoginError(error.response.data.error);
                 }
             }
@@ -97,7 +96,7 @@ export default function Login({ goto }: InferGetServerSidePropsType<typeof getSe
             Router.push(`/${goto}`);
         } catch (error) {
             setLoading(false);
-            if (isErrorFromAlias(usersApi, "createUser", error)) {
+            if (isErrorFromAlias(apiClient.api, "createUser", error)) {
                 setCreateAccountError(error.response.data.error);
             }
         }
@@ -223,7 +222,7 @@ export const getServerSideProps = (async ({ req, query }) => {
             }
         }
     } catch (error) {
-        if (isErrorFromAlias(usersApi, "authenticate", error)) {
+        if (isErrorFromAlias(apiClient.api, "authenticate", error)) {
             if (error.response.data.code !== 401) {
                 console.log(`====== ERROR login.tsx authenticate ======`)
                 console.log(error)

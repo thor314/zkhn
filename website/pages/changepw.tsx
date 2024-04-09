@@ -5,7 +5,6 @@ import { type InferGetServerSidePropsType, type GetServerSideProps } from "next"
 import { isErrorFromAlias } from "@zodios/core";
 
 import apiClient from "@/zodios/apiClient";
-import usersApi from "@/zodios/users/usersApi";
 
 import HeadMetadata from "@/components/HeadMetadata";
 import AlternateHeader from "@/components/AlternateHeader";
@@ -45,7 +44,7 @@ export default function ChangePw({
             Router.push("/login");
         } catch (error) {
             setLoading(false);
-            if (isErrorFromAlias(usersApi, "changePassword", error)) {
+            if (isErrorFromAlias(apiClient.api, "changePassword", error)) {
                 setErrorMessage(error.response.data.error);
             }
         }
@@ -115,7 +114,7 @@ export const getServerSideProps = (async ({ req }) => {
             }
         }
     } catch (error) {
-        if (isErrorFromAlias(usersApi, "authenticate", error)) {
+        if (isErrorFromAlias(apiClient.api, "authenticate", error)) {
             // PROD: Need to handle 403 banned and 500 internal server errors
             if (error.response.data.code === 401) {
                 // User not logged in, redirect

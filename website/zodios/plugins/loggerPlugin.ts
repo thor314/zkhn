@@ -10,6 +10,10 @@ const logger: ZodiosPlugin = {
         console.log(response);
         return response;
     }),
+    error: (async (api, config, error) => {
+        console.log(error);
+        throw error;
+    }),
 }
 
 export default logger;

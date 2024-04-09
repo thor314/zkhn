@@ -5,7 +5,6 @@ import moment from "moment";
 import { isErrorFromAlias } from "@zodios/core";
 
 import apiClient from "@/zodios/apiClient";
-import usersApi from "@/zodios/users/usersApi";
 
 type UserPrivateDataProps = {
     username: string,
@@ -51,7 +50,7 @@ export default function UserPrivateData({username, email, about, created, karma,
             Router.push(Router.asPath);
         } catch (error) {
             setLoading(false);
-            if (isErrorFromAlias(usersApi, "updateUser", error)) {
+            if (isErrorFromAlias(apiClient.api, "updateUser", error)) {
                 setError(error.response.data.error);
             }
         }

@@ -2,7 +2,6 @@ import { useState, type ChangeEventHandler } from "react";
 import { isErrorFromAlias } from "@zodios/core";
 
 import apiClient from "@/zodios/apiClient";
-import usersApi from "@/zodios/users/usersApi";
 
 import HeadMetadata from "@/components/HeadMetadata";
 import AlternateHeader from "@/components/AlternateHeader";
@@ -29,7 +28,7 @@ export default function Forgot() {
             await apiClient.requestPasswordReset({}, { params: { username: usernameInputValue } });
             setSuccess(true);
         } catch (error) {
-            if (isErrorFromAlias(usersApi, "requestPasswordReset", error)) {
+            if (isErrorFromAlias(apiClient.api, "requestPasswordReset", error)) {
                 setError(error.response.data.error);
             }
         } finally {

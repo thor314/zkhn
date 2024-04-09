@@ -2,7 +2,6 @@ import { type InferGetServerSidePropsType, type GetServerSideProps } from "next"
 import { isErrorFromAlias } from "@zodios/core";
 
 import apiClient from "@/zodios/apiClient";
-import usersApi from "@/zodios/users/usersApi";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -71,7 +70,7 @@ export const getServerSideProps = (async ({ req, query }) => {
             }
         }
     } catch (error) {
-        if (isErrorFromAlias(usersApi, "getUser", error)) {
+        if (isErrorFromAlias(apiClient.api, "getUser", error)) {
             if (error.response.data.code === 404 || error.response.data.code === 422) {
                 console.log(`${error.response.data.code} ERROR`)
                 return { notFound: true };
