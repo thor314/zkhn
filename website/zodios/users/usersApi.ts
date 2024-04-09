@@ -1,25 +1,23 @@
-import { makeApi } from "@zodios/core";
+import { apiBuilder } from "@zodios/core";
 
+import { createUser, getUser, updateUser } from "@/zodios/users/endpoints/userCrud";
 import {
-    createUser,
     login,
     logout,
-    requestPasswordReset,
     authenticate,
+    requestPasswordReset,
     changePassword,
-    getUser,
-    updateUser,
-} from "@/zodios/users/users";
+} from "@/zodios/users/endpoints/userAuth";
 
-const usersApi = makeApi([
-    createUser,
-    login,
-    logout,
-    requestPasswordReset,
-    authenticate,
-    changePassword,
-    getUser,
-    updateUser,
-]);
+const usersApi = apiBuilder()
+    .addEndpoint(createUser)
+    .addEndpoint(getUser)
+    .addEndpoint(updateUser)
+    .addEndpoint(login)
+    .addEndpoint(logout)
+    .addEndpoint(authenticate)
+    .addEndpoint(requestPasswordReset)
+    .addEndpoint(changePassword)
+    .build();
 
 export default usersApi;
