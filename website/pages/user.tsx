@@ -12,7 +12,6 @@ import UserPublicData from "@/components/user/UserPublicData";
 
 
 export default function User({
-    username,
     userData,
     showPrivateUserData,
     authUser,
@@ -20,7 +19,7 @@ export default function User({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <div className="layout-wrapper">
-            <HeadMetadata title={userData ? `Profile: ${username} | zkNews` : "User Profile | zkNews"} />
+            <HeadMetadata title={`Profile: ${userData.username} | zkNews`} />
             <Header
                 userSignedIn={authUser.userSignedIn}
                 username={authUser.username ?? ""}
@@ -59,24 +58,15 @@ export const getServerSideProps = (async ({ req, query }) => {
     }
 
     try {
-        const res = await apiClient.getUser({
+        const { authUser, showPrivateUserData, ...userData } = await apiClient.getUser({
             params: { username: query.id },
             headers: { cookie: req.headers.cookie ?? "" }
         });
         return {
             props: {
-                username: res.username,
-                userData: {
-                    username: res.username,
-                    created: res.created,
-                    karma: res.karma,
-                    about: res.about,
-                    email: res.email,
-                    showDead: res.showDead,
-                    banned: res.banned,
-                },
-                showPrivateUserData: res.showPrivateUserData,
-                authUser: res.authUser,
+                userData,
+                showPrivateUserData,
+                authUser,
                 goToString: `user?id=${query.id}`,
             }
         }
