@@ -1,66 +1,39 @@
-import { useState, type ChangeEventHandler, type MouseEventHandler } from "react";
+import { useState, type ChangeEventHandler } from "react";
+import { isErrorFromAlias } from "@zodios/core";
+
+import apiClient from "@/zodios/apiClient";
+import usersApi from "@/zodios/users/usersApi";
 
 import HeadMetadata from "@/components/HeadMetadata";
 import AlternateHeader from "@/components/AlternateHeader";
-
-import requestPasswordResetLink from "@/api/users/requestPasswordResetLink";
 
 export default function Forgot() {
     const [usernameInputValue, setUsernameInputValue] = useState("");
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [error, setError] = useState({
-        noEmailError: false,
-        userNotFoundError: false,
-        submitError: false,
-    });
+    const [error, setError] = useState("");
 
     const updateUsernameInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setUsernameInputValue(event.target.value);
     };
 
-    const submitRequest: MouseEventHandler<HTMLInputElement> = () => {
+    const submitRequest = async () => {
         if (loading) return;
-
         if (!usernameInputValue) {
-            setError({ ...error, userNotFoundError: true });
-        } else {
-            setLoading(true);
+            setError("Username required");
+            return;
+        }
 
-            requestPasswordResetLink(usernameInputValue, (response) => {
-                setLoading(false);
-                // console.log(response);
-                if (response.userNotFoundError) {
-                    setError({
-                        ...error,
-                        noEmailError: false,
-                        userNotFoundError: true,
-                        submitError: false,
-                    });
-                } else if (response.noEmailError) {
-                    setError({
-                        ...error,
-                        noEmailError: true,
-                        userNotFoundError: false,
-                        submitError: false,
-                    });
-                } else if (response.submitError || !response.success) {
-                    setError({
-                        ...error,
-                        noEmailError: false,
-                        userNotFoundError: false,
-                        submitError: true,
-                    });
-                } else {
-                    setError({
-                        ...error,
-                        noEmailError: false,
-                        userNotFoundError: false,
-                        submitError: false,
-                    });
-                    setSuccess(true);
-                }
-            });
+        setLoading(true);
+        try {
+            await apiClient.requestPasswordReset({}, { params: { username: usernameInputValue } });
+            setSuccess(true);
+        } catch (error) {
+            if (isErrorFromAlias(usersApi, "requestPasswordReset", error)) {
+                setError(error.response.data.error);
+            }
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -76,21 +49,11 @@ export default function Forgot() {
                 </div>
             ) : (
                 <>
-                    {error.noEmailError ? (
+                    {error ? (
                         <div className="forgot-error-msg">
-                            <span>No valid email address in profile.</span>
+                            <span>{error}</span>
                         </div>
-                    ) : null}
-                    {error.userNotFoundError ? (
-                        <div className="forgot-error-msg">
-                            <span>User not found.</span>
-                        </div>
-                    ) : null}
-                    {error.submitError ? (
-                        <div className="forgot-error-msg">
-                            <span>An error occurred.</span>
-                        </div>
-                    ) : null}
+                    ): null}
                     <div className="forgot-header">
                         <span>Reset your password</span>
                     </div>

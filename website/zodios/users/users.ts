@@ -55,6 +55,15 @@ export const logout = makeEndpoint({
     errors,
 });
 
+export const requestPasswordReset = makeEndpoint({
+    method: "put",
+    path: "/users/reset-password-link/:username",
+    alias: "requestPasswordReset",
+    parameters: parametersBuilder().addBody(z.object({})).build(),
+    response: z.literal(""),
+    errors,
+});
+
 const AuthUserAuthenticatedSchema = z.object({
     userSignedIn: z.literal(true),
     username: z.string(),
