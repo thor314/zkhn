@@ -31,9 +31,9 @@ export const getUser = makeEndpoint({
             .string()
             .or(z.null())
             .transform((about) => about ?? ""),
-        authUser: AuthUserUnauthenticatedSchema.transform((authUser) => ({ ...authUser, isModerator: false })).or(
-            AuthUserAuthenticatedSchema
-        ),
+        authUser: AuthUserUnauthenticatedSchema
+            .transform((authUser) => ({ ...authUser, isModerator: false }))
+            .or(AuthUserAuthenticatedSchema),
         banned: z.boolean(),
         created: z.string().datetime(),
         email: z

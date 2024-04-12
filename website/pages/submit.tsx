@@ -1,31 +1,25 @@
-import { useState, type ChangeEventHandler } from "react";
+import { useState, type ChangeEventHandler, Dispatch, SetStateAction } from "react";
+import { type GetServerSideProps } from "next";
 import Router from "next/router";
+import { isErrorFromAlias } from "@zodios/core";
+
+import apiClient from "@/zodios/apiClient";
 
 import HeadMetadata from "@/components/HeadMetadata";
 import AlternateHeader from "@/components/AlternateHeader";
 
-import authUser from "@/api/users/authUser";
-import submitNewItem from "@/api/items/submitNewItem";
-
+// TODO: discussion category should be automatic? how is news/ask/show done?
 // categories of post submission; text = discussion, else links
-export const categories = ["discussion", "blog", "tweet", "paper", "tool", "book", "announcement", "other"];
+// export const categories = ["discussion", "blog", "tweet", "paper", "tool", "book", "announcement", "other"];
 
 export default function Submit({}) {
     const [loading, setLoading] = useState(false);
     const [titleInputValue, setTitleInputValue] = useState("");
     const [urlInputValue, setUrlInputValue] = useState("");
-    const [categoryInputValue, setCategoryInputValue] = useState("");
+    const [categoryInputValue, setCategoryInputValue] = useState("blog");
     const [textInputValue, setTextInputValue] = useState("");
 
-    const [error, setError] = useState({
-        titleRequiredError: false,
-        titleTooLongError: false,
-        invalidUrlError: false,
-        urlAndTextError: false,
-        textTooLongError: false,
-        // TODO(TK 2024-02-09): do we need category errors? 
-        submitError: false,
-    });
+    const [error, setError] = useState("");
 
     const updateTitleInputValue: ChangeEventHandler<HTMLInputElement> = (event) => {
         setTitleInputValue(event.target.value);
@@ -43,113 +37,35 @@ export default function Submit({}) {
         setTextInputValue(event.target.value);
     };
 
-    const submitRequest = () => {
+    const submitRequest = async () => {
         if (loading) return;
+        setError("");
 
-        if (!titleInputValue.trim()) {
-            setError({
-                titleRequiredError: true,
-                titleTooLongError: false,
-                invalidUrlError: false,
-                urlAndTextError: false,
-                textTooLongError: false,
-                submitError: false,
-            });
-        } else if (titleInputValue.length > 80) {
-            setError({
-                titleRequiredError: false,
-                titleTooLongError: true,
-                invalidUrlError: false,
-                urlAndTextError: false,
-                textTooLongError: false,
-                submitError: false,
-            });
-        } else if (urlInputValue && textInputValue) {
-            setError({
-                titleRequiredError: false,
-                titleTooLongError: false,
-                invalidUrlError: false,
-                urlAndTextError: true,
-                textTooLongError: false,
-                submitError: false,
-            });
-        } else if (textInputValue.length > 5000) {
-            setError({
-                titleRequiredError: false,
-                titleTooLongError: false,
-                invalidUrlError: false,
-                urlAndTextError: false,
-                textTooLongError: true,
-                submitError: false,
-            });
+        // TODO: replace with actual form validation lib
+        if (titleInputValue.trim().length === 0) {
+            setError("Title is required.");
+        } else if (urlInputValue.trim().length && textInputValue.trim().length) {
+            setError("Submissions can’t have both urls and text, so you need to pick one. If you keep the url, you can always post your text as a comment in the thread.");
+        } else if (!urlInputValue.trim().length && !textInputValue.trim().length) {
+            setError("Either url or text is required.");
         } else {
             setLoading(true);
-
-            submitNewItem(titleInputValue, urlInputValue, textInputValue, categoryInputValue, (response) => {
+            try {
+                await apiClient.createItem({
+                    title: titleInputValue,
+                    itemCategory: categoryInputValue,
+                    textOrUrlContent: textInputValue.trim().length
+                        ? { text: textInputValue }
+                        : { url: urlInputValue },
+                });
                 setLoading(false);
-
-                if (response.authError) {
-                    // location.href = "/login?goto=submit";
-                    Router.push("/login?goto=submit");
-                } else if (response.titleRequiredError) {
-                    setError({
-                        titleRequiredError: true,
-                        titleTooLongError: false,
-                        invalidUrlError: false,
-                        urlAndTextError: false,
-                        textTooLongError: false,
-                        submitError: false,
-                    });
-                } else if (response.urlAndTextError) {
-                    setError({
-                        titleRequiredError: false,
-                        titleTooLongError: false,
-                        invalidUrlError: false,
-                        urlAndTextError: true,
-                        textTooLongError: false,
-                        submitError: false,
-                    });
-                } else if (response.invalidUrlError) {
-                    setError({
-                        titleRequiredError: false,
-                        titleTooLongError: false,
-                        invalidUrlError: true,
-                        urlAndTextError: false,
-                        textTooLongError: false,
-                        submitError: false,
-                    });
-                } else if (response.titleTooLongError) {
-                    setError({
-                        titleRequiredError: false,
-                        titleTooLongError: true,
-                        invalidUrlError: false,
-                        urlAndTextError: false,
-                        textTooLongError: false,
-                        submitError: false,
-                    });
-                } else if (response.textTooLongError) {
-                    setError({
-                        titleRequiredError: false,
-                        titleTooLongError: false,
-                        invalidUrlError: false,
-                        urlAndTextError: false,
-                        textTooLongError: true,
-                        submitError: false,
-                    });
-                } else if (response.submitError || !response.success) {
-                    setError({
-                        titleRequiredError: false,
-                        titleTooLongError: false,
-                        invalidUrlError: false,
-                        urlAndTextError: false,
-                        textTooLongError: false,
-                        submitError: true,
-                    });
-                } else {
-                    // location.href = "/newest";
-                    Router.push("/newest");
+                Router.push("/newest");
+            } catch (error) {
+                setLoading(false);
+                if (isErrorFromAlias(apiClient.api, "createItem", error)) {
+                    setError(error.response.data.error);
                 }
-            });
+            }
         }
     };
 
@@ -158,37 +74,9 @@ export default function Submit({}) {
             <HeadMetadata title="Submit | zkNews" />
             <AlternateHeader displayMessage="Submit" />
             <div className="submit-content-container">
-                {error.titleRequiredError ? (
+                {error ? (
                     <div className="submit-content-error-msg">
-                        <span>Title is required.</span>
-                    </div>
-                ) : null}
-                {error.titleTooLongError ? (
-                    <div className="submit-content-error-msg">
-                        <span>Title exceeds limit of 80 characters.</span>
-                    </div>
-                ) : null}
-                {error.invalidUrlError ? (
-                    <div className="submit-content-error-msg">
-                        <span>URL is invalid.</span>
-                    </div>
-                ) : null}
-                {error.urlAndTextError ? (
-                    <div className="submit-content-error-msg">
-                        <span>
-                            Submissions can’t have both urls and text, so you need to pick one. If you keep the url, you
-                            can always post your text as a comment in the thread.
-                        </span>
-                    </div>
-                ) : null}
-                {error.textTooLongError ? (
-                    <div className="submit-content-error-msg">
-                        <span>Text exceeds limit of 5,000 characters.</span>
-                    </div>
-                ) : null}
-                {error.submitError ? (
-                    <div className="submit-content-error-msg">
-                        <span>An error occurred.</span>
+                        <span>{error}</span>
                     </div>
                 ) : null}
 
@@ -198,7 +86,7 @@ export default function Submit({}) {
                         <span>title</span>
                     </div>
                     <div className="submit-content-input-item-input">
-                        <input type="text" value={titleInputValue} onChange={updateTitleInputValue} />
+                        <input type="text" value={titleInputValue} onChange={updateTitleInputValue}/>
                     </div>
                 </div>
 
@@ -219,11 +107,10 @@ export default function Submit({}) {
                     </div>
                     <div className="submit-content-input-item-input">
                         <select value={categoryInputValue} onChange={updateCategoryInputValue}>
-                            {categories.map((category, index) => (
-                                <option key={index} value={category}>
-                                    {category}
-                                </option>
-                            ))}
+                            <option value="blog">blog</option>
+                            <option value="tweet">tweet</option>
+                            <option value="paper">paper</option>
+                            <option value="other">other</option>
                         </select>
                     </div>
                 </div>
@@ -258,19 +145,25 @@ export default function Submit({}) {
     );
 }
 
-export async function getServerSideProps({ req, res, query }) {
-    const authResult = await authUser(req);
-
-    if (!authResult.success) {
-        return {
-            redirect: {
-                destination: "/login?goto=submit",
-                permanent: false,
-            },
-        };
+export const getServerSideProps = (async ({ req }) => {
+    try {
+        await apiClient.authenticate({
+            headers: { cookie: req.headers.cookie }
+        });
+        return { props: {} };
+    } catch (error) {
+        if (isErrorFromAlias(apiClient.api, "authenticate", error)) {
+            if (error.response.data.code === 401 || error.response.data.code === 403) {
+                // User not signed in or user is banned
+                return {
+                    redirect: {
+                        destination: "/login?goto=submit",
+                        permanent: false,
+                    }
+                }
+            }
+        }
+        // Covers 500 ISE and non-alias errors
+        throw new Error();
     }
-
-    return {
-        props: {},
-    };
-}
+}) satisfies GetServerSideProps;
