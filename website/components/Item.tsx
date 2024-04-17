@@ -2,6 +2,8 @@ import { useState, type ChangeEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
+import { type ItemData } from "@/zodios/utilities/schemas";
+
 import upvoteItem from "@/api/items/upvoteItem";
 import unvoteItem from "@/api/items/unvoteItem";
 import favoriteItem from "@/api/items/favoriteItem";
@@ -14,7 +16,20 @@ import unkillItem from "@/api/moderation/unkillItem";
 
 import renderCreatedTime from "@/utils/renderCreatedTime";
 
-export default function ItemComponent({ item, currUsername, goToString, userSignedIn, isModerator }) {
+type ItemComponentProps = {
+    item: ItemData & {
+        editAndDeleteExpired: boolean | null,
+        favoritedByUser: boolean | null,
+        unvoteExpired: boolean | null,
+        votedOnByUser: boolean | null,
+    },
+    currUsername: string | null,
+    goToString: string,
+    userSignedIn: boolean,
+    isModerator: boolean,
+}
+
+export default function ItemComponent({ item, currUsername, goToString, userSignedIn, isModerator }: ItemComponentProps) {
     const [loading, setLoading] = useState(false);
     const [numOfVote, setNumOfVote] = useState(item.points);
     const [commentInputValue, setCommentInputValue] = useState("");
@@ -118,50 +133,50 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
         }
     };
 
-    const requestHideItem = () => {
-        if (loading) return;
+    // const requestHideItem = () => {
+    //     if (loading) return;
 
-        if (!userSignedIn) {
-            // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
-            Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-        } else {
-            setLoading(true);
+    //     if (!userSignedIn) {
+    //         // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
+    //         Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
+    //     } else {
+    //         setLoading(true);
 
-            item.hiddenByUser = true;
+    //         item.hiddenByUser = true;
 
-            hideItem(item.id, (response) => {
-                if (response.authError) {
-                    // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
-                    Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-                } else if (!response.success) {
-                    // location.href = "";
-                    Router.push(Router.asPath);
-                } else {
-                    setLoading(false);
-                }
-            });
-        }
-    };
+    //         hideItem(item.id, (response) => {
+    //             if (response.authError) {
+    //                 // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
+    //                 Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
+    //             } else if (!response.success) {
+    //                 // location.href = "";
+    //                 Router.push(Router.asPath);
+    //             } else {
+    //                 setLoading(false);
+    //             }
+    //         });
+    //     }
+    // };
 
-    const requestUnhideItem = () => {
-        if (loading) return;
+    // const requestUnhideItem = () => {
+    //     if (loading) return;
 
-        setLoading(true);
+    //     setLoading(true);
 
-        item.hiddenByUser = false;
+    //     item.hiddenByUser = false;
 
-        unhideItem(item.id, (response) => {
-            if (response.authError) {
-                // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
-                Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-            } else if (!response.success) {
-                // location.href = ""
-                Router.push(Router.asPath);
-            } else {
-                setLoading(false);
-            }
-        });
-    };
+    //     unhideItem(item.id, (response) => {
+    //         if (response.authError) {
+    //             // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
+    //             Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
+    //         } else if (!response.success) {
+    //             // location.href = ""
+    //             Router.push(Router.asPath);
+    //         } else {
+    //             setLoading(false);
+    //         }
+    //     });
+    // };
 
     const updateCommentInputValue: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setCommentInputValue(event.target.value);
@@ -256,12 +271,12 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                     <tr>
                         <td valign="top">
                             {/* VOTE BUTTON */}
-                            {item.by === currUsername ? (
+                            {item.username === currUsername ? (
                                 <div className="item-star">
                                     <span>*</span>
                                 </div>
                             ) : null}
-                            {item.by !== currUsername ? (
+                            {item.username !== currUsername ? (
                                 <>
                                     {item.votedOnByUser || item.dead ? (
                                         <span className="item-upvote hide"></span>
@@ -298,7 +313,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                             &nbsp;
                             {/* ITEM MADE BY */}
                             <span>
-                                by <Link href={`/user?id=${item.by}`} legacyBehavior>{item.by}</Link>
+                                by <Link href={`/user?id=${item.username}`} legacyBehavior>{item.username}</Link>
                                 &nbsp;
                             </span>
                             {/* ITEM CREATED DATE */}
@@ -315,7 +330,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                                 </>
                             ) : null}
                             {/* HIDDEN ITEM | HIDE ITEM */}
-                            {!item.hiddenByUser ? (
+                            {/* {!item.hiddenByUser ? (
                                 <>
                                     <span> | </span>
                                     <span className="item-hide" onClick={requestHideItem}>
@@ -329,7 +344,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                                         un-hide
                                     </span>
                                 </>
-                            )}
+                            )} */}
                             {/* SEARCH SIMILAR ITEM */}
                             <span> | </span>
                             <span>
@@ -356,7 +371,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                                 </>
                             )}
                             {/* AUTHOR? EDIT THIS ITEM */}
-                            {item.by === currUsername && !item.editAndDeleteExpired && !item.dead ? (
+                            {item.username === currUsername && !item.editAndDeleteExpired && !item.dead ? (
                                 <>
                                     <span> | </span>
                                     <span className="item-edit">
@@ -365,7 +380,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                                 </>
                             ) : null}
                             {/* AUTHOR? DELETE ITEM */}
-                            {item.by === currUsername && !item.editAndDeleteExpired && !item.dead ? (
+                            {item.username === currUsername && !item.editAndDeleteExpired && !item.dead ? (
                                 <>
                                     <span> | </span>
                                     <span className="item-delete">
@@ -403,9 +418,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                                             <span> | </span>
                                             <span className="item-comments">
                                                 <Link href={`/item?id=${item.id}`}>
-
                                                     {item.commentCount.toLocaleString()}comment{item.commentCount > 1 ? "s" : null}
-
                                                 </Link>
                                             </span>
                                         </>

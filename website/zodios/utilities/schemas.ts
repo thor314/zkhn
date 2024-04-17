@@ -23,3 +23,30 @@ export const AuthUserUnauthenticatedSchema = z.object({
     banned: z.literal(false),
     cookiesIncluded: z.literal(false),
 });
+
+export const ItemDataSchema = z.object({
+    commentCount: z.number(),
+    created: z.string(),
+    dead: z.boolean(),
+    domain: z.string().or(z.null()),
+    id: z.string(),
+    itemCategory: z.union([
+        z.literal("tweet"),
+        z.literal("blog"),
+        z.literal("paper"),
+        z.literal("other"),
+    ]),
+    itemType: z.union([
+        z.literal("news"),
+        z.literal("show"),
+        z.literal("ask"),
+    ]),
+    points: z.number(),
+    score: z.number(),
+    text: z.string(),
+    title: z.string(),
+    url: z.string().or(z.null()),
+    username: z.string(),
+});
+
+export type ItemData = z.infer<typeof ItemDataSchema>;

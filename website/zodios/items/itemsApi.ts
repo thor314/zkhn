@@ -1,9 +1,10 @@
 import { apiBuilder } from "@zodios/core";
 
-import { createItem } from "@/zodios/items/itemsCrud";
+import { createItem, getItem } from "@/zodios/items/itemsCrud";
 
 const itemsApi = apiBuilder()
     .addEndpoint(createItem)
+    .addEndpoint(getItem)
     .build();
 
 export default itemsApi;

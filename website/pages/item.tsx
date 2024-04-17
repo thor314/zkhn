@@ -1,80 +1,98 @@
+import { type InferGetServerSidePropsType, type GetServerSideProps } from "next";
+import { isErrorFromAlias } from "@zodios/core";
+
+import apiClient from "@/zodios/apiClient";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeadMetadata from "@/components/HeadMetadata";
 import ItemComponent from "@/components/Item";
 import CommentSection from "@/components/CommentSection";
 
-import getItemById from "@/api/items/getItemById";
-
 export default function Item({
     item,
-    authUserData,
-    getDataError,
-    notFoundError,
+    authUser,
     goToString,
     comments,
     page,
     isMoreComments,
-}) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <div className="layout-wrapper">
             <HeadMetadata title={!!item.title ? `${item.title} | zkNews` : "zkNews"} />
             <Header
-                userSignedIn={authUserData && authUserData.userSignedIn}
-                username={authUserData && authUserData.username}
-                karma={authUserData && authUserData.karma}
+                userSignedIn={authUser.userSignedIn}
+                username={authUser.username ?? ""}
+                karma={authUser.karma ?? 0}
                 goto={goToString}
+                pageName=""
+                label=""
             />
             <div className="item-content-container">
-                {item && !notFoundError && !getDataError ? (
-                    <>
-                        <ItemComponent
-                            item={item}
-                            currUsername={authUserData.username}
-                            userSignedIn={authUserData.userSignedIn}
-                            goToString={goToString}
-                            isModerator={authUserData.isModerator}
-                        />
-                        <CommentSection
-                            comments={comments}
-                            parentItemId={item.id}
-                            isMore={isMoreComments}
-                            isMoreLink={`/item?id=${item.id}&page=${page + 1}`}
-                            userSignedIn={authUserData.userSignedIn}
-                            currUsername={authUserData.username}
-                            showDownvote={authUserData.showDownvote}
-                            goToString={goToString}
-                            isModerator={authUserData.isModerator}
-                        />
-                    </>
-                ) : (
-                    <div className="item-get-data-error-msg">
-                        {notFoundError ? <span>No such item.</span> : <span>An error occurred.</span>}
-                    </div>
-                )}
+                <ItemComponent
+                    item={item}
+                    currUsername={authUser.username}
+                    userSignedIn={authUser.userSignedIn}
+                    goToString={goToString}
+                    isModerator={authUser.isModerator}
+                />
+                <CommentSection
+                    comments={comments}
+                    parentItemId={item.id}
+                    isMore={isMoreComments}
+                    isMoreLink={`/item?id=${item.id}&page=${page + 1}`}
+                    userSignedIn={authUser.userSignedIn}
+                    currUsername={authUser.username}
+                    showDownvote={authUser.showDownvote}
+                    goToString={goToString}
+                    isModerator={authUser.isModerator}
+                />
             </div>
             <Footer />
         </div>
     );
 }
 
-export async function getServerSideProps({ req, query }) {
-    const itemId = query.id ? query.id : "";
+export const getServerSideProps = (async ({ req, query }) => {
+    if (!query.id || Array.isArray(query.id) || Array.isArray(query.page)) {
+        throw new Error();
+    }
+
+    const itemId = query.id;
     const page = query.page ? parseInt(query.page) : 1;
 
-    const apiResult = await getItemById(itemId, page, req);
-    // console.log("api result", apiResult);
+    try {
+        const res = await apiClient.getItem({
+            headers: { cookie: req.headers.cookie ?? "" },
+            params: { itemId },
+            queries: { page },
+        });
 
-    return {
-        props: {
-            item: (apiResult && apiResult.item) || {},
-            authUserData: apiResult && apiResult.authUser ? apiResult.authUser : {},
-            getDataError: (apiResult && apiResult.getDataError) || false,
-            notFoundError: (apiResult && apiResult.notFoundError) || false,
-            goToString: page > 1 ? `item?id=${itemId}&page=${page}` : `item?id=${itemId}`,
-            page: page || 1,
-            comments: (apiResult && apiResult.comments) || [],
-            isMoreComments: (apiResult && apiResult.isMoreComments) || false,
-        },
-    };
-}
+        const { authUser, comments, isMoreComments } = res;
+        const item = {
+            ...res.item,
+            ...res.authenticatedItemData,
+        };
+        return {
+            props: {
+                authUser,
+                comments,
+                item,
+                isMoreComments,
+                page,
+                goToString: page > 1 ? `item?id=${itemId}&page=${page}` : `item?id=${itemId}`,
+            }
+        }
+    } catch (error) {
+        if (isErrorFromAlias(apiClient.api, "getItem", error)) {
+            if (error.response.data.code === 400) {
+                // Invalid id -- redirect to 404 page
+                // TODO: 400 response is throwing axios error, not being caught by isErrorFromAlias, fix
+                return { notFound: true };
+            }
+        }
+        console.error(error)
+        // Handles 500 ISE and 422 invalid page query
+        throw new Error();
+    }
+}) satisfies GetServerSideProps;
