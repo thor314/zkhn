@@ -2,7 +2,7 @@ import { makeEndpoint, parametersBuilder } from "@zodios/core";
 import z from "zod";
 
 import genericError from "@/zodios/utilities/genericError";
-import { AuthUserUnauthenticatedSchema, AuthUserAuthenticatedSchema } from "../schemas";
+import { AuthUserUnauthenticatedSchema, AuthUserAuthenticatedSchema } from "@/zodios/utilities/schemas";
 
 export const createUser = makeEndpoint({
     method: "post",

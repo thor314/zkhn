@@ -2,7 +2,7 @@ import { makeEndpoint, parametersBuilder } from "@zodios/core";
 import z from "zod";
 
 import genericError from "@/zodios/utilities/genericError";
-import { AuthUserAuthenticatedSchema, BaseChangePasswordRequestSchema } from "@/zodios/users/schemas";
+import { AuthUserAuthenticatedSchema } from "@/zodios/utilities/schemas";
 
 export const login = makeEndpoint({
     method: "post",
@@ -53,6 +53,11 @@ export const requestPasswordReset = makeEndpoint({
     parameters: parametersBuilder().addBody(z.object({})).build(),
     response: z.literal(""),
     errors: genericError,
+});
+
+const BaseChangePasswordRequestSchema = z.object({
+    username: z.string(),
+    newPassword: z.string(),
 });
 
 export const changePassword = makeEndpoint({

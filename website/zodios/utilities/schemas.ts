@@ -23,8 +23,3 @@ export const AuthUserUnauthenticatedSchema = z.object({
     banned: z.literal(false),
     cookiesIncluded: z.literal(false),
 });
-
-export const BaseChangePasswordRequestSchema = z.object({
-    username: z.string(),
-    newPassword: z.string(),
-});
