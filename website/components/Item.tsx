@@ -1,20 +1,18 @@
 import { useState, type ChangeEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
+import { isErrorFromAlias } from "@zodios/core";
 
+import apiClient from "@/zodios/apiClient";
 import { type ItemData } from "@/zodios/utilities/schemas";
 
-import upvoteItem from "@/api/items/upvoteItem";
-import unvoteItem from "@/api/items/unvoteItem";
 import favoriteItem from "@/api/items/favoriteItem";
 import unfavoriteItem from "@/api/items/unfavoriteItem";
-import hideItem from "@/api/items/hideItem";
-import unhideItem from "@/api/items/unhideItem";
 import addNewComment from "@/api/comments/addNewComment";
 import killItem from "@/api/moderation/killItem";
 import unkillItem from "@/api/moderation/unkillItem";
 
-import renderCreatedTime from "@/utils/renderCreatedTime";
+import formatAge from "@/utils/date/formatAge";
 
 type ItemComponentProps = {
     item: ItemData & {
@@ -39,51 +37,33 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
         commentSubmitError: false,
     });
 
-    const requestUpvoteItem = () => {
+    const requestVoteChange = async () => {
         if (loading) return;
 
         if (!userSignedIn) {
-            // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
             Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
         } else {
             setLoading(true);
-
-            item.votedOnByUser = true;
-
-            upvoteItem(item.id, (response) => {
-                if (response.authError) {
-                    // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
-                    Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-                } else {
-                    setLoading(false);
-                    setNumOfVote(numOfVote + 1);
+            item.votedOnByUser = !item.votedOnByUser;
+            try {
+                const res = await apiClient.updateItemVote({
+                    contentId: item.id,
+                    voteState: "Upvote",
+                });
+                setLoading(false);
+                setNumOfVote(numOfVote + (res === 'Upvote' ? 1 : -1));
+            } catch (error) {
+                setLoading(false);
+                if (isErrorFromAlias(apiClient.api, "updateItemVote", error)) {
+                    if (error.response.data.code === 401) {
+                        Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
+                    }
+                    // TODO: handle 400 payload parsing failed
                 }
-            });
+                console.error(error);
+            }
         }
-    };
-
-    const requestUnvoteItem = () => {
-        if (loading) return;
-
-        if (!userSignedIn) {
-            // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
-            Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-        } else {
-            setLoading(true);
-
-            item.votedOnByUser = false;
-
-            unvoteItem(item.id, (response) => {
-                if (response.authError) {
-                    // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
-                    Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-                } else {
-                    setLoading(false);
-                    setNumOfVote(numOfVote - 1);
-                }
-            });
-        }
-    };
+    }
 
     const requestFavoriteItem = () => {
         if (loading) return;
@@ -132,51 +112,6 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
             });
         }
     };
-
-    // const requestHideItem = () => {
-    //     if (loading) return;
-
-    //     if (!userSignedIn) {
-    //         // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
-    //         Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-    //     } else {
-    //         setLoading(true);
-
-    //         item.hiddenByUser = true;
-
-    //         hideItem(item.id, (response) => {
-    //             if (response.authError) {
-    //                 // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
-    //                 Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-    //             } else if (!response.success) {
-    //                 // location.href = "";
-    //                 Router.push(Router.asPath);
-    //             } else {
-    //                 setLoading(false);
-    //             }
-    //         });
-    //     }
-    // };
-
-    // const requestUnhideItem = () => {
-    //     if (loading) return;
-
-    //     setLoading(true);
-
-    //     item.hiddenByUser = false;
-
-    //     unhideItem(item.id, (response) => {
-    //         if (response.authError) {
-    //             // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
-    //             Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-    //         } else if (!response.success) {
-    //             // location.href = ""
-    //             Router.push(Router.asPath);
-    //         } else {
-    //             setLoading(false);
-    //         }
-    //     });
-    // };
 
     const updateCommentInputValue: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setCommentInputValue(event.target.value);
@@ -281,7 +216,7 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                                     {item.votedOnByUser || item.dead ? (
                                         <span className="item-upvote hide"></span>
                                     ) : (
-                                        <span className="item-upvote" onClick={requestUpvoteItem}></span>
+                                        <span className="item-upvote" onClick={requestVoteChange}></span>
                                     )}
                                 </>
                             ) : null}
@@ -318,33 +253,17 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                             </span>
                             {/* ITEM CREATED DATE */}
                             <span>
-                                <Link href={`/item?id=${item.id}`} legacyBehavior>{renderCreatedTime(item.created)}</Link>
+                                <Link href={`/item?id=${item.id}`} legacyBehavior>{formatAge(item.created)}</Link>
                             </span>
                             {/* UNVOTE */}
                             {item.votedOnByUser && !item.unvoteExpired && !item.dead ? (
                                 <>
                                     <span> | </span>
-                                    <span className="item-unvote" onClick={requestUnvoteItem}>
+                                    <span className="item-unvote" onClick={requestVoteChange}>
                                         un-vote
                                     </span>
                                 </>
                             ) : null}
-                            {/* HIDDEN ITEM | HIDE ITEM */}
-                            {/* {!item.hiddenByUser ? (
-                                <>
-                                    <span> | </span>
-                                    <span className="item-hide" onClick={requestHideItem}>
-                                        hide
-                                    </span>
-                                </>
-                            ) : (
-                                <>
-                                    <span> | </span>
-                                    <span className="item-hide" onClick={requestUnhideItem}>
-                                        un-hide
-                                    </span>
-                                </>
-                            )} */}
                             {/* SEARCH SIMILAR ITEM */}
                             <span> | </span>
                             <span>
