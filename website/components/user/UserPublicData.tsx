@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
-import moment from "moment";
+
+import formatDate from "@/utils/date/formatDate";
 
 type UserPublicDataProps = {
     username: string;
@@ -59,7 +60,7 @@ export default function UserPublicData({
                     <span>created:</span>
                 </div>
                 <div className="user-item-content created">
-                    <span>{moment.unix(Date.parse(created) / 1000).format("MMM D, YYYY")}</span>
+                    <span>{formatDate(new Date(created))}</span>
                 </div>
             </div>
 

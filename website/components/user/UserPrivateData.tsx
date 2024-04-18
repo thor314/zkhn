@@ -1,10 +1,10 @@
 import { useState, type ChangeEventHandler } from "react";
 import Link from "next/link";
 import Router from "next/router";
-import moment from "moment";
 import { isErrorFromAlias } from "@zodios/core";
 
 import apiClient from "@/zodios/apiClient";
+import formatDate from "@/utils/date/formatDate";
 
 type UserPrivateDataProps = {
     username: string,
@@ -84,7 +84,7 @@ export default function UserPrivateData({username, email, about, created, karma,
                     <span>created:</span>
                 </div>
                 <div className="user-item-content created">
-                    <span>{moment.unix(Date.parse(created) / 1000).format("MMM D, YYYY")}</span>
+                    <span>{formatDate(new Date(created))}</span>
                 </div>
             </div>
 
