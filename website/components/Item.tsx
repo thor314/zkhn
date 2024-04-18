@@ -6,8 +6,6 @@ import { isErrorFromAlias } from "@zodios/core";
 import apiClient from "@/zodios/apiClient";
 import { type ItemData } from "@/zodios/utilities/schemas";
 
-import favoriteItem from "@/api/items/favoriteItem";
-import unfavoriteItem from "@/api/items/unfavoriteItem";
 import addNewComment from "@/api/comments/addNewComment";
 import killItem from "@/api/moderation/killItem";
 import unkillItem from "@/api/moderation/unkillItem";
@@ -53,65 +51,42 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                 setLoading(false);
                 setNumOfVote(numOfVote + (res === 'Upvote' ? 1 : -1));
             } catch (error) {
-                setLoading(false);
-                if (isErrorFromAlias(apiClient.api, "updateItemVote", error)) {
-                    if (error.response.data.code === 401) {
-                        Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-                    }
+                if (isErrorFromAlias(apiClient.api, "updateItemVote", error) && error.response.data.code === 401) {
+                    Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
+                } else {
                     // TODO: handle 400 payload parsing failed
+                    setLoading(false);
+                    item.votedOnByUser = !item.votedOnByUser;
+                    console.error(error);
                 }
-                console.error(error);
             }
         }
     }
 
-    const requestFavoriteItem = () => {
+    const requestFavoriteChange = async () => {
         if (loading) return;
 
         if (!userSignedIn) {
-            // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
             Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
         } else {
             setLoading(true);
-
-            favoriteItem(item.id, (response) => {
-                if (response.authError) {
-                    // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
+            try {
+                await apiClient.updateItemFavorite({
+                    id: item.id,
+                    favorite: 'favorite',
+                });
+                Router.push(`/favorites?id=${currUsername}`);
+            } catch (error) {
+                if (isErrorFromAlias(apiClient.api, "updateItemFavorite", error) && error.response.data.code === 401) {
                     Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-                } else if (!response.success) {
-                    // location.href = "";
-                    Router.push(Router.asPath);
                 } else {
-                    // location.href = `/favorites?id=${currUsername}`;
-                    Router.push(`/favorites?id=${currUsername}`);
-                }
-            });
-        }
-    };
-
-    const requestUnfavoriteItem = () => {
-        if (loading) return;
-
-        if (!userSignedIn) {
-            // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
-            Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-        } else {
-            setLoading(true);
-
-            unfavoriteItem(item.id, (response) => {
-                if (response.authError) {
-                    // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
-                    Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
-                } else if (!response.success) {
-                    // location.href = "";
+                    // TODO: handle 403 forbidden and 422 invalid payload
+                    console.error(error);
                     Router.push(Router.asPath);
-                } else {
-                    // location.href = `/favorites?id=${currUsername}`;
-                    Router.push(`/favorites?id=${currUsername}`);
                 }
-            });
+            }
         }
-    };
+    }
 
     const updateCommentInputValue: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
         setCommentInputValue(event.target.value);
@@ -121,7 +96,6 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
         if (loading) return;
 
         if (!userSignedIn) {
-            // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
             Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
         } else if (!commentInputValue) {
             setError({
@@ -148,7 +122,6 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
             addNewComment(commentData, (response) => {
                 setLoading(false);
                 if (response.authError) {
-                    // location.href = `/login?goto=${encodeURIComponent(goToString)}`;
                     Router.push(`/login?goto=${encodeURIComponent(goToString)}`);
                 } else if (response.textRequiredError) {
                     setError({
@@ -169,7 +142,6 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                         commentSubmitError: true,
                     });
                 } else {
-                    // location.href = "";
                     setCommentInputValue("");
                     Router.push(Router.asPath);
                 }
@@ -225,10 +197,8 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                             {/* IS ITEM DEAD? */}
                             <span className="item-title">
                                 <Link href={item.url ? item.url : `/item?id=${item.id}`}>
-
                                     {item.dead ? "[dead] " : null}
                                     {item.title}
-
                                 </Link>
                             </span>
                             {item.url ? (
@@ -277,14 +247,14 @@ export default function ItemComponent({ item, currUsername, goToString, userSign
                             {!item.favoritedByUser ? (
                                 <>
                                     <span> | </span>
-                                    <span className="item-favorite" onClick={requestFavoriteItem}>
+                                    <span className="item-favorite" onClick={requestFavoriteChange}>
                                         favorite
                                     </span>
                                 </>
                             ) : (
                                 <>
                                     <span> | </span>
-                                    <span className="item-favorite" onClick={requestUnfavoriteItem}>
+                                    <span className="item-favorite" onClick={requestFavoriteChange}>
                                         un-favorite
                                     </span>
                                 </>
