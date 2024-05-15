@@ -85,7 +85,7 @@ export const getServerSideProps = (async ({ req, query }) => {
         }
     } catch (error) {
         if (isErrorFromAlias(apiClient.api, "getItem", error)) {
-            if (error.response.data.code === 400) {
+            if (error.response.data.code === 404) {
                 // Invalid id -- redirect to 404 page
                 // TODO: 400 response is throwing axios error, not being caught by isErrorFromAlias, fix
                 return { notFound: true };
