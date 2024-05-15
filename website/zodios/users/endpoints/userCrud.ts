@@ -51,18 +51,20 @@ export const getUser = makeEndpoint({
     errors: genericError,
 });
 
+const EmailSchema = z.object({ email: z.string() });
+const AboutSchema = z.object({ about: z.string() });
+const UpdateUserRequestBodySchema = z.object({ showDead: z.boolean() })
+    .and((EmailSchema.and(AboutSchema))
+        .or(AboutSchema)
+        .or(EmailSchema)
+    );
+
 export const updateUser = makeEndpoint({
     method: "put",
     path: "",
     alias: "updateUser",
     parameters: parametersBuilder()
-        .addBody(
-            z.object({
-                about: z.string(),
-                email: z.string(),
-                showDead: z.boolean(),
-            })
-        )
+        .addBody(UpdateUserRequestBodySchema)
         .build(),
     response: z.literal(""),
     errors: genericError,

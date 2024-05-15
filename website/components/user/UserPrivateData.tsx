@@ -40,9 +40,11 @@ export default function UserPrivateData({username, email, about, created, karma,
     const submitUpdateRequest = async () => {
         if (loading) return;
         setLoading(true);
+        setEmailInputValue(emailInputValue.trim());
+        setAboutInputValue(aboutInputValue.trim());
         try {
             await apiClient.updateUser({
-                email: emailInputValue,
+                ...(emailInputValue ? { email: emailInputValue } : {}),
                 about: aboutInputValue,
                 showDead: showDeadValue === "yes",
             });
