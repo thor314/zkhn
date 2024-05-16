@@ -24,11 +24,22 @@ export const AuthUserUnauthenticatedSchema = z.object({
     cookiesIncluded: z.literal(false),
 });
 
+const LinkItemSubSchema = z.object({
+    text: z.null(),
+    url: z.string(),
+    domain: z.string(),
+});
+
+const TextItemSubSchema = z.object({
+    text: z.string(),
+    url: z.null(),
+    domain: z.null(),
+});
+
 export const ItemDataSchema = z.object({
     commentCount: z.number(),
     created: z.string(),
     dead: z.boolean(),
-    domain: z.string().or(z.null()),
     id: z.string(),
     itemCategory: z.union([
         z.literal("tweet"),
@@ -43,10 +54,8 @@ export const ItemDataSchema = z.object({
     ]),
     points: z.number(),
     score: z.number(),
-    text: z.string(),
     title: z.string(),
-    url: z.string().or(z.null()),
     username: z.string(),
-});
+}).and(LinkItemSubSchema.or(TextItemSubSchema));
 
 export type ItemData = z.infer<typeof ItemDataSchema>;

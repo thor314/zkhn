@@ -68,16 +68,13 @@ export const getServerSideProps = (async ({ req, query }) => {
             queries: { page },
         });
 
-        const { authUser, comments, isMoreComments } = res;
-        const item = {
-            ...res.item,
-            ...res.authenticatedItemData,
-        };
+        const { authUser, withComments, item } = res;
+        const { authenticatedItemData, comments, isMoreComments } = withComments;
         return {
             props: {
                 authUser,
                 comments,
-                item,
+                item: { ...item, ...authenticatedItemData },
                 isMoreComments,
                 page,
                 goToString: page > 1 ? `item?id=${itemId}&page=${page}` : `item?id=${itemId}`,

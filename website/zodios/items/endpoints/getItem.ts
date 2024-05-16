@@ -4,20 +4,19 @@ import z from "zod";
 import genericError from "@/zodios/utilities/genericError";
 import { AuthUserAuthenticatedSchema, AuthUserUnauthenticatedSchema, ItemDataSchema } from "@/zodios/utilities/schemas";
 
-const BaseGetItemResponseSchema = z.object({
-    comments: z.array(z.object({})), // TODO: replace with schema when available
-    isMoreComments: z.boolean(),
-    item: ItemDataSchema,
-});
+const BaseGetItemResponseSchema = z.object({ item: ItemDataSchema });
 
 const AuthenticatedGetItemResponseSchema = z
     .object({
         authUser: AuthUserAuthenticatedSchema,
-        authenticatedItemData: z.object({
-            editAndDeleteExpired: z.boolean(),
-            favoritedByUser: z.boolean(),
-            unvoteExpired: z.boolean(),
-            votedOnByUser: z.boolean(),
+        withComments: z.object({
+            authenticatedItemData: z.object({
+                editAndDeleteAllowed: z.boolean(),
+                favoritedByUser: z.boolean(),
+                votedOnByUser: z.boolean(),
+            }),
+            comments: z.array(z.object({})),
+            isMoreComments: z.boolean(),
         }),
     })
     .merge(BaseGetItemResponseSchema);
@@ -29,13 +28,15 @@ const UnauthenticatedGetItemResponseSchema = z
                 ...authUser,
                 isModerator: false
             })),
-        authenticatedItemData: z.null()
-            .transform(_ => ({
-                editAndDeleteExpired: null,
+        withComments: z.null().transform(_ => ({
+            authenticatedItemData: {
+                editAndDeleteAllowed: null,
                 favoritedByUser: null,
-                unvoteExpired: null,
                 votedOnByUser: null,
-            })),
+            },
+            comments: [],           // Placeholder for actual comments that should come back when unauthenticated
+            isMoreComments: false,
+        })),
     })
     .merge(BaseGetItemResponseSchema);
 
